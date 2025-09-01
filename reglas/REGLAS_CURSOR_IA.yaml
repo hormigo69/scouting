@@ -1,0 +1,76 @@
+reglas_cursor:
+  description: Reglas específicas para que Cursor siga automáticamente en el proyecto, basadas en Proceso_Asistido_IA.md.
+  
+  memoria_automatica:
+    - regla: "Actualizar memoria_proyecto.yaml después de cada cambio significativo"
+      descripcion: "Registrar insights, decisiones y razones en la memoria del proyecto"
+      prompt: "@cursor: Actualiza memoria_proyecto.yaml con este insight: [descripción]"
+      
+    - regla: "Registrar cada interacción importante con la IA"
+      descripcion: "Mantener historial de consultas y respuestas relevantes"
+      prompt: "@cursor: Registra esta interacción en memoria_proyecto.yaml"
+      
+    - regla: "Documentar decisiones y alternativas consideradas"
+      descripcion: "Explicar por qué se tomó una decisión y qué otras opciones se evaluaron"
+      prompt: "@cursor: Documenta esta decisión en memoria_proyecto.yaml con alternativas consideradas"
+
+  estructura_archivos:
+    - regla: "Usar Markdown para toda la documentación"
+      descripcion: "Mantener consistencia en el formato de archivos"
+      prompt: "@cursor: Genera este contenido en formato Markdown"
+      
+    - regla: "Seguir la estructura de carpetas definida"
+      descripcion: "Respetar la organización docs/, plantillas/, outputs/, etc."
+      prompt: "@cursor: Guarda este archivo en la carpeta [nombre] según la estructura del proyecto"
+      
+    - regla: "Versionar outputs con sufijos (v1, v2, final)"
+      descripcion: "Mantener historial de versiones de propuestas e informes"
+      prompt: "@cursor: Crea la versión [v1/v2/final] de este documento"
+
+  revision_adversarial:
+    - regla: "Siempre cuestionar suposiciones en revisiones"
+      descripcion: "Identificar y validar premisas ocultas"
+      prompt: "@cursor: Examina críticamente este documento - identifica suposiciones no validadas"
+      
+    - regla: "Identificar riesgos automáticamente"
+      descripcion: "Detectar amenazas potenciales y vulnerabilidades"
+      prompt: "@cursor: Analiza este contenido para identificar riesgos y amenazas"
+      
+    - regla: "Sugerir alternativas y trade-offs"
+      descripcion: "Proponer opciones alternativas y explicar compromisos"
+      prompt: "@cursor: Sugiere alternativas a este enfoque y explica los trade-offs"
+
+  contexto:
+    - regla: "Consultar docs/ antes de generar contenido"
+      descripcion: "Usar RAG para acceder a documentación existente"
+      prompt: "@cursor: Basándote en la documentación en docs/, genera [tipo de contenido]"
+      
+    - regla: "Referenciar transcripciones en propuestas"
+      descripcion: "Incluir citas y referencias a reuniones previas"
+      prompt: "@cursor: Integra hallazgos de las transcripciones en docs/transcripciones/"
+      
+    - regla: "Integrar hallazgos de investigación"
+      descripcion: "Conectar nueva información con investigación previa"
+      prompt: "@cursor: Conecta este hallazgo con la investigación existente en docs/docs_tecnicos/"
+
+  output:
+    - regla: "Guardar en la carpeta correcta según el tipo"
+      descripcion: "Organizar outputs según su naturaleza (propuestas, informes, presentaciones)"
+      prompt: "@cursor: Guarda este [tipo de output] en outputs/[carpeta_apropiada]/"
+      
+    - regla: "Usar plantillas cuando estén disponibles"
+      descripcion: "Aplicar formatos y estructuras predefinidas"
+      prompt: "@cursor: Usa la plantilla de [plantillas/nombre_plantilla.md] para este contenido"
+      
+    - regla: "Mantener consistencia de formato"
+      descripcion: "Aplicar el mismo estilo y estructura en documentos similares"
+      prompt: "@cursor: Mantén consistencia con el formato de [documento_referencia]"
+
+  flujo_trabajo:
+    - regla: "Seguir el proceso de 5 pasos definido"
+      descripcion: "Respetar la secuencia: reunión → investigación → propuesta → desarrollo → revisión"
+      prompt: "@cursor: ¿En qué fase del proceso estamos? ¿Qué debería ser el siguiente paso?"
+      
+    - regla: "Integrar con Teamwork cuando sea relevante"
+      descripcion: "Crear tareas y actualizar estado en .teamwork.yaml"
+      prompt: "@cursor: Crea tareas en Teamwork basándote en [documento] y actualiza .teamwork.yaml"

@@ -6,9 +6,9 @@ Este documento describe una solución integral basada en IA para potenciar el pr
 El proceso se divide en etapas, indicando para cada una:
 - **Autopilot**: IA opera de forma autónoma (e.g., recopilación de datos).
 - **Copilot**: IA asiste al humano, mitigando debilidades como sesgos o fatiga (e.g., sugerencias para validación).
-- **Humano 100%**: Intervención manual obligatoria (e.g., decisiones finales).
+- **Humano 100%**: Intervención manual obligatoria (ejemplos: decisiones finales).
 
-El sistema reduce tiempo, aumenta cobertura y mejora objetividad, pero incluye checkpoints humanos para ética y precisión.
+El sistema reduce tiempo, aumenta cobertura y mejora objetividad, además de incluir checkpoints humanos para ética y precisión.
 
 ## Estructura General del Sistema
 - **Orquestador Central**: Agente IA que gestiona flujos, asigna tareas y asegura coherencia (basado en modelos razonadores (GPT-5, Gemini, Grok, etc.) con herramientas integradas).

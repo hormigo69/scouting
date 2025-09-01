@@ -1,0 +1,51 @@
+# Memoria del Proyecto Applus - Scouting de Innovación
+proyecto:
+  nombre: "Applus - Scouting de Innovación"
+  fecha_inicio: "2025-08-28"
+  estado: "configuración_inicial"
+  version: "1.2"
+
+contexto:
+  empresa: "Applus"
+  sector: "Testing, Inspección y Certificación (TIC)"
+  enfoque: "Scouting de innovación tecnológica"
+
+lecciones_aprendidas:
+  - "Importancia de estructura clara para contexto de IA"
+  - "Necesidad de reglas específicas para revisiones críticas"
+  - "Valor de mantener outputs organizados por tipo y propósito"
+  - "Eficiencia de estructura simplificada sin subcarpetas excesivas"
+
+proximos_pasos:
+  - "Validar requisitos con stakeholders"
+  - "Definir roadmap de implementación"
+  - "Configurar integración con Teamwork"
+
+archivos_clave:
+  - "METODOLOGIA_IA_PROYECTOS.md"
+  - "outputs/propuestas/Propuesta_Scouting_IA.md"
+  - "docs/ARQUITECTURA_SISTEMA_IA.md"
+  - "docs/PERFIL_CORPORATIVO_APLUS.md"
+
+entries:
+  - date: "2025-08-28"
+    tipo: "inicio_proyecto"
+    titulo: "Configuración inicial del proyecto"
+    insight: "Proyecto iniciado siguiendo metodología IA asistida con estructura optimizada para scouting"
+    acciones: 
+      - "Creación y organización de estructura de carpetas"
+      - "Definición de reglas automáticas y documentación base"
+      - "Desarrollo de propuesta técnica inicial"
+    estado: "completado"
+    fuente: "Equipo técnico"
+
+  - date: "2025-09-01"
+    tipo: "comunicacion"
+    titulo: "Validación inicial con PitchBook"
+    insight: "Recepción y análisis de documentación técnica de API para validación de aproximación"
+    acciones:
+      - "Análisis de documentación técnica de API"
+      - "Validación de viabilidad técnica inicial"
+      - "Planificación de siguiente fase (POC)"
+    estado: "completado"
+    fuente: "Comunicación con proveedor"

@@ -1,0 +1,76 @@
+{
+  "name": "Apple",
+  "url": "https://pitchbook.com/profiles/company/41082-40",
+  "category": "Company",
+  "searchQuery": "Apple",
+  "searchTerm": "Apple",
+  "scrapedAt": "2024-01-15T10:30:00.000Z",
+  "yearFounded": "1976",
+  "status": "Public",
+  "employees": "168,937",
+  "stockSymbol": "AAPL",
+  "investments": "199",
+  "sharePrice": "$229.35",
+  "description": "Apple is among the largest companies in the world...",
+  "contactInformation": {
+    "website": "http://www.apple.com",
+    "address": "One Apple Park Way, Cupertino, CA 95014, United States",
+    "phone": "+1 (408) XXX-XXXX",
+    "linkedin": "https://www.linkedin.com/company/apple",
+    "twitter": "https://twitter.com/apple",
+    "facebook": "https://www.facebook.com/apple"
+  },
+  "stockPerformance": {
+    "currentPrice": "$229.35",
+    "previousClose": "$220.03",
+    "weekRange52": "$169.21 - $260.10",
+    "marketCap": "$3.4T",
+    "shares": "14.8B",
+    "averageVolume": "55.7M",
+    "eps": "$6.61"
+  },
+  "newsAboutCompany": [
+    {
+      "title": "Apple announces new product launch",
+      "date": "Jun 20, 2025",
+      "summary": "Apple unveils its latest innovation...",
+      "url": "https://pitchbook.com/news/articles/..."
+    }
+  ],
+  "numberOfPatents": {
+    "total": "125,848",
+    "granted": "89,884",
+    "pending": "12,112"
+  },
+  "investmentsAcquisitions": [
+    {
+      "companyName": "CommonGround",
+      "dealDate": "08-Jul-2025",
+      "dealType": "Merger/Acquisition",
+      "dealSize": "N/A",
+      "industry": "Communication Software"
+    }
+  ],
+  "riskOverview": {
+    "rating": "18.88 | Low Risk",
+    "scale": "Low"
+  },
+  "exits": {
+    "totalCount": "20",
+    "recentExits": [
+      {
+        "companyName": "FOGALE Sensors",
+        "exitDate": "01-Jan-2020",
+        "exitType": "N/A",
+        "exitSize": "N/A",
+        "status": "Completed"
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "When was Apple founded?",
+      "answer": "Apple was founded in 1976."
+    }
+  ]
+}

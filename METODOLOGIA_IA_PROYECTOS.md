@@ -1,7 +1,7 @@
 # Proceso Asistido por IA para Proyectos
 
 ## Introducción
-Basado en las ideas recopiladas en "recopilación de cosas.md", este documento detalla un proceso estructurado para trabajar en proyectos utilizando un editor de IA (como Cursor) que mantiene el contexto a través de carpetas dedicadas. El objetivo es incorporar documentación (transcripciones, documentos técnicos, propuestas) para generar outputs eficientes, pensar sobre el proyecto y colaborar con un asistente IA integrado.
+Este documento detalla un proceso estructurado para trabajar en proyectos utilizando un editor de IA (como Cursor) que mantiene el contexto a través de carpetas dedicadas. El objetivo es incorporar documentación (transcripciones, documentos técnicos, propuestas) para generar outputs eficientes, pensar sobre el proyecto y colaborar con un asistente IA integrado.
 
 El proceso se inspira en conceptos como el uso de Markdown para documentación, RAG (Retrieval-Augmented Generation) nativo en herramientas como Cursor, y reflexiones de expertos como Andrej Karpathy sobre la transformación de conocimiento para LLMs. Se enfatiza en mantener "higiene de repositorios" para cada proyecto, utilizando plantillas, ejemplos y reglas para potenciar la IA.
 
