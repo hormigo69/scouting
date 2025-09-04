@@ -124,3 +124,132 @@ Si alguna métrica no se alcanza se revisará conjuntamente para determinar acci
 
 ---
 
+### 10. Presupuesto Aproximado del Piloto
+
+#### 📊 Resumen Ejecutivo
+**Inversión Total Estimada**: **€48.000 - €62.000** (duración: 10-12 semanas)
+
+| Categoría | Monto | % del Total | Justificación |
+|-----------|-------|-------------|---------------|
+| **Desarrollo Técnico** | €28.000 - €36.000 | 60% | Core del sistema de IA |
+| **Infraestructura** | €9.000 - €13.000 | 18% | Servicios cloud y APIs |
+| **Gestión de Proyecto** | €6.000 - €8.000 | 12% | Coordinación y documentación |
+| **Contingencias** | €5.000 - €7.000 | 10% | Riesgos técnicos |
+| **Total** | **€48.000 - €62.000** | **100%** | **Piloto completo** |
+
+---
+
+#### 🔧 Desglose Detallado por Categorías
+
+##### 1. Desarrollo Técnico (€28.000 - €36.000)
+**Horas totales estimadas**: 120-150 horas de desarrollo especializado
+
+| Componente | Horas | Costo (€) | Detalles Técnicos |
+|------------|-------|-----------|-------------------|
+| **Arquitectura de Agentes IA** | 45-55h | €9.000 - €11.000 | • Diseño de agentes especializados<br>• Lógica de reasoning avanzada<br>• Optimización de prompts |
+| **Integración APIs Premium** | 25-35h | €5.000 - €7.000 | • PitchBook API v2<br>• Crunchbase API<br>• Rate limiting & autenticación |
+| **API REST & Backend** | 35-45h | €7.000 - €9.000 | • FastAPI/Django REST<br>• Procesamiento asíncrono<br>• Documentación automática |
+| **Procesamiento de Datos** | 30-40h | €6.000 - €8.000 | • Estructuras JSON normalizadas<br>• Generación de market maps<br>• Reportes dinámicos |
+| **Testing & QA** | 20-25h | €4.000 - €5.000 | • Unit tests & integración<br>• Validación de datos<br>• Performance testing |
+
+##### 2. Infraestructura y Servicios (€9.000 - €13.000)
+
+| Servicio | Costo (€) | Detalles |
+|----------|-----------|----------|
+| **Plataforma de IA** | €4.000 - €6.000 | • OpenAI/Claude API credits<br>• ~50.000 tokens para desarrollo<br>• Inferencia durante pruebas |
+| **Cloud Infrastructure** | €3.000 - €4.000 | • AWS/GCP/Azure compute<br>• Storage & databases<br>• Vector database (Pinecone/Weaviate) |
+| **Data APIs** | €3.000 - €4.000 | • PitchBook premium access<br>• Crunchbase enterprise<br>• Testing credits |
+
+##### 3. Gestión de Proyecto (€6.000 - €8.000)
+
+| Actividad | Horas | Costo (€) | Deliverables |
+|-----------|-------|-----------|-------------|
+| **Project Management** | 25-35h | €5.000 - €7.000 | • Sprint planning<br>• Stakeholder management<br>• Risk monitoring |
+| **Documentación** | 15-20h | €3.000 - €4.000 | • Technical documentation<br>• User guides<br>• API documentation |
+
+##### 4. Riesgos y Contingencias (€5.000 - €7.000)
+**Reserva técnica del 10%** para:
+- Cambios inesperados en APIs externas
+- Optimización de rendimiento adicional
+- Resolución de bugs críticos
+- Validación de seguridad adicional
+
+---
+
+#### 📅 Timeline y Hitos de Pago
+
+| Semana | Hito | % Pago | Monto (€) | Deliverables |
+|--------|------|--------|-----------|-------------|
+| **Semana 1-2** | Inicio & Setup | 30% | €14.400 - €18.600 | • Arquitectura definida<br>• APIs conectadas<br>• Entorno de desarrollo |
+| **Semana 3-6** | Desarrollo Core | 40% | €19.200 - €24.800 | • Agentes implementados<br>• API funcional<br>• Primeras pruebas |
+| **Semana 7-10** | Testing & Optimización | 20% | €9.600 - €12.400 | • QA completo<br>• Optimizaciones<br>• Documentación final |
+| **Semana 11-12** | Despliegue & Validación | 10% | €4.800 - €6.200 | • Sistema en producción<br>• Sesiones de validación<br>• Transferencia de conocimiento |
+
+---
+
+#### 💰 Modelo de Costos y Supuestos
+
+**Tarifas aplicadas:**
+- Desarrollo IA especializado: €60-75/hora
+- Arquitectura de sistemas: €70-85/hora
+- Project Management: €55-65/hora
+
+**Supuestos incluidos:**
+- ✅ Acceso a APIs de PitchBook y Crunchbase
+- ✅ Entorno cloud proporcionado por cliente
+- ✅ 2-3 stakeholders para validaciones
+- ✅ Datos de prueba disponibles
+
+**No incluye:**
+- ❌ Licencias comerciales post-piloto
+- ❌ Mantenimiento y soporte continuo
+- ❌ Escalado a producción
+- ❌ Capacitación adicional del equipo
+
+---
+
+#### 📈 Análisis de ROI y Beneficios
+
+##### Beneficios Cuantificables:
+| Métrica | Antes | Después | Ahorro Anual |
+|---------|-------|---------|--------------|
+| **Tiempo de scouting** | 160h por búsqueda | 16h por búsqueda | **€80.000 - €120.000** |
+| **Costos operativos** | €25.000/año | €5.000/año | **€20.000/año** |
+| **Cobertura de mercado** | 50 startups | 200+ startups | **4x más oportunidades** |
+
+##### ROI del Piloto:
+- **Payback period**: 3-4 meses
+- **ROI primer año**: **250-350%**
+- **ROI años siguientes**: **500%+**
+- **Break-even**: Después de 8-12 búsquedas
+
+##### Beneficios Cualitativos:
+- **Velocidad**: De semanas a horas en identificación de oportunidades
+- **Calidad**: Mayor precisión en evaluación de startups
+- **Escalabilidad**: Costos marginales cercanos a cero
+- **Competitividad**: Ventaja estratégica en innovación
+
+---
+
+#### ⚠️ Factores de Riesgo y Mitigación
+
+| Riesgo | Probabilidad | Impacto | Mitigación |
+|--------|-------------|---------|------------|
+| Cambios en APIs | Media | Alto | Reserva técnica + contratos flexibles |
+| Calidad de datos | Baja | Medio | Validación múltiple + fuentes alternativas |
+| Curva de aprendizaje | Baja | Bajo | Capacitación incluida + documentación |
+
+---
+
+#### 🤝 Condiciones Comerciales
+
+- **Validez de presupuesto**: 60 días desde aprobación
+- **Plazo de ejecución**: 10-12 semanas desde kickoff
+- **Forma de pago**: Transferencia bancaria
+- **Penalizaciones**: No aplican si hitos cumplidos
+- **Confidencialidad**: NDA estándar aplicable
+
+**¿Listo para revolucionar tu proceso de scouting de innovación?** 🚀
+
+---
+

@@ -93,30 +93,37 @@ El sistema se compone de varios módulos especializados:
 
 [IMAGEN: Diagrama de flujo del proceso completo]
 
-1. **Fase de Definición**
-   - Input inicial del cliente
-   - Procesamiento y estructuración
-   - Validación de entendimiento
+1. **Fase 1: Definición** - *De la Plantilla a la Pregunta de Investigación*
+   - Proceso estructurado de 11 pasos (A-K) para transformar necesidades en preguntas operativas
+   - Personalización de formularios Challenge Request y validación con unidades de negocio
+   - Extracción automática de criterios usando metodología PICOC y priorización MoSCoW
+   - Generación de ficha de búsqueda lista para ejecutar en APIs y web
+   - Trazabilidad completa estilo PRISMA para auditoría y transparencia
 
-2. **Fase de Búsqueda**
-   - Activación de agentes de búsqueda
-   - Recopilación masiva de datos
-   - Primer filtrado automático
+2. **Fase 2: Búsqueda** - *De la Ficha a la Long List*
+   - Activación de agentes de búsqueda automatizados
+   - Recopilación masiva de datos desde múltiples fuentes (Crunchbase, PitchBook, web)
+   - Primer filtrado automático basado en criterios MoSCoW
+   - Generación de Long List consolidada con scoring inicial
+   - Creación de market maps preliminares usando datos básicos y no estructurados para validación inicial
 
-3. **Fase de Análisis**
-   - Enriquecimiento de perfiles
-   - Generación de insights
-   - Creación de market map
+3. **Fase 3: Análisis** - *Del Enriquecimiento Selectivo a la Evaluación Cualitativa*
+   - Enriquecimiento profundo solo para shortlist priorizada (basado en scoring de Fase 2)
+   - Análisis cualitativo de métricas de tracción, equipo y tecnología
+   - Generación de reportes individuales y matriz de decisión preliminar
+   - Evaluación detallada para preparar la selección final
 
-4. **Fase de Evaluación**
-   - Scoring automático
-   - Votación y feedback
-   - Selección final
+4. **Fase 4: Evaluación** - *Del Scoring a la Selección*
+   - Scoring automático basado en criterios predefinidos
+   - Sistema de votación y feedback del equipo
+   - Generación de shortlist y selección final
+   - Análisis de fit tecnológico y comercial
 
-5. **Fase de Documentación**
-   - Generación de reportes
-   - Creación de fichas detalladas
-   - Plan preliminar de integración
+5. **Fase 5: Documentación** - *De la Selección al Plan*
+   - Generación de reportes ejecutivos finales
+   - Creación de fichas detalladas de startups seleccionadas
+   - Plan preliminar de integración y próximos pasos
+   - Documentación completa del proceso para auditoría
 
 ## 4. BENEFICIOS Y VALOR AÑADIDO
 
@@ -139,20 +146,29 @@ El sistema se compone de varios módulos especializados:
 
 ## 5. PLAN DE IMPLEMENTACIÓN
 
-### Fase 1: Setup (2-3 semanas)
-- Workshop de definición
-- Configuración inicial
-- Training del equipo
+### Fase 1: Setup y Definición (2-3 semanas)
+- Workshop de definición de necesidades y criterios
+- Configuración inicial del sistema y APIs
+- Training del equipo en el proceso de 11 pasos
+- Validación de la Fase 1 con caso de prueba
 
-### Fase 2: Piloto (3-4 semanas)
-- Primer caso de uso
-- Validación de outputs
-- Ajustes del sistema
+### Fase 2: Piloto de Búsqueda (3-4 semanas)
+- Implementación de agentes de búsqueda automatizados
+- Validación de outputs de la Fase 2
+- Ajustes del sistema de filtrado automático
+- Generación de primera Long List consolidada
 
-### Fase 3: Escalado (Continuo)
-- Expansión a más áreas
-- Optimización continua
-- Medición de resultados
+### Fase 3: Piloto de Análisis (3-4 semanas)
+- Implementación de agentes de enriquecimiento
+- Validación de perfiles enriquecidos y market maps
+- Ajustes del sistema de scoring cualitativo
+- Generación de primera matriz de decisión
+
+### Fase 4: Escalado y Optimización (Continuo)
+- Expansión a más áreas de innovación
+- Optimización continua de algoritmos y agentes
+- Medición de resultados y ROI
+- Preparación para Fases 4 y 5 completas
 
 [IMAGEN: Timeline de implementación]
 
