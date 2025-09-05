@@ -332,8 +332,28 @@ function backToStepA() {
 
 // Función para continuar al Paso C
 function continueToStepC() {
-    // Aquí se implementaría la lógica para pasar al Paso C
-    showNotification('Funcionalidad del Paso C en desarrollo', 'info');
+    // Ocultar el Paso B
+    const stepB = document.getElementById('step-b');
+    if (stepB) {
+        stepB.style.display = 'none';
+    }
+    
+    // Mostrar el Paso C
+    const stepC = document.getElementById('step-c');
+    if (stepC) {
+        stepC.style.display = 'block';
+    }
+    
+    // Actualizar indicadores de paso
+    updateStepIndicators('C');
+    
+    // Actualizar header phase indicator
+    updateHeaderPhase('C');
+    
+    // Inicializar funcionalidad del Paso C
+    initializeStepC();
+    
+    console.log('Navigated to Step C');
 }
 
 // Event listeners para el Paso B
@@ -373,4 +393,79 @@ function initializeStepBContent() {
         // Una vez cargadas, mostrar la lista de preguntas (solo PROBLEM)
         loadQuestionsList();
     });
+}
+
+// Función para actualizar indicadores de paso (copiada de script.js)
+function updateStepIndicators(activeStep) {
+    const steps = document.querySelectorAll('.step');
+    steps.forEach((step, index) => {
+        const stepNumber = step.querySelector('.step-number');
+        const stepLabel = step.querySelector('.step-label, div:last-child');
+        
+        // Reset all steps
+        step.classList.remove('active');
+        step.style.opacity = '0.4';
+        
+        if (stepNumber) {
+            stepNumber.style.backgroundColor = '#e5e7eb';
+            stepNumber.style.color = '#6b7280';
+            stepNumber.style.borderColor = '#e5e7eb';
+        }
+        
+        if (stepLabel) {
+            stepLabel.style.color = '#6b7280';
+            stepLabel.style.fontWeight = '500';
+        }
+        
+        // Set active step
+        if (index === 0 && activeStep === 'A') {
+            step.classList.add('active');
+            step.style.opacity = '1';
+            if (stepNumber) {
+                stepNumber.style.backgroundColor = '#FF8C00';
+                stepNumber.style.color = 'white';
+                stepNumber.style.borderColor = '#FF8C00';
+            }
+            if (stepLabel) {
+                stepLabel.style.color = '#FF8C00';
+                stepLabel.style.fontWeight = '600';
+            }
+        } else if (index === 1 && activeStep === 'B') {
+            step.classList.add('active');
+            step.style.opacity = '1';
+            if (stepNumber) {
+                stepNumber.style.backgroundColor = '#FF8C00';
+                stepNumber.style.color = 'white';
+                stepNumber.style.borderColor = '#FF8C00';
+            }
+            if (stepLabel) {
+                stepLabel.style.color = '#FF8C00';
+                stepLabel.style.fontWeight = '600';
+            }
+        } else if (index === 2 && activeStep === 'C') {
+            step.classList.add('active');
+            step.style.opacity = '1';
+            if (stepNumber) {
+                stepNumber.style.backgroundColor = '#FF8C00';
+                stepNumber.style.color = 'white';
+                stepNumber.style.borderColor = '#FF8C00';
+            }
+            if (stepLabel) {
+                stepLabel.style.color = '#FF8C00';
+                stepLabel.style.fontWeight = '600';
+            }
+        }
+    });
+}
+
+// Función para actualizar header phase indicator (copiada de script.js)
+function updateHeaderPhase(step) {
+    const phaseBadge = document.querySelector('.phase-badge');
+    const stepBadge = document.querySelector('.step-badge');
+    
+    if (step === 'B' && phaseBadge && stepBadge) {
+        stepBadge.textContent = 'Paso B: Respuestas';
+    } else if (step === 'C' && phaseBadge && stepBadge) {
+        stepBadge.textContent = 'Paso C: Revisión IA';
+    }
 }
