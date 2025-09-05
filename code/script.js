@@ -2,7 +2,7 @@
 async function parseJsonTemplate() {
     try {
         console.log('Attempting to fetch JSON file...');
-        const response = await fetch('files/A+ Template_CHALLENGE REQUEST 3.json');
+        const response = await fetch('files/A+%20Template_CHALLENGE%20REQUEST%203.json');
         
         if (!response.ok) {
             console.error('Failed to fetch JSON file:', response.status, response.statusText);
@@ -467,7 +467,7 @@ function populateFields() {
     
     if (!currentTemplate.fields || currentTemplate.fields.length === 0) {
         console.log('No fields to populate');
-        fieldList.innerHTML = '<p>No hay campos disponibles para este template.</p>';
+        fieldList.innerHTML = '<p class="text-applus-gray-400 text-center py-4">No hay campos disponibles para este template.</p>';
         return;
     }
     
@@ -482,27 +482,27 @@ function populateFields() {
 
 function createFieldElement(field) {
     const fieldDiv = document.createElement('div');
-    fieldDiv.className = 'field-item';
+    fieldDiv.className = 'list-item';
     fieldDiv.dataset.fieldId = field.id;
     
     fieldDiv.innerHTML = `
-        <div class="field-info">
-            <div class="field-name">${field.name}</div>
-            <div class="field-type">${getFieldTypeLabel(field.type)} ${field.required ? '(Obligatorio)' : '(Opcional)'}</div>
+        <div class="flex-1">
+            <div class="font-semibold mb-1 text-applus-gray-600">${field.name}</div>
+            <div class="text-sm text-applus-gray-400">${getFieldTypeLabel(field.type)} ${field.required ? '(Obligatorio)' : '(Opcional)'}</div>
             ${field.examples ? `<div class="field-examples">💡 ${field.examples}</div>` : ''}
         </div>
-        <div class="field-actions">
-            <button class="field-action-btn" onclick="editField('${field.id}')" title="Editar">
-                <i class="fas fa-edit"></i>
+        <div class="flex gap-1">
+            <button class="p-1 border-none cursor-pointer rounded transition-all duration-300 hover:bg-applus-gray-200" onclick="editField('${field.id}')" title="Editar">
+                <i class="fas fa-edit text-applus-gray-400"></i>
             </button>
-            <button class="field-action-btn" onclick="deleteField('${field.id}')" title="Eliminar">
-                <i class="fas fa-trash"></i>
+            <button class="p-1 border-none cursor-pointer rounded transition-all duration-300 hover:bg-applus-gray-200" onclick="deleteField('${field.id}')" title="Eliminar">
+                <i class="fas fa-trash text-applus-gray-400"></i>
             </button>
         </div>
     `;
     
     fieldDiv.addEventListener('click', function(e) {
-        if (!e.target.closest('.field-action-btn')) {
+        if (!e.target.closest('button')) {
             selectField(field.id);
         }
     });
@@ -524,13 +524,13 @@ function getFieldTypeLabel(type) {
 
 function selectField(fieldId) {
     // Remove previous selection
-    document.querySelectorAll('.field-item').forEach(item => {
-        item.classList.remove('selected');
+    document.querySelectorAll('.list-item').forEach(item => {
+        item.classList.remove('active');
     });
     
     // Add selection to clicked field
     const fieldElement = document.querySelector(`[data-field-id="${fieldId}"]`);
-    fieldElement.classList.add('selected');
+    fieldElement.classList.add('active');
     
     // Set current field and show configuration
     currentField = selectedFields.find(f => f.id === fieldId);
@@ -541,19 +541,19 @@ function showFieldConfiguration() {
     const configDiv = document.getElementById('fieldConfig');
     
     if (!currentField) {
-        configDiv.innerHTML = '<p class="placeholder">Selecciona un campo para configurarlo</p>';
+        configDiv.innerHTML = '<p class="text-applus-gray-400 italic text-center py-10">Selecciona un campo para configurarlo</p>';
         return;
     }
     
     configDiv.innerHTML = `
-        <form class="config-form" id="fieldConfigForm">
-            <div class="form-group">
-                <label for="configName">Nombre del Campo</label>
-                <input type="text" id="configName" value="${currentField.name}" required>
+        <form class="space-y-4" id="fieldConfigForm">
+            <div class="flex flex-col gap-2">
+                <label for="configName" class="font-medium text-applus-gray-700">Nombre del Campo</label>
+                <input type="text" id="configName" value="${currentField.name}" required class="form-input">
             </div>
-            <div class="form-group">
-                <label for="configType">Tipo de Campo</label>
-                <select id="configType" required>
+            <div class="flex flex-col gap-2">
+                <label for="configType" class="font-medium text-applus-gray-700">Tipo de Campo</label>
+                <select id="configType" required class="form-select">
                     <option value="text" ${currentField.type === 'text' ? 'selected' : ''}>Texto</option>
                     <option value="textarea" ${currentField.type === 'textarea' ? 'selected' : ''}>Área de Texto</option>
                     <option value="select" ${currentField.type === 'select' ? 'selected' : ''}>Lista Desplegable</option>
@@ -562,27 +562,26 @@ function showFieldConfiguration() {
                     <option value="date" ${currentField.type === 'date' ? 'selected' : ''}>Fecha</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="configDescription">Descripción</label>
-                <textarea id="configDescription" rows="3">${currentField.description || ''}</textarea>
+            <div class="flex flex-col gap-2">
+                <label for="configDescription" class="font-medium text-applus-gray-700">Descripción</label>
+                <textarea id="configDescription" rows="3" class="form-textarea">${currentField.description || ''}</textarea>
             </div>
-            <div class="form-group">
-                <label for="configExamples">Ejemplos/Pistas</label>
-                <textarea id="configExamples" rows="2">${currentField.examples || ''}</textarea>
+            <div class="flex flex-col gap-2">
+                <label for="configExamples" class="font-medium text-applus-gray-700">Ejemplos/Pistas</label>
+                <textarea id="configExamples" rows="2" class="form-textarea">${currentField.examples || ''}</textarea>
             </div>
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="configRequired" ${currentField.required ? 'checked' : ''}> Campo obligatorio
-                </label>
+            <div class="flex items-center gap-2">
+                <input type="checkbox" id="configRequired" ${currentField.required ? 'checked' : ''} class="rounded border-applus-gray-300 text-applus-orange focus:ring-applus-orange">
+                <label for="configRequired" class="font-medium text-applus-gray-700">Campo obligatorio</label>
             </div>
             ${currentField.options ? `
-            <div class="form-group">
-                <label for="configOptions">Opciones (una por línea)</label>
-                <textarea id="configOptions" rows="4">${currentField.options.join('\n')}</textarea>
+            <div class="flex flex-col gap-2">
+                <label for="configOptions" class="font-medium text-applus-gray-700">Opciones (una por línea)</label>
+                <textarea id="configOptions" rows="4" class="form-textarea">${currentField.options.join('\n')}</textarea>
             </div>
             ` : ''}
-            <div class="form-group">
-                <button type="button" class="btn btn-primary" onclick="saveFieldConfiguration()">Guardar Cambios</button>
+            <div class="flex flex-col gap-2">
+                <button type="button" class="btn-applus-primary" onclick="saveFieldConfiguration()">Guardar Cambios</button>
             </div>
         </form>
     `;
@@ -636,7 +635,7 @@ function deleteField(fieldId) {
         selectedFields = selectedFields.filter(f => f.id !== fieldId);
         populateFields();
         updateValidation();
-        document.getElementById('fieldConfig').innerHTML = '<p class="placeholder">Selecciona un campo para configurarlo</p>';
+        document.getElementById('fieldConfig').innerHTML = '<p class="text-applus-gray-400 italic text-center py-10">Selecciona un campo para configurarlo</p>';
         currentField = null;
         document.getElementById('saveTemplateBtn').disabled = false;
     }
@@ -651,7 +650,7 @@ function initializeModal() {
     const confirmBtn = document.getElementById('confirmAddFieldBtn');
     
     addFieldBtn.addEventListener('click', () => {
-        modal.classList.add('show');
+        modal.style.display = 'flex';
     });
     
     closeModalBtn.addEventListener('click', closeModal);
@@ -669,7 +668,7 @@ function initializeModal() {
 
 function closeModal() {
     const modal = document.getElementById('addFieldModal');
-    modal.classList.remove('show');
+    modal.style.display = 'none';
     document.getElementById('addFieldForm').reset();
 }
 
@@ -707,12 +706,12 @@ function addNewField() {
 function updatePreview() {
     const previewDiv = document.getElementById('formPreview');
     
-    let previewHTML = '<form class="preview-form">';
+    let previewHTML = '<form class="space-y-5">';
     
     selectedFields.forEach(field => {
         previewHTML += `
-            <div class="preview-field">
-                <label for="preview_${field.id}">${field.name} ${field.required ? '*' : ''}</label>
+            <div class="flex flex-col gap-2">
+                <label for="preview_${field.id}" class="font-medium text-applus-gray-700">${field.name} ${field.required ? '*' : ''}</label>
                 ${field.examples ? `<div class="preview-examples">💡 ${field.examples}</div>` : ''}
                 ${generateFieldHTML(field)}
             </div>
@@ -729,11 +728,11 @@ function generateFieldHTML(field) {
     
     switch (field.type) {
         case 'text':
-            return `<input type="text" id="${fieldId}" placeholder="${field.description}">`;
+            return `<input type="text" id="${fieldId}" placeholder="${field.description}" class="form-input">`;
         case 'textarea':
-            return `<textarea id="${fieldId}" rows="3" placeholder="${field.description}"></textarea>`;
+            return `<textarea id="${fieldId}" rows="3" placeholder="${field.description}" class="form-textarea"></textarea>`;
         case 'select':
-            let selectHTML = `<select id="${fieldId}">`;
+            let selectHTML = `<select id="${fieldId}" class="form-select">`;
             if (field.options) {
                 field.options.forEach(option => {
                     selectHTML += `<option value="${option}">${option}</option>`;
@@ -742,24 +741,25 @@ function generateFieldHTML(field) {
             selectHTML += '</select>';
             return selectHTML;
         case 'checkbox':
-            let checkboxHTML = '';
+            let checkboxHTML = '<div class="space-y-2">';
             if (field.options) {
                 field.options.forEach((option, index) => {
                     checkboxHTML += `
-                        <label>
-                            <input type="checkbox" name="${fieldId}" value="${option}">
-                            ${option}
+                        <label class="flex items-center gap-2">
+                            <input type="checkbox" name="${fieldId}" value="${option}" class="rounded border-applus-gray-300 text-applus-orange focus:ring-applus-orange">
+                            <span class="text-sm text-applus-gray-600">${option}</span>
                         </label>
                     `;
                 });
             }
+            checkboxHTML += '</div>';
             return checkboxHTML;
         case 'number':
-            return `<input type="number" id="${fieldId}" placeholder="${field.description}">`;
+            return `<input type="number" id="${fieldId}" placeholder="${field.description}" class="form-input">`;
         case 'date':
-            return `<input type="date" id="${fieldId}">`;
+            return `<input type="date" id="${fieldId}" class="form-input">`;
         default:
-            return `<input type="text" id="${fieldId}" placeholder="${field.description}">`;
+            return `<input type="text" id="${fieldId}" placeholder="${field.description}" class="form-input">`;
     }
 }
 
@@ -844,14 +844,93 @@ function saveTemplate() {
 }
 
 function continueToNextStep() {
-    // In a real application, this would navigate to the next step
+    // Hide current step content
+    const templateSelection = document.querySelector('.template-selection');
+    const customizationPanel = document.getElementById('customizationPanel');
+    const actionsSection = document.querySelector('.flex.justify-between.items-center.mt-10.pt-8.border-t-2.border-applus-gray-200');
+    const stepB = document.getElementById('step-b');
     
-    // For demo purposes, show the generated form
-    const formData = {
-        template: currentTemplate.name,
-        fields: selectedFields,
-        timestamp: new Date().toISOString()
-    };
+    if (templateSelection) templateSelection.style.display = 'none';
+    if (customizationPanel) customizationPanel.style.display = 'none';
+    if (actionsSection) actionsSection.style.display = 'none';
     
-    console.log('Generated form data for next step:', formData);
+    // Show step B
+    if (stepB) stepB.style.display = 'block';
+    
+    // Update step indicators
+    updateStepIndicators('B');
+    
+    // Update header phase indicator
+    updateHeaderPhase('B');
+    
+    // Initialize step B functionality
+    initializeStepB();
+    
+    console.log('Navigated to Step B');
+}
+
+function updateStepIndicators(activeStep) {
+    const steps = document.querySelectorAll('.step');
+    steps.forEach((step, index) => {
+        const stepNumber = step.querySelector('.step-number');
+        const stepLabel = step.querySelector('.step-label, div:last-child');
+        
+        // Reset all steps
+        step.classList.remove('active');
+        step.style.opacity = '0.4';
+        
+        if (stepNumber) {
+            stepNumber.style.backgroundColor = '#e5e7eb';
+            stepNumber.style.color = '#6b7280';
+            stepNumber.style.borderColor = '#e5e7eb';
+        }
+        
+        if (stepLabel) {
+            stepLabel.style.color = '#6b7280';
+            stepLabel.style.fontWeight = '500';
+        }
+        
+        // Set active step
+        if (index === 0 && activeStep === 'A') {
+            step.classList.add('active');
+            step.style.opacity = '1';
+            if (stepNumber) {
+                stepNumber.style.backgroundColor = '#FF8C00';
+                stepNumber.style.color = 'white';
+                stepNumber.style.borderColor = '#FF8C00';
+            }
+            if (stepLabel) {
+                stepLabel.style.color = '#FF8C00';
+                stepLabel.style.fontWeight = '600';
+            }
+        } else if (index === 1 && activeStep === 'B') {
+            step.classList.add('active');
+            step.style.opacity = '1';
+            if (stepNumber) {
+                stepNumber.style.backgroundColor = '#FF8C00';
+                stepNumber.style.color = 'white';
+                stepNumber.style.borderColor = '#FF8C00';
+            }
+            if (stepLabel) {
+                stepLabel.style.color = '#FF8C00';
+                stepLabel.style.fontWeight = '600';
+            }
+        }
+    });
+}
+
+function updateHeaderPhase(step) {
+    const phaseBadge = document.querySelector('.phase-badge');
+    const stepBadge = document.querySelector('.step-badge');
+    
+    if (step === 'B' && phaseBadge && stepBadge) {
+        stepBadge.textContent = 'Paso B: Respuestas';
+    }
+}
+
+function initializeStepB() {
+    // This function will be called when step-b.js is loaded
+    if (typeof initializeStepBContent === 'function') {
+        initializeStepBContent();
+    }
 }
