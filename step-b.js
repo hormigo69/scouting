@@ -68,9 +68,10 @@ function loadQuestionsList() {
     
     questionsList.innerHTML = '';
     
+    // Mostrar todas las preguntas del JSON
     challengeResponses.fields.forEach((field, index) => {
         const questionItem = document.createElement('div');
-        questionItem.className = 'question-item';
+        questionItem.className = 'list-item mb-3';
         questionItem.dataset.fieldId = field.id;
         
         // Marcar si tiene respuesta
@@ -79,19 +80,31 @@ function loadQuestionsList() {
         }
         
         questionItem.innerHTML = `
-            <h4>${field.name}</h4>
-            <p>${field.description.substring(0, 100)}${field.description.length > 100 ? '...' : ''}</p>
+            <h4 class="font-semibold text-applus-gray-700 mb-2">${field.name}</h4>
+            <p class="text-sm text-applus-gray-500 leading-relaxed">${field.description.substring(0, 100)}${field.description.length > 100 ? '...' : ''}</p>
         `;
         
         questionItem.addEventListener('click', () => selectQuestion(field));
         questionsList.appendChild(questionItem);
     });
+    
+    // Auto-seleccionar la primera pregunta (PROBLEM si existe, sino la primera)
+    const problemField = challengeResponses.fields.find(field => 
+        field.id === 'problem_definition' || 
+        field.name.toLowerCase().includes('problem') ||
+        field.name === 'PROBLEM'
+    );
+    
+    const firstField = problemField || challengeResponses.fields[0];
+    if (firstField) {
+        selectQuestion(firstField);
+    }
 }
 
 // Función para seleccionar una pregunta
 function selectQuestion(field) {
     // Remover selección anterior
-    document.querySelectorAll('.question-item').forEach(item => {
+    document.querySelectorAll('.list-item').forEach(item => {
         item.classList.remove('active');
     });
     
@@ -125,11 +138,57 @@ function showQuestionResponse(field) {
         document.getElementById('selected-question-title').textContent = field.name;
         document.getElementById('selected-question-description').textContent = field.description;
         
-        // Actualizar textarea con la respuesta
-        const textarea = document.getElementById('response-textarea');
-        if (textarea) {
-            textarea.value = field.response || '';
-        }
+        // Crear cajas individuales para cada línea de la respuesta
+        createIndividualResponseBoxes(field);
+    }
+}
+
+function createIndividualResponseBoxes(field) {
+    const responseContent = document.getElementById('response-content');
+    if (!responseContent) return;
+    
+    // Limpiar contenido anterior
+    responseContent.innerHTML = '';
+    
+    // Crear contenedor para la respuesta
+    const responseEditor = document.createElement('div');
+    responseEditor.className = 'response-editor flex-1 flex flex-col';
+    
+    // Crear una sola caja de respuesta
+    responseEditor.innerHTML = `
+        <label class="font-semibold mb-2 text-applus-gray-600">Respuesta:</label>
+        <textarea 
+            id="response-textarea"
+            class="w-full p-4 border border-applus-gray-300 rounded-md font-inherit text-sm leading-relaxed resize-y min-h-[300px] focus:outline-none focus:border-applus-orange focus:ring-2 focus:ring-applus-orange focus:ring-opacity-20"
+            placeholder="Escribe tu respuesta aquí..."
+        >${field.response || ''}</textarea>
+        <div class="flex gap-2 mt-4">
+            <button id="save-response-btn" class="btn-applus-primary">
+                <i class="fas fa-save"></i> Guardar Cambios
+            </button>
+            <button id="clear-response-btn" class="btn-applus-secondary">
+                <i class="fas fa-eraser"></i> Limpiar
+            </button>
+        </div>
+    `;
+    
+    responseContent.appendChild(responseEditor);
+    
+    // Agregar event listeners a los botones
+    setupResponseButtons();
+}
+
+// Función para configurar los botones de respuesta
+function setupResponseButtons() {
+    const saveBtn = document.getElementById('save-response-btn');
+    const clearBtn = document.getElementById('clear-response-btn');
+    
+    if (saveBtn) {
+        saveBtn.addEventListener('click', saveResponse);
+    }
+    
+    if (clearBtn) {
+        clearBtn.addEventListener('click', clearResponse);
     }
 }
 
@@ -137,6 +196,7 @@ function showQuestionResponse(field) {
 function saveResponse() {
     if (!currentSelectedQuestion) return;
     
+    // Obtener el valor del textarea único
     const textarea = document.getElementById('response-textarea');
     if (!textarea) return;
     
@@ -146,7 +206,7 @@ function saveResponse() {
     // Actualizar el indicador visual
     const questionItem = document.querySelector(`[data-field-id="${currentSelectedQuestion.id}"]`);
     if (questionItem) {
-        if (textarea.value.trim()) {
+        if (currentSelectedQuestion.response.trim()) {
             questionItem.classList.add('has-response');
         } else {
             questionItem.classList.remove('has-response');
@@ -164,6 +224,7 @@ function clearResponse() {
         textarea.value = '';
     }
 }
+
 
 // Función para descargar las respuestas
 function downloadResponses() {
@@ -287,15 +348,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Event listeners para los botones del Paso B
-    const saveResponseBtn = document.getElementById('save-response-btn');
-    if (saveResponseBtn) {
-        saveResponseBtn.addEventListener('click', saveResponse);
-    }
-    
-    const clearResponseBtn = document.getElementById('clear-response-btn');
-    if (clearResponseBtn) {
-        clearResponseBtn.addEventListener('click', clearResponse);
-    }
+    // Los botones de respuesta se configuran dinámicamente en setupResponseButtons()
     
     const downloadResponsesBtn = document.getElementById('download-responses-btn');
     if (downloadResponsesBtn) {
@@ -312,3 +365,12 @@ document.addEventListener('DOMContentLoaded', function() {
         backToStepABtn.addEventListener('click', backToStepA);
     }
 });
+
+// Función para inicializar el contenido del Paso B
+function initializeStepBContent() {
+    // Cargar las respuestas del challenge
+    loadChallengeResponses().then(() => {
+        // Una vez cargadas, mostrar la lista de preguntas (solo PROBLEM)
+        loadQuestionsList();
+    });
+}

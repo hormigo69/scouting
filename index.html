@@ -4,60 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Applus+ Ventures - Challenge Request Personalization</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=4">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body>
-    <div class="container">
+<body class="font-sans bg-applus-gray-50 min-h-screen text-applus-gray-600 leading-relaxed">
+    <div class="max-w-7xl mx-auto p-5">
         <!-- Header -->
-        <header class="header">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-building"></i>
-                    <h1>Applus+ Ventures</h1>
+        <header class="bg-white border-b-4 border-applus-orange py-5 mb-8 shadow-applus">
+            <div class="flex justify-between items-center max-w-6xl mx-auto px-5">
+                <div class="flex items-center gap-4">
+                    <i class="fas fa-building text-3xl text-applus-orange"></i>
+                    <h1 class="text-3xl font-bold text-applus-gray-600 tracking-tight">Applus+ Ventures</h1>
                 </div>
-                <div class="phase-indicator">
-                    <span class="phase-badge active">Fase 1: Definición</span>
-                    <span class="step-badge">Paso A: Personalización</span>
+                <div class="flex gap-3 items-center">
+                    <span class="bg-applus-orange text-white px-4 py-2 rounded text-sm font-semibold">Fase 1: Definición</span>
                 </div>
             </div>
         </header>
 
         <!-- Main Content -->
-        <main class="main-content">
+        <main class="bg-white rounded-lg p-8 shadow-applus border border-applus-gray-200">
             <!-- Step Progress -->
-            <div class="step-progress">
-                <div class="step active">
+            <div class="flex justify-center gap-5 mb-10 p-5 bg-white rounded-lg shadow-applus">
+                <div class="step active flex flex-col items-center gap-2 opacity-100 transition-all duration-300">
                     <div class="step-number">A</div>
-                    <div class="step-label">Personalización</div>
+                    <div class="step-label text-xs text-center text-applus-orange font-semibold">Personalización</div>
                 </div>
-                <div class="step">
+                <div class="step flex flex-col items-center gap-2 opacity-40 transition-all duration-300">
                     <div class="step-number">B</div>
-                    <div class="step-label">Respuesta UN</div>
+                    <div class="step-label text-xs text-center text-applus-gray-400 font-medium">Respuesta UN</div>
                 </div>
-                <div class="step">
+                <div class="step flex flex-col items-center gap-2 opacity-40 transition-all duration-300">
                     <div class="step-number">C</div>
-                    <div class="step-label">Revisión IA</div>
+                    <div class="step-label text-xs text-center text-applus-gray-400 font-medium">Revisión IA</div>
                 </div>
-                <div class="step">
+                <div class="step flex flex-col items-center gap-2 opacity-40 transition-all duration-300">
                     <div class="step-number">D</div>
-                    <div class="step-label">Entrevista</div>
+                    <div class="step-label text-xs text-center text-applus-gray-400 font-medium">Entrevista</div>
                 </div>
             </div>
 
             <!-- Template Selection -->
             <section class="template-selection">
-                <h2><i class="fas fa-file-alt"></i> Seleccionar Plantilla Base</h2>
-                <p class="section-description">Seleccione la plantilla base que mejor se adapte al tipo de reto de innovación que desea abordar.</p>
+                <h2 class="text-applus-orange mb-3 flex items-center gap-3 text-2xl font-semibold">
+                    <i class="fas fa-file-alt"></i> Seleccionar Plantilla Base
+                </h2>
+                <p class="text-applus-gray-400 mb-6 text-sm leading-relaxed">
+                    Seleccione la plantilla base que mejor se adapte al tipo de reto de innovación que desea abordar.
+                </p>
                 
-                <div class="template-grid">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
                     <div class="template-card" data-template="standard">
-                        <div class="template-icon">
+                        <div class="text-3xl text-applus-orange mb-4">
                             <i class="fas fa-file-alt"></i>
                         </div>
-                        <h3>Plantilla Estándar</h3>
-                        <p>Plantilla base de Applus+ Ventures con todos los campos estándar del Challenge Request</p>
-                        <div class="template-features">
+                        <h3 class="text-xl mb-3 text-applus-gray-600 font-semibold">Plantilla Estándar</h3>
+                        <p class="text-applus-gray-400 leading-relaxed mb-4 text-sm">
+                            Plantilla base de Applus+ Ventures con todos los campos estándar del Challenge Request
+                        </p>
+                        <div class="flex flex-wrap gap-2">
                             <span class="feature-tag">Completa</span>
                             <span class="feature-tag">Estándar</span>
                             <span class="feature-tag">Validada</span>
@@ -65,12 +70,14 @@
                     </div>
                     
                     <div class="template-card" data-template="automotive">
-                        <div class="template-icon">
+                        <div class="text-3xl text-applus-orange mb-4">
                             <i class="fas fa-car"></i>
                         </div>
-                        <h3>Automoción</h3>
-                        <p>Especializada en retos de automoción con campos adicionales para Euro 7, normativas UE y TRL</p>
-                        <div class="template-features">
+                        <h3 class="text-xl mb-3 text-applus-gray-600 font-semibold">Automoción</h3>
+                        <p class="text-applus-gray-400 leading-relaxed mb-4 text-sm">
+                            Especializada en retos de automoción con campos adicionales para Euro 7, normativas UE y TRL
+                        </p>
+                        <div class="flex flex-wrap gap-2">
                             <span class="feature-tag">Euro 7</span>
                             <span class="feature-tag">TRL</span>
                             <span class="feature-tag">Regulaciones</span>
@@ -78,12 +85,14 @@
                     </div>
                     
                     <div class="template-card" data-template="drones">
-                        <div class="template-icon">
+                        <div class="text-3xl text-applus-orange mb-4">
                             <img src="images/drone.png" alt="Drone icon" class="custom-icon">
                         </div>
-                        <h3>Drones/UAS</h3>
-                        <p>Para retos de drones con campos específicos para EASA, SORA, BVLOS y operaciones aéreas</p>
-                        <div class="template-features">
+                        <h3 class="text-xl mb-3 text-applus-gray-600 font-semibold">Drones/UAS</h3>
+                        <p class="text-applus-gray-400 leading-relaxed mb-4 text-sm">
+                            Para retos de drones con campos específicos para EASA, SORA, BVLOS y operaciones aéreas
+                        </p>
+                        <div class="flex flex-wrap gap-2">
                             <span class="feature-tag">EASA</span>
                             <span class="feature-tag">SORA</span>
                             <span class="feature-tag">BVLOS</span>
@@ -91,12 +100,14 @@
                     </div>
                     
                     <div class="template-card" data-template="energy">
-                        <div class="template-icon">
+                        <div class="text-3xl text-applus-orange mb-4">
                             <i class="fas fa-bolt"></i>
                         </div>
-                        <h3>Energía</h3>
-                        <p>Para retos energéticos con campos específicos para eficiencia, renovables, smart grid y almacenamiento</p>
-                        <div class="template-features">
+                        <h3 class="text-xl mb-3 text-applus-gray-600 font-semibold">Energía</h3>
+                        <p class="text-applus-gray-400 leading-relaxed mb-4 text-sm">
+                            Para retos energéticos con campos específicos para eficiencia, renovables, smart grid y almacenamiento
+                        </p>
+                        <div class="flex flex-wrap gap-2">
                             <span class="feature-tag">Renovables</span>
                             <span class="feature-tag">Eficiencia</span>
                             <span class="feature-tag">Smart Grid</span>
@@ -106,10 +117,12 @@
             </section>
 
             <!-- Customization Panel -->
-            <section class="customization-panel" id="customizationPanel" style="display: none;">
-                <h2><i class="fas fa-edit"></i> Personalizar Formulario</h2>
+            <section class="customization-panel mt-8 pt-8 border-t-2 border-applus-gray-200" id="customizationPanel" style="display: none;">
+                <h2 class="text-applus-gray-700 mb-5 flex items-center gap-3 text-xl font-semibold">
+                    <i class="fas fa-edit"></i> Personalizar Formulario
+                </h2>
                 
-                <div class="customization-tabs">
+                <div class="flex gap-1 mb-6 bg-applus-gray-200 rounded-lg p-1">
                     <button class="tab-btn active" data-tab="fields">Campos</button>
                     <button class="tab-btn" data-tab="validation">Validación</button>
                     <button class="tab-btn" data-tab="preview">Vista Previa</button>
@@ -117,21 +130,21 @@
 
                 <!-- Fields Tab -->
                 <div class="tab-content active" id="fieldsTab">
-                    <div class="field-editor">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <div class="field-list">
-                            <h3>Campos del Formulario</h3>
-                            <div id="fieldList">
+                            <h3 class="text-applus-gray-700 mb-4 pb-3 border-b-2 border-applus-gray-200 text-lg font-semibold">Campos del Formulario</h3>
+                            <div id="fieldList" class="space-y-3">
                                 <!-- Fields will be populated by JavaScript -->
                             </div>
-                            <button class="add-field-btn" id="addFieldBtn">
+                            <button class="w-full p-4 border-2 border-dashed border-applus-gray-300 bg-transparent rounded-lg cursor-pointer text-applus-gray-400 font-medium transition-all duration-300 flex items-center justify-center gap-3 hover:border-applus-orange hover:text-applus-orange hover:bg-applus-orange-bg" id="addFieldBtn">
                                 <i class="fas fa-plus"></i> Añadir Campo
                             </button>
                         </div>
                         
-                        <div class="field-config">
-                            <h3>Configuración del Campo</h3>
+                        <div class="field-config bg-applus-gray-50 rounded-lg p-5">
+                            <h3 class="text-applus-gray-700 mb-4 pb-3 border-b-2 border-applus-gray-200 text-lg font-semibold">Configuración del Campo</h3>
                             <div id="fieldConfig">
-                                <p class="placeholder">Selecciona un campo para configurarlo</p>
+                                <p class="text-applus-gray-400 italic text-center py-10">Selecciona un campo para configurarlo</p>
                             </div>
                         </div>
                     </div>
@@ -139,18 +152,17 @@
 
                 <!-- Validation Tab -->
                 <div class="tab-content" id="validationTab">
-                    <div class="validation-rules">
-                        <h3>Reglas de Validación</h3>
-                        <div class="rule-group">
-                            <h4>Campos Obligatorios</h4>
-                            <div id="requiredFields">
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-lg p-5 border border-applus-gray-200">
+                            <h4 class="text-applus-gray-700 mb-4 pb-3 border-b border-applus-gray-200 text-base font-semibold">Campos Obligatorios</h4>
+                            <div id="requiredFields" class="space-y-2">
                                 <!-- Required fields will be populated -->
                             </div>
                         </div>
                         
-                        <div class="rule-group">
-                            <h4>Validaciones Específicas</h4>
-                            <div id="specificValidations">
+                        <div class="bg-white rounded-lg p-5 border border-applus-gray-200">
+                            <h4 class="text-applus-gray-700 mb-4 pb-3 border-b border-applus-gray-200 text-base font-semibold">Validaciones Específicas</h4>
+                            <div id="specificValidations" class="space-y-2">
                                 <!-- Specific validations will be populated -->
                             </div>
                         </div>
@@ -159,8 +171,8 @@
 
                 <!-- Preview Tab -->
                 <div class="tab-content" id="previewTab">
-                    <div class="form-preview">
-                        <h3>Vista Previa del Challenge Request</h3>
+                    <div class="bg-white rounded-lg p-5 border border-applus-gray-200">
+                        <h3 class="text-applus-gray-700 mb-4 text-lg font-semibold">Vista Previa del Challenge Request</h3>
                         <div id="formPreview">
                             <!-- Form preview will be generated here -->
                         </div>
@@ -169,125 +181,137 @@
             </section>
 
             <!-- Actions -->
-            <div class="actions">
-                <button class="btn btn-secondary" id="resetBtn">
+            <div class="flex justify-between items-center mt-10 pt-8 border-t-2 border-applus-gray-200">
+                <button class="btn-applus-secondary" id="resetBtn">
                     <i class="fas fa-undo"></i> Reiniciar
                 </button>
-                <button class="btn btn-primary" id="saveTemplateBtn" disabled>
-                    <i class="fas fa-save"></i> Guardar Plantilla Personalizada
-                </button>
-                <button class="btn btn-success" id="continueBtn" disabled>
-                    <i class="fas fa-arrow-right"></i> Continuar al Paso B
-                </button>
+                <div class="flex gap-3">
+                    <button class="btn-applus-primary" id="saveTemplateBtn" disabled>
+                        <i class="fas fa-save"></i> Guardar Plantilla Personalizada
+                    </button>
+                    <button class="btn-applus-success" id="continueBtn" disabled>
+                        <i class="fas fa-arrow-right"></i> Continuar al Paso B
+                    </button>
+                </div>
             </div>
 
             <!-- Paso B: Respuestas del Challenge Request -->
-            <section id="step-b" class="step-content" style="display: none;">
-                <div class="section-description">
-                    <h2><i class="fas fa-edit"></i> Paso B: Respuestas del Challenge Request</h2>
-                    <p>Revisa y edita las respuestas del formulario. Haz clic en cada pregunta para ver y editar su respuesta.</p>
+            <section id="step-b" class="step-content mt-8 pt-8 border-t border-applus-gray-200" style="display: none;">
+                <div class="mb-8">
+                    <h2 class="text-applus-orange mb-3 flex items-center gap-3 text-2xl font-semibold">
+                        <i class="fas fa-edit"></i> Paso B: Respuestas del Challenge Request
+                    </h2>
+                    <p class="text-applus-gray-400 text-sm leading-relaxed">
+                        Revisa y edita las respuestas del formulario. Haz clic en cada pregunta para ver y editar su respuesta.
+                    </p>
                 </div>
                 
-                <div class="responses-container">
+                <div class="flex gap-8 mt-8 min-h-[600px]">
                     <!-- Panel izquierdo: Lista de preguntas -->
-                    <div class="questions-panel">
-                        <h3>Preguntas del Formulario</h3>
-                        <div id="questions-list" class="questions-list">
+                    <div class="side-panel flex-shrink-0 w-80">
+                        <h3 class="mb-4 text-applus-gray-600 text-lg font-semibold border-b-2 border-applus-orange pb-2">Preguntas del Formulario</h3>
+                        <div id="questions-list" class="space-y-2">
                             <!-- Las preguntas se cargarán dinámicamente -->
                         </div>
                     </div>
                     
                     <!-- Panel derecho: Respuesta seleccionada -->
-                    <div class="response-panel">
-                        <div id="response-header" class="response-header" style="display: none;">
-                            <h3 id="selected-question-title"></h3>
-                            <p id="selected-question-description"></p>
+                    <div class="side-panel flex-1 flex flex-col">
+                        <div id="response-header" class="border-b border-applus-gray-200 pb-4 mb-4" style="display: none;">
+                            <h3 id="selected-question-title" class="mb-2 text-applus-gray-600 text-xl font-semibold"></h3>
+                            <p id="selected-question-description" class="text-applus-gray-400 text-sm leading-relaxed"></p>
                         </div>
                         
-                        <div id="response-content" class="response-content" style="display: none;">
-                            <div class="response-editor">
-                                <label for="response-textarea">Respuesta:</label>
-                                <textarea id="response-textarea" rows="10" placeholder="Escribe tu respuesta aquí..."></textarea>
-                                <div class="response-actions">
-                                    <button id="save-response-btn" class="btn btn-primary">
+                        <div id="response-content" class="flex-1 flex flex-col" style="display: none;">
+                            <div class="response-editor flex-1 flex flex-col">
+                                <label for="response-textarea" class="font-semibold mb-2 text-applus-gray-600">Respuesta:</label>
+                                <textarea id="response-textarea" rows="10" placeholder="Escribe tu respuesta aquí..." class="flex-1 p-4 border border-applus-gray-300 rounded-md font-inherit text-sm leading-relaxed resize-vertical min-h-[300px] focus:outline-none focus:border-applus-orange focus:ring-2 focus:ring-applus-orange focus:ring-opacity-20"></textarea>
+                                <div class="flex gap-2 mt-4">
+                                    <button id="save-response-btn" class="btn-applus-primary">
                                         <i class="fas fa-save"></i> Guardar Cambios
                                     </button>
-                                    <button id="clear-response-btn" class="btn btn-secondary">
+                                    <button id="clear-response-btn" class="btn-applus-secondary">
                                         <i class="fas fa-eraser"></i> Limpiar
                                     </button>
                                 </div>
                             </div>
                         </div>
                         
-                        <div id="no-selection" class="no-selection">
-                            <div class="no-selection-content">
+                        <div id="no-selection" class="flex-1 flex items-center justify-center text-applus-gray-400">
+                            <div class="text-center">
                                 <i class="fas fa-mouse-pointer"></i>
-                                <h3>Selecciona una pregunta</h3>
-                                <p>Haz clic en una pregunta de la lista para ver y editar su respuesta</p>
+                                <h3 class="mb-2 text-applus-gray-400 text-lg font-semibold">Selecciona una pregunta</h3>
+                                <p class="text-sm">Haz clic en una pregunta de la lista para ver y editar su respuesta</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Acciones del Paso B -->
-                <div class="step-actions">
-                    <button id="back-to-step-a-btn" class="btn btn-secondary">
+                <div class="flex justify-between items-center mt-8 pt-6 border-t border-applus-gray-200">
+                    <button id="back-to-step-a-btn" class="btn-applus-secondary">
                         <i class="fas fa-arrow-left"></i> Volver al Paso A
                     </button>
-                    <button id="download-responses-btn" class="btn btn-secondary">
-                        <i class="fas fa-download"></i> Descargar Respuestas
-                    </button>
-                    <button id="next-step-c-btn" class="btn btn-primary">
-                        <i class="fas fa-arrow-right"></i> Continuar al Paso C
-                    </button>
+                    <div class="flex gap-3">
+                        <button id="download-responses-btn" class="btn-applus-secondary">
+                            <i class="fas fa-download"></i> Descargar Respuestas
+                        </button>
+                        <button id="next-step-c-btn" class="btn-applus-primary">
+                            <i class="fas fa-arrow-right"></i> Continuar al Paso C
+                        </button>
+                    </div>
                 </div>
             </section>
 
             <!-- Paso C: Revisión de IA -->
-            <section id="step-c" class="step-content" style="display: none;">
-                <div class="section-description">
-                    <h2><i class="fas fa-robot"></i> Paso C: Revisión de IA</h2>
-                    <p>El agente de IA ha analizado las respuestas y generado recomendaciones y preguntas para la entrevista.</p>
+            <section id="step-c" class="step-content mt-8 pt-8 border-t border-applus-gray-200" style="display: none;">
+                <div class="mb-8">
+                    <h2 class="text-applus-orange mb-3 flex items-center gap-3 text-2xl font-semibold">
+                        <i class="fas fa-robot"></i> Paso C: Revisión de IA
+                    </h2>
+                    <p class="text-applus-gray-400 text-sm leading-relaxed">
+                        El agente de IA ha analizado las respuestas y generado recomendaciones y preguntas para la entrevista.
+                    </p>
                 </div>
                 
                 <!-- Resumen de la Revisión -->
-                <div class="ai-summary">
-                    <div class="summary-cards">
-                        <div class="summary-card">
-                            <div class="card-icon">
+                <div class="mb-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-white rounded-xl p-6 shadow-applus border border-applus-gray-200 flex items-center gap-4 transition-transform duration-200 hover:-translate-y-1 hover:shadow-applus-xl">
+                            <div class="w-15 h-15 bg-gradient-to-br from-applus-orange to-applus-orange-light rounded-xl flex items-center justify-center text-white text-2xl">
                                 <i class="fas fa-chart-line"></i>
                             </div>
-                            <div class="card-content">
-                                <h3>Puntuación General</h3>
+                            <div>
+                                <h3 class="mb-2 text-applus-gray-600 text-base font-semibold">Puntuación General</h3>
                                 <div class="score-display">
                                     <span class="score-number" id="overall-score">7.2</span>
-                                    <span class="score-max">/10</span>
+                                    <span class="text-base text-applus-gray-400">/10</span>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="summary-card">
-                            <div class="card-icon">
+                        <div class="bg-white rounded-xl p-6 shadow-applus border border-applus-gray-200 flex items-center gap-4 transition-transform duration-200 hover:-translate-y-1 hover:shadow-applus-xl">
+                            <div class="w-15 h-15 bg-gradient-to-br from-applus-orange to-applus-orange-light rounded-xl flex items-center justify-center text-white text-2xl">
                                 <i class="fas fa-lightbulb"></i>
                             </div>
-                            <div class="card-content">
-                                <h3>Recomendaciones</h3>
-                                <div class="recommendations-count">
+                            <div>
+                                <h3 class="mb-2 text-applus-gray-600 text-base font-semibold">Recomendaciones</h3>
+                                <div class="flex items-baseline gap-1">
                                     <span class="count-number" id="recommendations-count">12</span>
-                                    <span class="count-label">sugerencias</span>
+                                    <span class="text-sm text-applus-gray-400">sugerencias</span>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="summary-card">
-                            <div class="card-icon">
+                        <div class="bg-white rounded-xl p-6 shadow-applus border border-applus-gray-200 flex items-center gap-4 transition-transform duration-200 hover:-translate-y-1 hover:shadow-applus-xl">
+                            <div class="w-15 h-15 bg-gradient-to-br from-applus-orange to-applus-orange-light rounded-xl flex items-center justify-center text-white text-2xl">
                                 <i class="fas fa-question-circle"></i>
                             </div>
-                            <div class="card-content">
-                                <h3>Preguntas Generadas</h3>
-                                <div class="questions-count">
+                            <div>
+                                <h3 class="mb-2 text-applus-gray-600 text-base font-semibold">Preguntas Generadas</h3>
+                                <div class="flex items-baseline gap-1">
                                     <span class="count-number" id="questions-count">35</span>
-                                    <span class="count-label">preguntas</span>
+                                    <span class="text-sm text-applus-gray-400">preguntas</span>
                                 </div>
                             </div>
                         </div>
@@ -295,119 +319,121 @@
                 </div>
                 
                 <!-- Contenido de la Revisión -->
-                <div class="ai-review-container">
+                <div class="flex gap-8 mt-8 min-h-[600px]">
                     <!-- Panel izquierdo: Lista de campos revisados -->
-                    <div class="review-panel">
-                        <h3>Análisis por Campo</h3>
-                        <div id="review-list" class="review-list">
+                    <div class="side-panel flex-shrink-0 w-80">
+                        <h3 class="mb-4 text-applus-gray-600 text-lg font-semibold border-b-2 border-applus-orange pb-2">Análisis por Campo</h3>
+                        <div id="review-list" class="space-y-2">
                             <!-- Los campos se cargarán dinámicamente -->
                         </div>
                     </div>
                     
                     <!-- Panel derecho: Detalle de la revisión -->
-                    <div class="review-detail-panel">
-                        <div id="review-header" class="review-header" style="display: none;">
-                            <h3 id="selected-field-title"></h3>
-                            <div class="field-score">
-                                <span class="score-label">Puntuación:</span>
-                                <span class="score-value" id="field-score"></span>
+                    <div class="side-panel flex-1 flex flex-col">
+                        <div id="review-header" class="border-b border-applus-gray-200 pb-4 mb-4 flex justify-between items-center" style="display: none;">
+                            <h3 id="selected-field-title" class="text-applus-gray-600 text-xl font-semibold"></h3>
+                            <div class="flex items-center gap-2">
+                                <span class="text-sm text-applus-gray-400">Puntuación:</span>
+                                <span class="bg-applus-orange text-white px-3 py-1 rounded-full font-semibold text-sm" id="field-score"></span>
                             </div>
                         </div>
                         
-                        <div id="review-content" class="review-content">
+                        <div id="review-content" class="flex-1 p-6 bg-white rounded-lg border border-applus-gray-200 shadow-applus" style="display: none;">
                             <!-- Información del Campo -->
-                            <div class="field-info-section">
-                                <h4>Pregunta Original</h4>
-                                <p id="original-question"></p>
+                            <div class="bg-applus-gray-50 p-6 rounded-lg mb-6 border border-applus-gray-200">
+                                <h4 class="mb-3 text-applus-gray-600 text-base font-semibold border-b border-applus-orange pb-1">Pregunta Original</h4>
+                                <p id="original-question" class="mb-4 leading-relaxed text-applus-gray-500"></p>
                                 
-                                <h4>Respuesta del Usuario</h4>
-                                <div class="user-response">
-                                    <p id="user-response"></p>
+                                <h4 class="mb-3 text-applus-gray-600 text-base font-semibold border-b border-applus-orange pb-1">Respuesta del Usuario</h4>
+                                <div class="bg-white p-4 rounded-md border-l-4 border-applus-orange mt-2">
+                                    <p id="user-response" class="leading-relaxed text-applus-gray-600 whitespace-pre-wrap"></p>
                                 </div>
                             </div>
                             
-                            <div class="review-tabs">
+                            <div class="flex gap-2 mb-4 border-b border-applus-gray-200 relative z-10">
                                 <button class="tab-btn active" data-tab="analysis">Análisis</button>
                                 <button class="tab-btn" data-tab="questions">Preguntas</button>
                             </div>
                             
                             <div class="tab-content active" id="analysis-tab">
-                                <div class="analysis-content">
-                                    <div class="feedback-section">
-                                        <h4>Feedback de IA</h4>
-                                        <p id="ai-feedback"></p>
+                                <div class="space-y-6 p-4">
+                                    <div class="bg-applus-gray-50 p-4 rounded-md border-l-4 border-applus-orange">
+                                        <h4 class="mb-3 text-applus-gray-600 text-base font-semibold">Feedback de IA</h4>
+                                        <p id="ai-feedback" class="leading-relaxed text-applus-gray-500"></p>
                                     </div>
                                     
-                                    <div class="strengths-section">
-                                        <h4>Fortalezas</h4>
-                                        <ul id="strengths-list"></ul>
+                                    <div class="bg-applus-gray-50 p-4 rounded-md border-l-4 border-applus-orange">
+                                        <h4 class="mb-3 text-applus-gray-600 text-base font-semibold">Fortalezas</h4>
+                                        <ul id="strengths-list" class="ml-5 space-y-2"></ul>
                                     </div>
                                     
-                                    <div class="improvements-section">
-                                        <h4>Mejoras Sugeridas</h4>
-                                        <ul id="improvements-list"></ul>
+                                    <div class="bg-applus-gray-50 p-4 rounded-md border-l-4 border-applus-orange">
+                                        <h4 class="mb-3 text-applus-gray-600 text-base font-semibold">Mejoras Sugeridas</h4>
+                                        <ul id="improvements-list" class="ml-5 space-y-2"></ul>
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="tab-content" id="questions-tab">
-                                <div class="questions-content">
-                                    <h4>Preguntas para la Entrevista</h4>
-                                    <ol id="interview-questions-list"></ol>
+                                <div class="p-4">
+                                    <h4 class="mb-4 text-applus-gray-600 text-base font-semibold">Preguntas para la Entrevista</h4>
+                                    <ol id="interview-questions-list" class="ml-5 space-y-3"></ol>
                                 </div>
                             </div>
                         </div>
                         
-                        <div id="no-review-selection" class="no-selection">
-                            <div class="no-selection-content">
+                        <div id="no-review-selection" class="flex-1 flex items-center justify-center text-applus-gray-400">
+                            <div class="text-center">
                                 <i class="fas fa-search"></i>
-                                <h3>Selecciona un campo</h3>
-                                <p>Haz clic en un campo de la lista para ver el análisis detallado</p>
+                                <h3 class="mb-2 text-applus-gray-400 text-lg font-semibold">Selecciona un campo</h3>
+                                <p class="text-sm">Haz clic en un campo de la lista para ver el análisis detallado</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Recomendaciones Generales -->
-                <div class="general-recommendations">
-                    <h3>Recomendaciones Generales</h3>
-                    <div id="recommendations-list" class="recommendations-list">
+                <div class="mt-8 p-6 bg-white rounded-lg shadow-applus border border-applus-gray-200">
+                    <h3 class="mb-4 text-applus-gray-600 text-xl font-semibold border-b-2 border-applus-orange pb-2">Recomendaciones Generales</h3>
+                    <div id="recommendations-list" class="space-y-4">
                         <!-- Las recomendaciones se cargarán dinámicamente -->
                     </div>
                 </div>
                 
                 <!-- Acciones del Paso C -->
-                <div class="step-actions">
-                    <button id="back-to-step-b-btn" class="btn btn-secondary">
+                <div class="flex justify-between items-center mt-8 pt-6 border-t border-applus-gray-200">
+                    <button id="back-to-step-b-btn" class="btn-applus-secondary">
                         <i class="fas fa-arrow-left"></i> Volver al Paso B
                     </button>
-                    <button id="download-ai-review-btn" class="btn btn-secondary">
-                        <i class="fas fa-download"></i> Descargar Revisión IA
-                    </button>
-                    <button id="next-step-d-btn" class="btn btn-primary">
-                        <i class="fas fa-arrow-right"></i> Continuar al Paso D
-                    </button>
+                    <div class="flex gap-3">
+                        <button id="download-ai-review-btn" class="btn-applus-secondary">
+                            <i class="fas fa-download"></i> Descargar Revisión IA
+                        </button>
+                        <button id="next-step-d-btn" class="btn-applus-primary">
+                            <i class="fas fa-arrow-right"></i> Continuar al Paso D
+                        </button>
+                    </div>
                 </div>
             </section>
         </main>
     </div>
 
     <!-- Modal for adding new fields -->
-    <div class="modal" id="addFieldModal">
+    <div class="modal-overlay" id="addFieldModal" style="display: none;">
         <div class="modal-content">
-            <div class="modal-header">
-                <h3>Añadir Nuevo Campo</h3>
-                <button class="close-btn" id="closeModalBtn">&times;</button>
+            <div class="flex justify-between items-center p-5 border-b border-applus-gray-200">
+                <h3 class="text-applus-gray-700 text-lg font-semibold">Añadir Nuevo Campo</h3>
+                <button class="bg-transparent border-none text-2xl cursor-pointer text-applus-gray-400 p-0 w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 hover:bg-applus-gray-200 hover:text-applus-gray-600" id="closeModalBtn">&times;</button>
             </div>
-            <div class="modal-body">
-                <form id="addFieldForm">
-                    <div class="form-group">
-                        <label for="fieldName">Nombre del Campo</label>
-                        <input type="text" id="fieldName" required>
+            <div class="p-5">
+                <form id="addFieldForm" class="space-y-4">
+                    <div class="flex flex-col gap-2">
+                        <label for="fieldName" class="font-medium text-applus-gray-700">Nombre del Campo</label>
+                        <input type="text" id="fieldName" required class="form-input">
                     </div>
-                    <div class="form-group">
-                        <label for="fieldType">Tipo de Campo</label>
-                        <select id="fieldType" required>
+                    <div class="flex flex-col gap-2">
+                        <label for="fieldType" class="font-medium text-applus-gray-700">Tipo de Campo</label>
+                        <select id="fieldType" required class="form-select">
                             <option value="text">Texto</option>
                             <option value="textarea">Área de Texto</option>
                             <option value="select">Lista Desplegable</option>
@@ -416,20 +442,19 @@
                             <option value="date">Fecha</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="fieldDescription">Descripción</label>
-                        <textarea id="fieldDescription" rows="3"></textarea>
+                    <div class="flex flex-col gap-2">
+                        <label for="fieldDescription" class="font-medium text-applus-gray-700">Descripción</label>
+                        <textarea id="fieldDescription" rows="3" class="form-textarea"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label>
-                            <input type="checkbox" id="fieldRequired"> Campo obligatorio
-                        </label>
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox" id="fieldRequired" class="rounded border-applus-gray-300 text-applus-orange focus:ring-applus-orange">
+                        <label for="fieldRequired" class="font-medium text-applus-gray-700">Campo obligatorio</label>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" id="cancelAddFieldBtn">Cancelar</button>
-                <button class="btn btn-primary" id="confirmAddFieldBtn">Añadir Campo</button>
+            <div class="flex justify-end gap-3 p-5 border-t border-applus-gray-200">
+                <button class="btn-applus-secondary" id="cancelAddFieldBtn">Cancelar</button>
+                <button class="btn-applus-primary" id="confirmAddFieldBtn">Añadir Campo</button>
             </div>
         </div>
     </div>
