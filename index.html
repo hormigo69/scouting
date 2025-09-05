@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applus+ Ventures - Challenge Request Personalization</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-building"></i>
+                    <h1>Applus+ Ventures</h1>
+                </div>
+                <div class="phase-indicator">
+                    <span class="phase-badge active">Fase 1: Definición</span>
+                    <span class="step-badge">Paso A: Personalización</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Step Progress -->
+            <div class="step-progress">
+                <div class="step active">
+                    <div class="step-number">A</div>
+                    <div class="step-label">Personalización</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">B</div>
+                    <div class="step-label">Respuesta UN</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">C</div>
+                    <div class="step-label">Revisión IA</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">D</div>
+                    <div class="step-label">Entrevista</div>
+                </div>
+            </div>
+
+            <!-- Template Selection -->
+            <section class="template-selection">
+                <h2><i class="fas fa-file-alt"></i> Seleccionar Plantilla Base</h2>
+                <p class="section-description">Seleccione la plantilla base que mejor se adapte al tipo de reto de innovación que desea abordar.</p>
+                
+                <div class="template-grid">
+                    <div class="template-card" data-template="standard">
+                        <div class="template-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>Plantilla Estándar</h3>
+                        <p>Plantilla base de Applus+ Ventures con todos los campos estándar del Challenge Request</p>
+                        <div class="template-features">
+                            <span class="feature-tag">Completa</span>
+                            <span class="feature-tag">Estándar</span>
+                            <span class="feature-tag">Validada</span>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card" data-template="automotive">
+                        <div class="template-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h3>Automoción</h3>
+                        <p>Especializada en retos de automoción con campos adicionales para Euro 7, normativas UE y TRL</p>
+                        <div class="template-features">
+                            <span class="feature-tag">Euro 7</span>
+                            <span class="feature-tag">TRL</span>
+                            <span class="feature-tag">Regulaciones</span>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card" data-template="drones">
+                        <div class="template-icon">
+                            <img src="images/drone.png" alt="Drone icon" class="custom-icon">
+                        </div>
+                        <h3>Drones/UAS</h3>
+                        <p>Para retos de drones con campos específicos para EASA, SORA, BVLOS y operaciones aéreas</p>
+                        <div class="template-features">
+                            <span class="feature-tag">EASA</span>
+                            <span class="feature-tag">SORA</span>
+                            <span class="feature-tag">BVLOS</span>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card" data-template="energy">
+                        <div class="template-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Energía</h3>
+                        <p>Para retos energéticos con campos específicos para eficiencia, renovables, smart grid y almacenamiento</p>
+                        <div class="template-features">
+                            <span class="feature-tag">Renovables</span>
+                            <span class="feature-tag">Eficiencia</span>
+                            <span class="feature-tag">Smart Grid</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Customization Panel -->
+            <section class="customization-panel" id="customizationPanel" style="display: none;">
+                <h2><i class="fas fa-edit"></i> Personalizar Formulario</h2>
+                
+                <div class="customization-tabs">
+                    <button class="tab-btn active" data-tab="fields">Campos</button>
+                    <button class="tab-btn" data-tab="validation">Validación</button>
+                    <button class="tab-btn" data-tab="preview">Vista Previa</button>
+                </div>
+
+                <!-- Fields Tab -->
+                <div class="tab-content active" id="fieldsTab">
+                    <div class="field-editor">
+                        <div class="field-list">
+                            <h3>Campos del Formulario</h3>
+                            <div id="fieldList">
+                                <!-- Fields will be populated by JavaScript -->
+                            </div>
+                            <button class="add-field-btn" id="addFieldBtn">
+                                <i class="fas fa-plus"></i> Añadir Campo
+                            </button>
+                        </div>
+                        
+                        <div class="field-config">
+                            <h3>Configuración del Campo</h3>
+                            <div id="fieldConfig">
+                                <p class="placeholder">Selecciona un campo para configurarlo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Validation Tab -->
+                <div class="tab-content" id="validationTab">
+                    <div class="validation-rules">
+                        <h3>Reglas de Validación</h3>
+                        <div class="rule-group">
+                            <h4>Campos Obligatorios</h4>
+                            <div id="requiredFields">
+                                <!-- Required fields will be populated -->
+                            </div>
+                        </div>
+                        
+                        <div class="rule-group">
+                            <h4>Validaciones Específicas</h4>
+                            <div id="specificValidations">
+                                <!-- Specific validations will be populated -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preview Tab -->
+                <div class="tab-content" id="previewTab">
+                    <div class="form-preview">
+                        <h3>Vista Previa del Challenge Request</h3>
+                        <div id="formPreview">
+                            <!-- Form preview will be generated here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Actions -->
+            <div class="actions">
+                <button class="btn btn-secondary" id="resetBtn">
+                    <i class="fas fa-undo"></i> Reiniciar
+                </button>
+                <button class="btn btn-primary" id="saveTemplateBtn" disabled>
+                    <i class="fas fa-save"></i> Guardar Plantilla Personalizada
+                </button>
+                <button class="btn btn-success" id="continueBtn" disabled>
+                    <i class="fas fa-arrow-right"></i> Continuar al Paso B
+                </button>
+            </div>
+
+            <!-- Paso B: Respuestas del Challenge Request -->
+            <section id="step-b" class="step-content" style="display: none;">
+                <div class="section-description">
+                    <h2><i class="fas fa-edit"></i> Paso B: Respuestas del Challenge Request</h2>
+                    <p>Revisa y edita las respuestas del formulario. Haz clic en cada pregunta para ver y editar su respuesta.</p>
+                </div>
+                
+                <div class="responses-container">
+                    <!-- Panel izquierdo: Lista de preguntas -->
+                    <div class="questions-panel">
+                        <h3>Preguntas del Formulario</h3>
+                        <div id="questions-list" class="questions-list">
+                            <!-- Las preguntas se cargarán dinámicamente -->
+                        </div>
+                    </div>
+                    
+                    <!-- Panel derecho: Respuesta seleccionada -->
+                    <div class="response-panel">
+                        <div id="response-header" class="response-header" style="display: none;">
+                            <h3 id="selected-question-title"></h3>
+                            <p id="selected-question-description"></p>
+                        </div>
+                        
+                        <div id="response-content" class="response-content" style="display: none;">
+                            <div class="response-editor">
+                                <label for="response-textarea">Respuesta:</label>
+                                <textarea id="response-textarea" rows="10" placeholder="Escribe tu respuesta aquí..."></textarea>
+                                <div class="response-actions">
+                                    <button id="save-response-btn" class="btn btn-primary">
+                                        <i class="fas fa-save"></i> Guardar Cambios
+                                    </button>
+                                    <button id="clear-response-btn" class="btn btn-secondary">
+                                        <i class="fas fa-eraser"></i> Limpiar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="no-selection" class="no-selection">
+                            <div class="no-selection-content">
+                                <i class="fas fa-mouse-pointer"></i>
+                                <h3>Selecciona una pregunta</h3>
+                                <p>Haz clic en una pregunta de la lista para ver y editar su respuesta</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Acciones del Paso B -->
+                <div class="step-actions">
+                    <button id="back-to-step-a-btn" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Volver al Paso A
+                    </button>
+                    <button id="download-responses-btn" class="btn btn-secondary">
+                        <i class="fas fa-download"></i> Descargar Respuestas
+                    </button>
+                    <button id="next-step-c-btn" class="btn btn-primary">
+                        <i class="fas fa-arrow-right"></i> Continuar al Paso C
+                    </button>
+                </div>
+            </section>
+
+            <!-- Paso C: Revisión de IA -->
+            <section id="step-c" class="step-content" style="display: none;">
+                <div class="section-description">
+                    <h2><i class="fas fa-robot"></i> Paso C: Revisión de IA</h2>
+                    <p>El agente de IA ha analizado las respuestas y generado recomendaciones y preguntas para la entrevista.</p>
+                </div>
+                
+                <!-- Resumen de la Revisión -->
+                <div class="ai-summary">
+                    <div class="summary-cards">
+                        <div class="summary-card">
+                            <div class="card-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Puntuación General</h3>
+                                <div class="score-display">
+                                    <span class="score-number" id="overall-score">7.2</span>
+                                    <span class="score-max">/10</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="summary-card">
+                            <div class="card-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Recomendaciones</h3>
+                                <div class="recommendations-count">
+                                    <span class="count-number" id="recommendations-count">12</span>
+                                    <span class="count-label">sugerencias</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="summary-card">
+                            <div class="card-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Preguntas Generadas</h3>
+                                <div class="questions-count">
+                                    <span class="count-number" id="questions-count">35</span>
+                                    <span class="count-label">preguntas</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contenido de la Revisión -->
+                <div class="ai-review-container">
+                    <!-- Panel izquierdo: Lista de campos revisados -->
+                    <div class="review-panel">
+                        <h3>Análisis por Campo</h3>
+                        <div id="review-list" class="review-list">
+                            <!-- Los campos se cargarán dinámicamente -->
+                        </div>
+                    </div>
+                    
+                    <!-- Panel derecho: Detalle de la revisión -->
+                    <div class="review-detail-panel">
+                        <div id="review-header" class="review-header" style="display: none;">
+                            <h3 id="selected-field-title"></h3>
+                            <div class="field-score">
+                                <span class="score-label">Puntuación:</span>
+                                <span class="score-value" id="field-score"></span>
+                            </div>
+                        </div>
+                        
+                        <div id="review-content" class="review-content">
+                            <!-- Información del Campo -->
+                            <div class="field-info-section">
+                                <h4>Pregunta Original</h4>
+                                <p id="original-question"></p>
+                                
+                                <h4>Respuesta del Usuario</h4>
+                                <div class="user-response">
+                                    <p id="user-response"></p>
+                                </div>
+                            </div>
+                            
+                            <div class="review-tabs">
+                                <button class="tab-btn active" data-tab="analysis">Análisis</button>
+                                <button class="tab-btn" data-tab="questions">Preguntas</button>
+                            </div>
+                            
+                            <div class="tab-content active" id="analysis-tab">
+                                <div class="analysis-content">
+                                    <div class="feedback-section">
+                                        <h4>Feedback de IA</h4>
+                                        <p id="ai-feedback"></p>
+                                    </div>
+                                    
+                                    <div class="strengths-section">
+                                        <h4>Fortalezas</h4>
+                                        <ul id="strengths-list"></ul>
+                                    </div>
+                                    
+                                    <div class="improvements-section">
+                                        <h4>Mejoras Sugeridas</h4>
+                                        <ul id="improvements-list"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-content" id="questions-tab">
+                                <div class="questions-content">
+                                    <h4>Preguntas para la Entrevista</h4>
+                                    <ol id="interview-questions-list"></ol>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="no-review-selection" class="no-selection">
+                            <div class="no-selection-content">
+                                <i class="fas fa-search"></i>
+                                <h3>Selecciona un campo</h3>
+                                <p>Haz clic en un campo de la lista para ver el análisis detallado</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recomendaciones Generales -->
+                <div class="general-recommendations">
+                    <h3>Recomendaciones Generales</h3>
+                    <div id="recommendations-list" class="recommendations-list">
+                        <!-- Las recomendaciones se cargarán dinámicamente -->
+                    </div>
+                </div>
+                
+                <!-- Acciones del Paso C -->
+                <div class="step-actions">
+                    <button id="back-to-step-b-btn" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Volver al Paso B
+                    </button>
+                    <button id="download-ai-review-btn" class="btn btn-secondary">
+                        <i class="fas fa-download"></i> Descargar Revisión IA
+                    </button>
+                    <button id="next-step-d-btn" class="btn btn-primary">
+                        <i class="fas fa-arrow-right"></i> Continuar al Paso D
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for adding new fields -->
+    <div class="modal" id="addFieldModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Añadir Nuevo Campo</h3>
+                <button class="close-btn" id="closeModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addFieldForm">
+                    <div class="form-group">
+                        <label for="fieldName">Nombre del Campo</label>
+                        <input type="text" id="fieldName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fieldType">Tipo de Campo</label>
+                        <select id="fieldType" required>
+                            <option value="text">Texto</option>
+                            <option value="textarea">Área de Texto</option>
+                            <option value="select">Lista Desplegable</option>
+                            <option value="checkbox">Casillas de Verificación</option>
+                            <option value="number">Número</option>
+                            <option value="date">Fecha</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fieldDescription">Descripción</label>
+                        <textarea id="fieldDescription" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="fieldRequired"> Campo obligatorio
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelAddFieldBtn">Cancelar</button>
+                <button class="btn btn-primary" id="confirmAddFieldBtn">Añadir Campo</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="step-b.js"></script>
+    <script src="step-c.js"></script>
+</body>
+</html>
