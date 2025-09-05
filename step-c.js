@@ -112,7 +112,7 @@ function loadReviewList() {
         console.log('Processing field review:', fieldReview.field_name, fieldReview);
         
         const reviewItem = document.createElement('div');
-        reviewItem.className = 'review-item';
+        reviewItem.className = 'list-item mb-3';
         reviewItem.dataset.fieldId = fieldReview.field_id;
         
         const feedback = fieldReview.ai_analysis && fieldReview.ai_analysis.feedback ? 
@@ -121,9 +121,9 @@ function loadReviewList() {
             fieldReview.ai_analysis.score : 'N/A';
         
         reviewItem.innerHTML = `
-            <h4>${fieldReview.field_name}</h4>
-            <p>${feedback.substring(0, 80)}${feedback.length > 80 ? '...' : ''}</p>
-            <div class="review-score">${score}/10</div>
+            <h4 class="font-semibold text-applus-gray-700 mb-2">${fieldReview.field_name}</h4>
+            <p class="text-sm text-applus-gray-500 leading-relaxed">${feedback.substring(0, 80)}${feedback.length > 80 ? '...' : ''}</p>
+            <div class="text-xs text-applus-orange font-semibold mt-2">Puntuación: ${score}/10</div>
         `;
         
         reviewItem.addEventListener('click', () => selectReviewField(fieldReview));
@@ -134,7 +134,7 @@ function loadReviewList() {
 // Función para seleccionar un campo de revisión
 function selectReviewField(fieldReview) {
     // Remover selección anterior
-    document.querySelectorAll('.review-item').forEach(item => {
+    document.querySelectorAll('.list-item').forEach(item => {
         item.classList.remove('active');
     });
     
@@ -180,11 +180,19 @@ function showFieldReview(fieldReview) {
         // Actualizar contenido del análisis
         updateAnalysisContent(fieldReview);
         
-        // Actualizar preguntas de entrevista
+        // Actualizar preguntas de entrevista (ahora se muestran debajo del análisis)
         updateInterviewQuestions(fieldReview);
         
-        // Asegurar que la pestaña de análisis esté activa
-        handleTabChange('analysis');
+        // Ocultar las pestañas ya que las preguntas se muestran debajo
+        hideTabs();
+    }
+}
+
+// Función para ocultar las pestañas
+function hideTabs() {
+    const tabsContainer = document.querySelector('.flex.gap-2.mb-4.border-b.border-applus-gray-200');
+    if (tabsContainer) {
+        tabsContainer.style.display = 'none';
     }
 }
 
@@ -271,25 +279,96 @@ function updateInterviewQuestions(fieldReview) {
         return;
     }
     
-    const questionsList = document.getElementById('interview-questions-list');
-    console.log('Questions list element found:', !!questionsList);
+    // Crear o actualizar la sección de preguntas debajo del análisis
+    const analysisTab = document.getElementById('analysis-tab');
+    if (!analysisTab) return;
     
-    if (!questionsList) return;
+    // Buscar si ya existe la sección de preguntas
+    let questionsSection = analysisTab.querySelector('.interview-questions-section');
     
-    questionsList.innerHTML = '';
-    if (fieldReview.interview_questions && Array.isArray(fieldReview.interview_questions)) {
-        fieldReview.interview_questions.forEach(question => {
-            const li = document.createElement('li');
-            li.textContent = question;
-            questionsList.appendChild(li);
-        });
-        console.log('Updated questions list with', fieldReview.interview_questions.length, 'questions');
-    } else {
-        const li = document.createElement('li');
-        li.textContent = 'No hay preguntas disponibles';
-        questionsList.appendChild(li);
-        console.log('No questions available for this field');
+    if (!questionsSection) {
+        // Crear la sección de preguntas
+        questionsSection = document.createElement('div');
+        questionsSection.className = 'interview-questions-section mt-6 p-4 bg-applus-gray-50 rounded-md border-l-4 border-applus-orange';
+        analysisTab.appendChild(questionsSection);
     }
+    
+    // Obtener las preguntas existentes o crear una lista vacía
+    const existingQuestions = fieldReview.interview_questions && Array.isArray(fieldReview.interview_questions) 
+        ? fieldReview.interview_questions 
+        : [];
+    
+    // Crear el contenido editable
+    questionsSection.innerHTML = `
+        <h4 class="mb-3 text-applus-gray-600 text-base font-semibold">Preguntas para la Entrevista</h4>
+        <textarea 
+            id="interview-questions-textarea"
+            class="w-full p-4 border border-applus-gray-300 rounded-md font-inherit text-sm leading-relaxed resize-y min-h-[300px] focus:outline-none focus:border-applus-orange focus:ring-2 focus:ring-applus-orange focus:ring-opacity-20"
+            placeholder="Escribe las preguntas para la entrevista aquí..."
+        >${existingQuestions.join('\n')}</textarea>
+        <div class="flex gap-2 mt-3">
+            <button id="save-questions-btn" class="btn-applus-primary text-sm">
+                <i class="fas fa-save"></i> Guardar Preguntas
+            </button>
+            <button id="clear-questions-btn" class="btn-applus-secondary text-sm">
+                <i class="fas fa-eraser"></i> Limpiar
+            </button>
+        </div>
+    `;
+    
+    // Configurar event listeners para los botones
+    setupQuestionsButtons(fieldReview);
+    
+    console.log('Updated questions section with', existingQuestions.length, 'questions');
+}
+
+// Función para configurar los botones de preguntas
+function setupQuestionsButtons(fieldReview) {
+    const saveBtn = document.getElementById('save-questions-btn');
+    const clearBtn = document.getElementById('clear-questions-btn');
+    
+    if (saveBtn) {
+        saveBtn.addEventListener('click', () => saveInterviewQuestions(fieldReview));
+    }
+    
+    if (clearBtn) {
+        clearBtn.addEventListener('click', clearInterviewQuestions);
+    }
+}
+
+// Función para guardar las preguntas de entrevista
+function saveInterviewQuestions(fieldReview) {
+    const textarea = document.getElementById('interview-questions-textarea');
+    if (!textarea) return;
+    
+    // Convertir el texto en array de preguntas
+    const questions = textarea.value.split('\n').filter(q => q.trim() !== '');
+    
+    // Actualizar el objeto fieldReview
+    if (!fieldReview.interview_questions) {
+        fieldReview.interview_questions = [];
+    }
+    fieldReview.interview_questions = questions;
+    
+    // Mostrar confirmación
+    showNotification('Preguntas guardadas correctamente', 'success');
+}
+
+// Función para limpiar las preguntas de entrevista
+function clearInterviewQuestions() {
+    const textarea = document.getElementById('interview-questions-textarea');
+    if (textarea) {
+        textarea.value = '';
+    }
+}
+
+// Función para inicializar el contenido del Paso C
+function initializeStepC() {
+    // Cargar la revisión de IA
+    loadAIReview().then(() => {
+        // Una vez cargada, mostrar los datos
+        loadAIReviewData();
+    });
 }
 
 // Función para cargar las recomendaciones generales
