@@ -259,3 +259,6 @@ La Fase 4 utilizará los outputs estructurados de esta fase para:
 - **Fuentes**: Tracking de reutilización de Fase 2
 - **Decisiones**: Justificación de cambios y ajustes
 - **Versionado**: Control de cambios en configuración de matriz
+
+
+Notas: Diagramas en https://app.diagrams.net/ 
