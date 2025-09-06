@@ -86,8 +86,8 @@ function processFieldsForCompletion() {
                 suggestedQuestions: aiReview.interview_questions || [],
                 score: (aiReview.ai_analysis && aiReview.ai_analysis.score) || 0,
                 feedback: (aiReview.ai_analysis && aiReview.ai_analysis.feedback) || '',
-                status: determineFieldStatus(field.response, aiReview.score),
-                priority: determineFieldPriority(aiReview.score, aiReview.feedback),
+                status: determineFieldStatus(field.response, (aiReview.ai_analysis && aiReview.ai_analysis.score) || 0),
+                priority: determineFieldPriority((aiReview.ai_analysis && aiReview.ai_analysis.score) || 0, (aiReview.ai_analysis && aiReview.ai_analysis.feedback) || ''),
                 isComplete: false
             };
             
@@ -144,7 +144,7 @@ function loadFieldsList() {
         
         const statusClass = `field-status-${field.status}`;
         const priorityClass = `field-priority-${field.priority}`;
-        
+
         fieldItem.innerHTML = `
             <div class="p-3 border border-applus-gray-200 rounded-lg hover:border-applus-orange transition-colors">
                 <div class="flex items-start justify-between mb-2">
