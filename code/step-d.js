@@ -84,8 +84,8 @@ function processFieldsForCompletion() {
                 currentResponse: field.response || '',
                 aiAnalysis: aiReview.analysis || '',
                 suggestedQuestions: aiReview.interview_questions || [],
-                score: aiReview.score || 0,
-                feedback: aiReview.feedback || '',
+                score: (aiReview.ai_analysis && aiReview.ai_analysis.score) || 0,
+                feedback: (aiReview.ai_analysis && aiReview.ai_analysis.feedback) || '',
                 status: determineFieldStatus(field.response, aiReview.score),
                 priority: determineFieldPriority(aiReview.score, aiReview.feedback),
                 isComplete: false
@@ -118,9 +118,12 @@ function determineFieldStatus(response, score) {
 
 // Determinar la prioridad del campo
 function determineFieldPriority(score, feedback) {
-    if (score < 4 || feedback.includes('crítico') || feedback.includes('faltante')) {
+    // Verificar que feedback sea una cadena válida
+    const feedbackStr = typeof feedback === 'string' ? feedback.toLowerCase() : '';
+
+    if (score < 4 || feedbackStr.includes('crítico') || feedbackStr.includes('faltante')) {
         return 'high';
-    } else if (score < 7 || feedback.includes('mejorar') || feedback.includes('ampliar')) {
+    } else if (score < 7 || feedbackStr.includes('mejorar') || feedbackStr.includes('ampliar')) {
         return 'medium';
     } else {
         return 'low';

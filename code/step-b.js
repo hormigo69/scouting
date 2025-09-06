@@ -28,8 +28,11 @@ function showStepB() {
         stepB.style.display = 'block';
     }
     
-    // Actualizar el indicador de paso
-    updateStepIndicator('B');
+    // Update step indicator directly
+    const stepIndicator = document.getElementById('current-step-indicator');
+    if (stepIndicator) {
+        stepIndicator.textContent = 'Paso B: Respuesta UN';
+    }
     
     // Cargar las preguntas
     loadQuestionsList();
@@ -323,8 +326,11 @@ function backToStepA() {
         stepB.style.display = 'none';
     }
     
-    // Actualizar el indicador de paso
-    updateStepIndicator('A');
+    // Update step indicator directly
+    const stepIndicator = document.getElementById('current-step-indicator');
+    if (stepIndicator) {
+        stepIndicator.textContent = 'Paso A: Personalización';
+    }
     
     // Scroll suave al inicio
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -344,8 +350,11 @@ function continueToStepC() {
         stepC.style.display = 'block';
     }
     
-    // Actualizar indicadores de paso
-    updateStepIndicators('C');
+    // Update step indicator directly
+    const stepIndicator = document.getElementById('current-step-indicator');
+    if (stepIndicator) {
+        stepIndicator.textContent = 'Paso C: Revisión IA';
+    }
     
     // Actualizar header phase indicator
     updateHeaderPhase('C');

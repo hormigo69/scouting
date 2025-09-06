@@ -454,8 +454,11 @@ function continueToStepD() {
     if (stepD) {
         stepD.style.display = 'block';
     }
-    updateStepIndicators('D');
-    updateHeaderPhase('D');
+    // Update step indicator directly
+    const stepIndicator = document.getElementById('current-step-indicator');
+    if (stepIndicator) {
+        stepIndicator.textContent = 'Paso D: Entrevista';
+    }
     
     // Inicializar el Paso D
     setTimeout(() => {
