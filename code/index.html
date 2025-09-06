@@ -412,6 +412,154 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Paso D: Entrevista con Unidad de Negocio -->
+            <section id="step-d" class="hidden">
+                <div class="bg-white rounded-lg shadow-sm border border-applus-gray-200 p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-2xl font-bold text-applus-gray-800">Paso D: Entrevista con Unidad de Negocio</h2>
+                        <div class="flex items-center gap-2">
+                            <span class="bg-applus-orange text-white px-3 py-1 rounded-full text-sm font-semibold">Paso D</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6 p-4 bg-applus-blue-50 border-l-4 border-applus-blue-500 rounded-r-md">
+                        <h3 class="font-semibold text-applus-blue-800 mb-2">Objetivo del Paso D</h3>
+                        <p class="text-applus-blue-700 text-sm leading-relaxed">
+                            Completar el Challenge Request con la información faltante identificada por la IA. 
+                            El investigador entrevista a la Unidad de Negocio para obtener respuestas a las preguntas sugeridas y completar los datos incompletos.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Columna Izquierda: Lista de Campos a Completar -->
+                        <div class="space-y-4">
+                            <div class="bg-applus-gray-50 p-4 rounded-lg">
+                                <h3 class="font-semibold text-applus-gray-700 mb-3 flex items-center gap-2">
+                                    <i class="fas fa-list-check text-applus-orange"></i>
+                                    Campos a Completar
+                                </h3>
+                                <div id="fields-to-complete-list" class="space-y-2">
+                                    <!-- Se llenará dinámicamente -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Columna Derecha: Editor de Campo -->
+                        <div class="space-y-4">
+                            <div id="field-editor-container" class="bg-applus-gray-50 p-4 rounded-lg min-h-[500px]">
+                                <div id="no-field-selected" class="flex items-center justify-center h-full text-applus-gray-400">
+                                    <div class="text-center">
+                                        <i class="fas fa-hand-pointer text-4xl mb-4"></i>
+                                        <p class="text-lg font-medium">Selecciona un campo para completar</p>
+                                        <p class="text-sm">Haz clic en un campo de la lista para ver la información y completar la respuesta</p>
+                                    </div>
+                                </div>
+                                
+                                <div id="field-editor" class="hidden space-y-4">
+                                    <!-- Información del Campo -->
+                                    <div class="bg-white p-4 rounded-lg border border-applus-gray-200">
+                                        <h4 id="field-name" class="font-semibold text-applus-gray-700 mb-2"></h4>
+                                        <p id="field-description" class="text-sm text-applus-gray-600 mb-3"></p>
+                                        <div class="flex items-center gap-2 text-xs">
+                                            <span id="field-status" class="px-2 py-1 rounded-full"></span>
+                                            <span id="field-priority" class="px-2 py-1 rounded-full"></span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Respuesta Actual -->
+                                    <div class="bg-white p-4 rounded-lg border border-applus-gray-200">
+                                        <h5 class="font-medium text-applus-gray-700 mb-2 flex items-center gap-2">
+                                            <i class="fas fa-file-text text-applus-blue-500"></i>
+                                            Respuesta Actual
+                                        </h5>
+                                        <div id="current-response" class="text-sm text-applus-gray-600 bg-applus-gray-50 p-3 rounded border">
+                                            <!-- Se llenará dinámicamente -->
+                                        </div>
+                                    </div>
+
+                                    <!-- Análisis de la IA -->
+                                    <div class="bg-white p-4 rounded-lg border border-applus-gray-200">
+                                        <h5 class="font-medium text-applus-gray-700 mb-2 flex items-center gap-2">
+                                            <i class="fas fa-robot text-applus-orange"></i>
+                                            Análisis asistido
+                                        </h5>
+                                        <div id="ai-analysis" class="text-sm text-applus-gray-600">
+                                            <!-- Se llenará dinámicamente -->
+                                        </div>
+                                    </div>
+
+                                    <!-- Preguntas Sugeridas -->
+                                    <div class="bg-white p-4 rounded-lg border border-applus-gray-200">
+                                        <h5 class="font-medium text-applus-gray-700 mb-2 flex items-center gap-2">
+                                            <i class="fas fa-question-circle text-applus-green-500"></i>
+                                            Preguntas para la Entrevista
+                                        </h5>
+                                        <div id="suggested-questions" class="text-sm text-applus-gray-600">
+                                            <!-- Se llenará dinámicamente -->
+                                        </div>
+                                    </div>
+
+                                    <!-- Editor de Respuesta -->
+                                    <div class="bg-white p-4 rounded-lg border border-applus-gray-200">
+                                        <h5 class="font-medium text-applus-gray-700 mb-2 flex items-center gap-2">
+                                            <i class="fas fa-edit text-applus-purple-500"></i>
+                                            Respuesta Completa
+                                        </h5>
+                                        <textarea 
+                                            id="field-response-editor"
+                                            class="w-full p-3 border border-applus-gray-300 rounded-md font-inherit text-sm leading-relaxed resize-y min-h-[150px] focus:outline-none focus:border-applus-orange focus:ring-2 focus:ring-applus-orange focus:ring-opacity-20"
+                                            placeholder="Escribe la respuesta completa basándote en la información de la entrevista..."
+                                        ></textarea>
+                                        <div class="flex gap-2 mt-3">
+                                            <button id="save-field-response-btn" class="btn-applus-primary text-sm">
+                                                <i class="fas fa-save"></i> Guardar Respuesta
+                                            </button>
+                                            <button id="mark-complete-btn" class="btn-applus-success text-sm">
+                                                <i class="fas fa-check"></i> Marcar como Completo
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Progreso y Acciones -->
+                    <div class="mt-8 p-4 bg-applus-gray-50 rounded-lg">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-4">
+                                <div class="text-sm text-applus-gray-600">
+                                    <span id="completed-fields-count">0</span> de <span id="total-fields-count">0</span> campos completados
+                                </div>
+                                <div class="w-48 bg-applus-gray-200 rounded-full h-2">
+                                    <div id="progress-bar" class="bg-applus-orange h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <button id="export-complete-document-btn" class="btn-applus-primary">
+                                    <i class="fas fa-file-export"></i> Exportar Documento Final
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Acciones del Paso D -->
+                    <div class="flex justify-between items-center mt-8 pt-6 border-t border-applus-gray-200">
+                        <button id="back-to-step-c-btn" class="btn-applus-secondary">
+                            <i class="fas fa-arrow-left"></i> Volver al Paso C
+                        </button>
+                        <div class="flex gap-3">
+                            <button id="save-interview-progress-btn" class="btn-applus-secondary">
+                                <i class="fas fa-save"></i> Guardar Progreso
+                            </button>
+                            <button id="complete-interview-btn" class="btn-applus-primary" disabled>
+                                <i class="fas fa-check-circle"></i> Finalizar Entrevista
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
 
@@ -459,5 +607,6 @@
     <script src="script.js"></script>
     <script src="step-b.js"></script>
     <script src="step-c.js"></script>
+    <script src="step-d.js"></script>
 </body>
 </html>

@@ -165,3 +165,57 @@
     @apply bg-green-500 text-white;
   }
 }
+
+/* Estilos para el Paso D */
+.bg-applus-blue-50 {
+  @apply bg-blue-50;
+}
+
+.border-applus-blue-500 {
+  @apply border-blue-500;
+}
+
+.text-applus-blue-800 {
+  @apply text-blue-800;
+}
+
+.text-applus-blue-700 {
+  @apply text-blue-700;
+}
+
+.text-applus-blue-500 {
+  @apply text-blue-500;
+}
+
+.text-applus-green-500 {
+  @apply text-green-500;
+}
+
+.text-applus-purple-500 {
+  @apply text-purple-500;
+}
+
+/* Estados de campos */
+.field-status-pending {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.field-status-incomplete {
+  @apply bg-orange-100 text-orange-800;
+}
+
+.field-status-complete {
+  @apply bg-green-100 text-green-800;
+}
+
+.field-priority-high {
+  @apply bg-red-100 text-red-800;
+}
+
+.field-priority-medium {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.field-priority-low {
+  @apply bg-gray-100 text-gray-800;
+}
