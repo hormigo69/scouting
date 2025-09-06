@@ -889,64 +889,24 @@ function continueToNextStep() {
     console.log('Navigated to Step B');
 }
 
+// Keeping for backward compatibility - now handled directly in each step file
 function updateStepIndicators(activeStep) {
-    const steps = document.querySelectorAll('.step');
-    steps.forEach((step, index) => {
-        const stepNumber = step.querySelector('.step-number');
-        const stepLabel = step.querySelector('.step-label, div:last-child');
-        
-        // Reset all steps
-        step.classList.remove('active');
-        step.style.opacity = '0.4';
-        
-        if (stepNumber) {
-            stepNumber.style.backgroundColor = '#e5e7eb';
-            stepNumber.style.color = '#6b7280';
-            stepNumber.style.borderColor = '#e5e7eb';
-        }
-        
-        if (stepLabel) {
-            stepLabel.style.color = '#6b7280';
-            stepLabel.style.fontWeight = '500';
-        }
-        
-        // Set active step
-        if (index === 0 && activeStep === 'A') {
-            step.classList.add('active');
-            step.style.opacity = '1';
-            if (stepNumber) {
-                stepNumber.style.backgroundColor = '#FF8C00';
-                stepNumber.style.color = 'white';
-                stepNumber.style.borderColor = '#FF8C00';
-            }
-            if (stepLabel) {
-                stepLabel.style.color = '#FF8C00';
-                stepLabel.style.fontWeight = '600';
-            }
-        } else if (index === 1 && activeStep === 'B') {
-            step.classList.add('active');
-            step.style.opacity = '1';
-            if (stepNumber) {
-                stepNumber.style.backgroundColor = '#FF8C00';
-                stepNumber.style.color = 'white';
-                stepNumber.style.borderColor = '#FF8C00';
-            }
-            if (stepLabel) {
-                stepLabel.style.color = '#FF8C00';
-                stepLabel.style.fontWeight = '600';
-            }
-        }
-    });
+    // This function is kept for backward compatibility
+    // Each step file now updates the indicator directly
 }
 
 function updateHeaderPhase(step) {
-    const phaseBadge = document.querySelector('.phase-badge');
-    const stepBadge = document.querySelector('.step-badge');
-    
-    if (step === 'B' && phaseBadge && stepBadge) {
-        stepBadge.textContent = 'Paso B: Respuestas';
-    }
+    // This function is now handled by updateStepIndicators
+    // Keeping for backward compatibility
 }
+
+// Initialize step indicator on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const stepIndicator = document.getElementById('current-step-indicator');
+    if (stepIndicator) {
+        stepIndicator.textContent = 'Paso A: Personalización';
+    }
+});
 
 function initializeStepB() {
     // This function will be called when step-b.js is loaded
