@@ -446,8 +446,314 @@ function downloadAIReview() {
 
 // Función para continuar al Paso D
 function continueToStepD() {
-    // Aquí se implementaría la lógica para pasar al Paso D
-    showNotification('Funcionalidad del Paso D en desarrollo', 'info');
+    const stepC = document.getElementById('step-c');
+    if (stepC) {
+        stepC.style.display = 'none';
+    }
+    const stepD = document.getElementById('step-d');
+    if (stepD) {
+        stepD.style.display = 'block';
+    }
+    updateStepIndicators('D');
+    updateHeaderPhase('D');
+    
+    // Inicializar el Paso D
+    setTimeout(() => {
+        try {
+            // Intentar llamar a la función directamente
+            if (window.initializeStepD) {
+                window.initializeStepD();
+            } else if (typeof initializeStepD === 'function') {
+                initializeStepD();
+            } else {
+                console.error('initializeStepD function not found');
+                // Intentar cargar los datos manualmente
+                console.log('Attempting to load Step D data manually...');
+                loadStepDData();
+            }
+        } catch (error) {
+            console.error('Error initializing Step D:', error);
+        }
+    }, 100);
+    
+    console.log('Navigated to Step D');
+}
+
+// Función para determinar la prioridad de un campo
+function determinePriority(score, feedback, response) {
+    // Si no hay respuesta, es alta prioridad
+    if (!response || response.trim() === '') {
+        return 'high';
+    }
+    
+    // Si la puntuación es muy baja, es alta prioridad
+    if (score < 4) {
+        return 'high';
+    }
+    
+    // Si el feedback indica problemas críticos, es alta prioridad
+    if (feedback && (
+        feedback.toLowerCase().includes('crítico') ||
+        feedback.toLowerCase().includes('faltante') ||
+        feedback.toLowerCase().includes('incompleto') ||
+        feedback.toLowerCase().includes('insuficiente')
+    )) {
+        return 'high';
+    }
+    
+    // Si la puntuación es media, es prioridad media
+    if (score < 7) {
+        return 'medium';
+    }
+    
+    // Si la puntuación es alta, es baja prioridad
+    return 'low';
+}
+
+// Función de respaldo para cargar datos del Paso D
+async function loadStepDData() {
+    try {
+        console.log('Loading Step D data manually...');
+        
+        // Cargar respuestas del Challenge Request
+        const response1 = await fetch('files/Challenge%20request%20con%20ejemplo%20BVLOS.json');
+        const challengeResponses = await response1.json();
+        
+        // Cargar datos de revisión de IA
+        const response2 = await fetch('files/ai-review-bvlos.json');
+        const aiReviewData = await response2.json();
+        
+        // Procesar campos para completar
+        const fieldsToComplete = [];
+        challengeResponses.fields.forEach(field => {
+            const aiReview = aiReviewData.field_reviews.find(review => 
+                review.field_id === field.id || review.field_name === field.name
+            );
+            
+            if (aiReview) {
+                // Debug: verificar el contenido de la respuesta
+                console.log(`Field: ${field.name}, Response: "${field.response}", Length: ${field.response ? field.response.length : 0}`);
+                
+                const hasResponse = field.response && field.response.trim() !== '';
+                const aiScore = aiReview.ai_analysis ? aiReview.ai_analysis.score : 0;
+                const aiFeedback = aiReview.ai_analysis ? aiReview.ai_analysis.feedback : '';
+                const needsImprovement = aiScore < 6 || (aiFeedback && aiFeedback.toLowerCase().includes('mejorar'));
+                
+                const fieldData = {
+                    id: field.id,
+                    name: field.name,
+                    description: field.description,
+                    currentResponse: field.response || '',
+                    aiAnalysis: aiReview.ai_analysis ? JSON.stringify(aiReview.ai_analysis, null, 2) : '',
+                    suggestedQuestions: aiReview.interview_questions || [],
+                    score: aiScore,
+                    feedback: aiFeedback,
+                    status: hasResponse && !needsImprovement ? 'complete' : 'pending',
+                    priority: determinePriority(aiScore, aiFeedback, field.response),
+                    isComplete: false
+                };
+                fieldsToComplete.push(fieldData);
+            }
+        });
+        
+        // Mostrar campos en la lista
+        const fieldsList = document.getElementById('fields-to-complete-list');
+        if (fieldsList) {
+            fieldsList.innerHTML = '';
+            fieldsToComplete.forEach(field => {
+                const fieldItem = document.createElement('div');
+                fieldItem.className = 'list-item mb-3 cursor-pointer';
+                fieldItem.dataset.fieldId = field.id;
+                
+                const statusClass = `field-status-${field.status}`;
+                const priorityClass = `field-priority-${field.priority}`;
+                
+                fieldItem.innerHTML = `
+                    <div class="p-3 border border-applus-gray-200 rounded-lg hover:border-applus-orange transition-colors">
+                        <div class="flex items-start justify-between mb-2">
+                            <h4 class="font-semibold text-applus-gray-700 text-sm">${field.name}</h4>
+                            <div class="flex gap-1">
+                                <span class="px-2 py-1 rounded-full text-xs ${statusClass}">${field.status === 'complete' ? 'Completo' : 'Pendiente'}</span>
+                                <span class="px-2 py-1 rounded-full text-xs ${priorityClass}">${field.priority === 'high' ? 'Alta' : field.priority === 'medium' ? 'Media' : 'Baja'}</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-applus-gray-500 mb-2">${field.description.substring(0, 80)}${field.description.length > 80 ? '...' : ''}</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-applus-gray-400">Puntuación: ${field.score}/10</span>
+                            ${field.status === 'complete' ? '<i class="fas fa-check-circle text-green-500"></i>' : '<i class="fas fa-clock text-yellow-500"></i>'}
+                        </div>
+                    </div>
+                `;
+                
+                fieldItem.addEventListener('click', () => {
+                    // Seleccionar campo
+                    document.querySelectorAll('.list-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    fieldItem.classList.add('active');
+                    
+                    // Mostrar editor con los datos del campo
+                    showFieldEditor(field);
+                });
+                
+                fieldsList.appendChild(fieldItem);
+            });
+        }
+        
+        console.log('Step D data loaded successfully:', fieldsToComplete.length, 'fields');
+        
+    } catch (error) {
+        console.error('Error loading Step D data:', error);
+    }
+}
+
+// Función para mostrar el editor de campo
+function showFieldEditor(field) {
+    console.log('Showing field editor for:', field);
+    
+    const noFieldSelected = document.getElementById('no-field-selected');
+    const fieldEditor = document.getElementById('field-editor');
+    
+    if (noFieldSelected) noFieldSelected.classList.add('hidden');
+    if (fieldEditor) fieldEditor.classList.remove('hidden');
+    
+    // Llenar información del campo
+    document.getElementById('field-name').textContent = field.name;
+    document.getElementById('field-description').textContent = field.description;
+    
+    // Estado y prioridad
+    const statusElement = document.getElementById('field-status');
+    const priorityElement = document.getElementById('field-priority');
+    
+    statusElement.className = `px-2 py-1 rounded-full text-xs field-status-${field.status}`;
+    statusElement.textContent = field.status === 'complete' ? 'Completo' : 'Pendiente';
+    
+    priorityElement.className = `px-2 py-1 rounded-full text-xs field-priority-${field.priority}`;
+    priorityElement.textContent = field.priority === 'high' ? 'Alta' : field.priority === 'medium' ? 'Media' : 'Baja';
+    
+    // Respuesta actual
+    const currentResponse = document.getElementById('current-response');
+    if (field.currentResponse) {
+        currentResponse.innerHTML = `<p class="mb-2">${field.currentResponse}</p>`;
+    } else {
+        currentResponse.innerHTML = '<p class="text-applus-gray-400 italic">No hay respuesta actual</p>';
+    }
+    
+    // Análisis de IA
+    const aiAnalysis = document.getElementById('ai-analysis');
+    
+    // Parsear el análisis de IA si está en formato JSON
+    let parsedAnalysis = null;
+    try {
+        parsedAnalysis = field.aiAnalysis ? JSON.parse(field.aiAnalysis) : null;
+    } catch (e) {
+        console.log('AI Analysis is not in JSON format, using as text');
+    }
+    
+    if (parsedAnalysis) {
+        // Mostrar análisis estructurado
+        aiAnalysis.innerHTML = `
+            <div class="mb-4">
+                <div class="mb-3 p-2 bg-applus-gray-50 rounded text-sm">
+                    <div class="font-medium text-applus-gray-800 mb-1">Puntuación: ${field.score}</div>
+                    ${parsedAnalysis.completeness ? `<div class="text-applus-gray-600">Completitud: ${parsedAnalysis.completeness}</div>` : ''}
+                    ${parsedAnalysis.clarity ? `<div class="text-applus-gray-600">Claridad: ${parsedAnalysis.clarity}</div>` : ''}
+                    ${parsedAnalysis.specificity ? `<div class="text-applus-gray-600">Especificidad: ${parsedAnalysis.specificity}</div>` : ''}
+                </div>
+                
+                <div class="mb-4 p-3 bg-applus-gray-50 rounded-lg">
+                    <h5 class="font-medium text-applus-gray-700 mb-2">📝 Feedback General</h5>
+                    <p class="text-sm text-applus-gray-600">${parsedAnalysis.feedback || 'No hay feedback disponible'}</p>
+                </div>
+                
+                ${parsedAnalysis.strengths && parsedAnalysis.strengths.length > 0 ? `
+                <div class="mb-4">
+                    <h5 class="font-medium text-green-700 mb-2">✅ Fortalezas</h5>
+                    <ul class="space-y-1">
+                        ${parsedAnalysis.strengths.map(strength => `
+                            <li class="text-sm text-applus-gray-600 flex items-start">
+                                <span class="text-green-500 mr-2">•</span>
+                                <span>${strength}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+                ` : ''}
+                
+                ${parsedAnalysis.improvements && parsedAnalysis.improvements.length > 0 ? `
+                <div class="mb-4">
+                    <h5 class="font-medium text-orange-700 mb-2">🔧 Áreas de Mejora</h5>
+                    <ul class="space-y-1">
+                        ${parsedAnalysis.improvements.map(improvement => `
+                            <li class="text-sm text-applus-gray-600 flex items-start">
+                                <span class="text-orange-500 mr-2">•</span>
+                                <span>${improvement}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+                ` : ''}
+            </div>
+        `;
+    } else {
+        // Mostrar análisis como texto plano
+        aiAnalysis.innerHTML = `
+            <div class="mb-4">
+                <div class="mb-3 p-2 bg-applus-gray-50 rounded text-sm">
+                    <div class="font-medium text-applus-gray-800 mb-1">Puntuación: ${field.score}</div>
+                    <div class="text-applus-gray-600">Análisis de IA disponible</div>
+                </div>
+                
+                <div class="mb-4 p-3 bg-applus-gray-50 rounded-lg">
+                    <h5 class="font-medium text-applus-gray-700 mb-2">📝 Feedback</h5>
+                    <p class="text-sm text-applus-gray-600">${field.feedback || 'No hay feedback disponible'}</p>
+                </div>
+                
+                ${field.aiAnalysis ? `
+                <div class="mb-4 p-3 bg-applus-gray-50 rounded-lg">
+                    <h5 class="font-medium text-applus-gray-700 mb-2">🔍 Análisis Detallado</h5>
+                    <div class="text-sm text-applus-gray-600 whitespace-pre-wrap">${field.aiAnalysis}</div>
+                </div>
+                ` : ''}
+            </div>
+        `;
+    }
+    
+    // Preguntas sugeridas
+    const suggestedQuestions = document.getElementById('suggested-questions');
+    if (field.suggestedQuestions && field.suggestedQuestions.length > 0) {
+        const questionsList = field.suggestedQuestions.map((q, index) => `
+            <li class="flex items-start p-3 bg-applus-blue-50 rounded-lg mb-2 border border-applus-blue-200">
+                <span class="flex-shrink-0 w-6 h-6 bg-applus-blue-500 text-white text-xs rounded-full flex items-center justify-center mr-3 mt-0.5 font-semibold">${index + 1}</span>
+                <span class="text-sm text-applus-gray-700 leading-relaxed">${q}</span>
+            </li>
+        `).join('');
+        suggestedQuestions.innerHTML = `
+            <div class="mb-4">
+                <h4 class="mb-3 text-applus-gray-700 text-base font-semibold flex items-center">
+                    <span class="mr-2">💡</span>
+                    Preguntas Sugeridas para la Entrevista
+                </h4>
+                <ul class="space-y-2">${questionsList}</ul>
+            </div>
+        `;
+    } else {
+        suggestedQuestions.innerHTML = `
+            <div class="mb-4">
+                <h4 class="mb-3 text-applus-gray-700 text-base font-semibold flex items-center">
+                    <span class="mr-2">💡</span>
+                    Preguntas Sugeridas para la Entrevista
+                </h4>
+                <div class="p-3 bg-applus-gray-50 rounded-lg border border-applus-gray-200">
+                    <p class="text-sm text-applus-gray-500 italic">No hay preguntas sugeridas disponibles para este campo</p>
+                </div>
+            </div>
+        `;
+    }
+    
+    // Editor de respuesta
+    const responseEditor = document.getElementById('field-response-editor');
+    responseEditor.value = field.currentResponse;
 }
 
 // Función para manejar el cambio de pestañas

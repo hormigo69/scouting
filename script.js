@@ -349,6 +349,9 @@ let currentField = null;
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', async function() {
+    // Ensure all steps are hidden initially
+    hideAllSteps();
+    
     // Load standard template from markdown
     await loadStandardTemplate();
     
@@ -363,6 +366,23 @@ document.addEventListener('DOMContentLoaded', async function() {
     console.log('Available templates:', Object.keys(templates));
     console.log('Standard template fields count:', templates.standard.fields.length);
 });
+
+// Function to hide all steps initially
+function hideAllSteps() {
+    const steps = ['step-a', 'step-b', 'step-c', 'step-d'];
+    steps.forEach(stepId => {
+        const stepElement = document.getElementById(stepId);
+        if (stepElement) {
+            stepElement.style.display = 'none';
+        }
+    });
+    
+    // Show only step A initially
+    const stepA = document.getElementById('step-a');
+    if (stepA) {
+        stepA.style.display = 'block';
+    }
+}
 
 // Load standard template from JSON file
 async function loadStandardTemplate() {
