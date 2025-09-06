@@ -1,7 +1,7 @@
 // Paso D: Entrevista con Unidad de Negocio
 // Este archivo maneja la funcionalidad del Paso D donde el investigador completa
 // el Challenge Request con la información faltante identificada por la IA
-
+(function() {
 let challengeResponses = null;
 let aiReviewData = null;
 let fieldsToComplete = [];
@@ -541,3 +541,7 @@ function updateHeaderPhase(step) {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Step D script loaded');
 });
+
+// Exponer API pública requerida por Step C sin contaminar el ámbito global
+window.initializeStepD = initializeStepD;
+})();
