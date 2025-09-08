@@ -127,3 +127,50 @@ entries:
       - "outputs/propuestas/Propuesta_Scouting_IA.md"
       - "outputs/propuestas/Diagrama_Fase_3_DrawIO v2.xml"
       - "reflexiones intermedias/Ideas iniciales fase 2.md"
+
+  - date: "2025-12-20"
+    tipo: "desarrollo_frontend_backend"
+    titulo: "Persistencia de resultados de entrevista (Paso D) en code/files/"
+    insight: "Se añade endpoint local y lógica frontend para guardar el JSON final de la entrevista al pulsar 'Finalizar Entrevista'."
+    acciones:
+      - "Creación de endpoint POST /api/save-interview en start_server.py (servidor dev)"
+      - "Escritura segura de archivos JSON en carpeta code/files/ con nombre timestamp"
+      - "Actualización de step-d.js para POST automático en 'Finalizar Entrevista'"
+    estado: "completado"
+    fuente: "Desarrollo interno"
+    archivos_modificados:
+      - "code/start_server.py"
+      - "code/step-d.js"
+    riesgos:
+      - "Servidor dev basado en SimpleHTTPRequestHandler; para producción se recomienda framework con auth"
+    decisiones:
+      - "Mantener endpoint simple sin CORS extra, ya que es mismo origen en desarrollo"
+    siguientes_pasos:
+      - "Añadir listado/gestión de versiones de entrevistas guardadas en UI"
+      - "Incluir metadatos del entrevistado/equipo en el JSON final"
+
+  - date: "2025-12-20"
+    tipo: "desarrollo_frontend"
+    titulo: "Demo Paso E–K (Extracción) con simulación en tiempo real"
+    insight: "Se añade JSON consolidado E→K y UI en el front para renderizar resultados con progreso simulado."
+    acciones:
+      - "Creación de `code/files/extraction_E_to_K.json` con slots, PICOC, MoSCoW, pregunta y ficha"
+      - "Nueva sección `step-e` en `code/index.html` con barra de progreso y render dinámico"
+      - "Script `code/step-e.js` para simular procesamiento y render por tarjetas"
+      - "Integración desde Paso D: tras finalizar entrevista, navegar automáticamente a Paso E–K"
+      - "Documento de soporte `outputs/propuestas/scouting v1/Extraccion_Pasos_E_a_K.md`"
+    estado: "completado"
+    fuente: "Desarrollo interno"
+    archivos_modificados:
+      - "code/index.html"
+      - "code/step-d.js"
+      - "code/step-e.js"
+      - "code/files/extraction_E_to_K.json"
+      - "outputs/propuestas/scouting v1/Extraccion_Pasos_E_a_K.md"
+    riesgos:
+      - "Contenido hardcoded para demo; requiere backend real para datos en producción"
+    decisiones:
+      - "Mantener simulación de progreso (500ms por paso) para efecto de tiempo real"
+    siguientes_pasos:
+      - "Conectar Paso E–K a resultados reales generados por el agente"
+      - "Botón para exportar la ficha de búsqueda a formatos de API (Crunchbase/PitchBook)"

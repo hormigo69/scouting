@@ -1,0 +1,183 @@
+{
+  "metadata": {
+    "title": "Procedimiento de Extracción - Pasos E→K",
+    "source_documents": [
+      "code/files/Challenge request con ejemplo BVLOS.json",
+      "code/files/ai-review-bvlos.json",
+      "code/files/respuestas_final.json"
+    ],
+    "generated_on": "2025-09-08",
+    "notes": "Demo: contenido hardcoded con simulación de procesamiento en tiempo real"
+  },
+  "steps": {
+    "E": {
+      "title": "Paso E: Leer y etiquetar el formulario",
+      "slots": {
+        "context_use": [
+          "Inspecciones industriales BVLOS: líneas eléctricas, oleoductos, eólica on/off‑shore",
+          "Lineales de infraestructura, GIS/mapping, monitoreo ambiental"
+        ],
+        "outcomes_kpis": {
+          "productivity_km_per_day": ">= 60–100 km/día (vs 8–12 km/día VLOS)",
+          "cost_per_km": "reducción >= 30%",
+          "safety": "0 incidentes; cumplimiento SORA completo",
+          "data_quality": "re‑vuelo <= 5%; detección acorde a caso",
+          "lead_time": "-40%",
+          "availability": ">= 95%",
+          "customer_satisfaction": ">= 8/10"
+        },
+        "constraints": [
+          "Cumplir EASA Reg. (UE) 2019/947 (Categoría Specific) mediante SORA/PDRA aplicable",
+          "DAA táctico o mitigación aceptable; C2 redundado; lost‑link validado; geocercas dinámicas",
+          "Registro/telemetría para safety case; manuales y mantenimiento",
+          "Historial BVLOS o evidencia pre‑operacional sólida"
+        ],
+        "geography": {
+          "pilot_phase": ["España (Castilla‑La Mancha, Aragón)", "Portugal (Alentejo)"],
+          "initial_deploy": ["España", "Portugal", "Sur de Francia"],
+          "mirror_pilot_plan_b": ["México", "Chile"]
+        },
+        "target_actors": [
+          "Fabricantes de UAS (helicóptero no tripulado, fixed‑wing VTOL)",
+          "Proveedores de DAA/C2",
+          "Integradores con soporte UE",
+          "Startups/scaleups y OEMs"
+        ],
+        "maturity_timing": {
+          "trl_platform_c2": ">= 8",
+          "trl_daa_autonomy": ">= 7",
+          "pilot_window_iberia": "feb–mar 2026",
+          "alt_window_latam": "dic 2025"
+        },
+        "market_signals": [
+          "Actividad reciente de financiación",
+          "Solvencia para ejecutar piloto < 12 semanas",
+          "Referencias/track‑record BVLOS"
+        ],
+        "attached_sources": [
+          "Regulación UAS Europa (EASA)",
+          "SOPs, QA/QC, fichas de caso, benchmarking técnico‑económico (bajo NDA)"
+        ]
+      }
+    },
+    "F": {
+      "title": "Paso F: Desambiguar términos críticos",
+      "terms": [
+        {"term": "EASA Reg. (UE) 2019/947", "definition": "Marco de operaciones UAS; BVLOS en categoría Specific"},
+        {"term": "SORA", "definition": "Metodología de evaluación de riesgo para operaciones Specific"},
+        {"term": "PDRA", "definition": "Escenarios SORA predefinidos que aceleran la autorización"},
+        {"term": "LUC", "definition": "Light UAS Operator Certificate; operar con operador con LUC acelera"},
+        {"term": "BVLOS", "definition": "Operaciones más allá de la línea de vista"},
+        {"term": "DAA", "definition": "Detect and Avoid; separación/evitación (táctico/estratégico)"},
+        {"term": "C2", "definition": "Enlace mando/control con redundancia y procedimientos de lost‑link"},
+        {"term": "RTK/PPK", "definition": "Posicionamiento de alta precisión para georreferenciación"},
+        {"term": "MTOW/VTOL/fixed‑wing VTOL", "definition": "Categorías/plataformas relevantes para autonomía/alcance/cargas"},
+        {"term": "AESA", "definition": "Autoridad española; coordinación temprana para pilotos en Iberia"}
+      ]
+    },
+    "G": {
+      "title": "Paso G: Definir resultado y límites (PICOC + HMW)",
+      "picoc": {
+        "population_context": "Inspecciones lineales (líneas eléctricas, oleoductos) y pruebas off‑shore en entornos rurales de Iberia (UE)",
+        "intervention": "Plataformas BVLOS (helicóptero no tripulado o fixed‑wing VTOL) con DAA aceptable, C2 redundado, payloads modulares (RGB, LiDAR, térmico, metano, UV), gimbal, RTK/PPK y SDK",
+        "comparison": "Operación actual VLOS (8–12 km/día, mayores costes y re‑vuelos)",
+        "outcome": "≥60–100 km/día, −30% coste/km, 0 incidentes, re‑vuelo ≤5%, lead time −40%, disponibilidad ≥95%",
+        "context": "Cumplimiento EASA 2019/947 vía SORA/PDRA, corredores rurales, coordinación con AESA, soporte UE, ejecución piloto <12 semanas"
+      },
+      "hmw": "¿Cómo podríamos multiplicar la productividad de inspecciones lineales y off‑shore reduciendo ≥30% el coste/km y manteniendo 0 incidentes, cumpliendo SORA, con piloto listo en 3–6 meses?"
+    },
+    "H": {
+      "title": "Paso H: Fijar madurez y tiempos (TRL/plazo)",
+      "trl": {
+        "platform_c2": ">= 8 (demostrado en entorno operativo)",
+        "daa_autonomy": ">= 7 (evidencia de ensayos y safety cases)"
+      },
+      "timelines": {
+        "evaluation_shortlist": "sep–oct 2025",
+        "authorization_sora": "nov 2025–ene 2026",
+        "pilot_window_iberia": "feb–mar 2026",
+        "alt_mirror_latam": "dic 2025"
+      }
+    },
+    "I": {
+      "title": "Paso I: Priorización MoSCoW",
+      "moscow": {
+        "must": [
+          "Cumplimiento EASA 2019/947 vía SORA/PDRA; coordinación con autoridad",
+          "TRL >= 8 (plataforma/C2), TRL >= 7 (DAA)",
+          "DAA/mitigación aceptable; C2 redundado; lost‑link; geocercas; logging/telemetría",
+          "Autonomía útil >= 2 h (lineales) o >= 60 min off‑shore; alcance >= 50 km",
+          "Payloads críticos integrables; soporte UE; documentación aeronáutica",
+          "Capacidad de ejecutar piloto en ventana comprometida"
+        ],
+        "should": [
+          "Historial BVLOS o cartas de autoridad; presencia local UE",
+          "SDK abierto; PPK/RTK; gimbal estabilizado; entregas < 12 semanas",
+          "TCO competitivo; modelo de servicio; referencias en energía/infra"
+        ],
+        "could": [
+          "Piloto espejo LatAm; analítica avanzada; acuerdos de servicio temporales; co‑desarrollo"
+        ],
+        "wont": [
+          "Re‑contactar Swissdrones, UMS Skeldar, Schiebel, UAVOS, ANAVIA antes de la shortlist"
+        ]
+      }
+    },
+    "J": {
+      "title": "Paso J: Pregunta operativa (1 frase)",
+      "research_question": "Para inspecciones lineales y off‑shore en Iberia (UE), ¿qué fabricantes de UAS y proveedores de DAA/C2 ofrecen plataformas BVLOS (helicóptero no tripulado o fixed‑wing VTOL) que permitan operar cumpliendo EASA Reg. (UE) 2019/947 mediante SORA, con TRL ≥8 (plataforma/C2) y ≥7 (DAA), aptas para piloto en feb–mar 2026, logrando ≥60–100 km/día y ≥−30% coste/km?"
+    },
+    "K": {
+      "title": "Paso K: Ficha de búsqueda (APIs y web)",
+      "search_sheet": {
+        "context_use": "Inspección BVLOS de líneas eléctricas y oleoductos rurales; prueba off‑shore; Iberia",
+        "outcomes_kpis": [
+          ">=60–100 km/día", "−30% coste/km", "0 incidentes", "re‑vuelo <=5%", "lead time −40%", ">=95% disponibilidad"
+        ],
+        "constraints_must": [
+          "EASA 2019/947 (Specific) vía SORA/PDRA",
+          "DAA aceptable; C2 redundado; lost‑link; geocercas; logging; manuales",
+          "Soporte UE; ejecución piloto < 12 semanas"
+        ],
+        "geography": {"priority": ["España", "Portugal"], "extend": ["Sur de Francia"], "mirror": ["México", "Chile"]},
+        "target_actors": ["Startups/scaleups/OEM/integradores de UAS", "Proveedores DAA/C2", "Integradores con presencia UE"],
+        "maturity_timing": {"trl_platform_c2": ">=8", "trl_daa": ">=7", "pilot_window": "feb–mar 2026"},
+        "market_signals": ["Actividad reciente", "Referencias con utilities/infra", "Capacidad logística UE"],
+        "taxonomy": {
+          "categories": ["Unmanned Aerial Vehicles", "Drones", "Aerospace & Defense", "Avionics", "Remote Sensing", "Robotics", "Autonomous Vehicles", "Industrial Inspection", "Oil & Gas Services", "Electric Utilities"],
+          "keywords": ["BVLOS", "Beyond Visual Line of Sight", "Detect and Avoid", "DAA", "SORA", "PDRA", "LUC", "C2 redundancy", "lost‑link", "VTOL", "fixed‑wing VTOL", "unmanned helicopter"]
+        },
+        "evidence_keywords": ["EASA 2019/947", "SORA authorization", "BVLOS authorization Europe/AESA", "detect and avoid", "lost link procedure", "C2 redundancy", "operations manual", "specific category", "PDRA", "safety case"],
+        "inclusion_criteria": [
+          "TRL ≥ 8 (plataforma/C2) y ≥ 7 (DAA)",
+          "Evidencia BVLOS/ensayos o cartas de autoridad",
+          "Autonomía/alcance mínimos",
+          "Payloads críticos disponibles",
+          "Soporte UE; plazos < 12 semanas",
+          "Aceptación de PoC con acceso a datos para safety case"
+        ],
+        "exclusion_criteria": [
+          "Drones de consumo/sin historial BVLOS",
+          "Plataformas sin VTOL en despegues restringidos (sin justificación)",
+          "Ausencia de DAA/mitigación o C2 sin redundancia",
+          "Sin logging/telemetría; sin soporte UE",
+          "TCO > €500k sin ventajas claras o OPEX > €1.000/h sin mejoras"
+        ],
+        "preferred_sources": ["EASA/AESA", "Manuales/OM/SoC del fabricante", "Autorizaciones BVLOS", "RFI/RFP", "Publicaciones técnicas", "Repos corporativos bajo NDA"],
+        "api_compilation": {
+          "crunchbase": {
+            "hint": "categorías + ubicaciones + keywords (AND‑only); usar Autocomplete para IDs",
+            "request_fields": ["website_url", "location_identifiers", "facet_ids", "short_description", "founder_identifiers", "funding_stage"]
+          },
+          "pitchbook": {
+            "hint": "sector Aerospace/Robotics, keyword 'BVLOS/DAA', región UE (ES/PT/FR), deals recientes",
+            "entities": ["companies", "deals"]
+          }
+        }
+      }
+    }
+  },
+  "render_order": ["E", "F", "G", "H", "I", "J", "K"]
+}
+
+

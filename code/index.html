@@ -13,8 +13,8 @@
         <header class="bg-white border-b-4 border-applus-orange py-5 mb-8 shadow-applus">
             <div class="flex justify-between items-center max-w-6xl mx-auto px-5">
                 <div class="flex items-center gap-4">
-                    <i class="fas fa-building text-3xl text-applus-orange"></i>
-                    <h1 class="text-3xl font-bold text-applus-gray-600 tracking-tight">Applus+ Ventures</h1>
+                    <img src="images/applus_logo.svg" alt="Applus+ Ventures" class="h-8" />
+                    <h1 class="text-3xl font-bold tracking-tight" style="color:#746661">Ventures</h1>
                 </div>
                 <div class="flex gap-3 items-center">
                     <span class="bg-applus-orange text-white px-4 py-2 rounded text-sm font-semibold">Fase 1: Definición</span>
@@ -510,6 +510,51 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Paso E: Procedimiento de Extracción (E→K) -->
+            <section id="step-e" class="step-content mt-8 pt-8 border-t border-applus-gray-200" style="display: none;">
+                <div class="mb-8">
+                    <h2 class="text-applus-orange mb-3 flex items-center gap-3 text-2xl font-semibold">
+                        <i class="fas fa-microscope"></i> Paso E–K: Procedimiento de Extracción
+                    </h2>
+                    <p class="text-applus-gray-400 text-sm leading-relaxed">
+                        Procesando resultados a partir del Challenge Request, Revisión IA y Entrevista…
+                    </p>
+                </div>
+
+                <!-- Barra de progreso simulada -->
+                <div class="bg-white rounded-lg p-5 border border-applus-gray-200 mb-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-spinner fa-spin text-applus-orange"></i>
+                        <span id="ek-progress-label" class="text-applus-gray-600 text-sm">Inicializando…</span>
+                    </div>
+                    <div class="w-full bg-applus-gray-200 rounded-full h-2">
+                        <div id="ek-progress-bar" class="bg-applus-orange h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <!-- Línea de tiempo E→K -->
+                <div id="ek-timeline" class="bg-white rounded-lg p-5 border border-applus-gray-200 mb-6">
+                    <!-- Se construye dinámicamente -->
+                </div>
+
+                <!-- Contenido renderizado -->
+                <div id="ek-content" class="space-y-6">
+                    <!-- Se rellenará dinámicamente -->
+                </div>
+
+                <!-- Acciones Paso E–K -->
+                <div class="flex justify-between items-center mt-8 pt-6 border-t border-applus-gray-200">
+                    <button id="back-to-step-d-btn" class="btn-applus-secondary">
+                        <i class="fas fa-arrow-left"></i> Volver al Paso D
+                    </button>
+                    <div class="flex gap-3">
+                        <button id="download-ek-qs-btn" class="btn-applus-secondary">
+                            <i class="fas fa-download"></i> Descargar pregunta operativa y ficha de búsqueda
+                        </button>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
 
@@ -558,5 +603,6 @@
     <script src="step-b.js"></script>
     <script src="step-c.js"></script>
     <script src="step-d.js"></script>
+    <script src="step-e.js"></script>
 </body>
 </html>
