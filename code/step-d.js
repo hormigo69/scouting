@@ -43,6 +43,77 @@ function getFormattedAIAnalysisForField(field) {
     return formatAIAnalysis(review.ai_analysis);
 }
 
+// Cargar progreso persistido desde localStorage (si existe)
+function loadPersistedInterviewProgress() {
+    try {
+        const raw = localStorage.getItem('interviewProgress');
+        if (!raw) return;
+        const parsed = JSON.parse(raw);
+        if (parsed && parsed.progress && typeof parsed.progress === 'object') {
+            interviewProgress = parsed.progress;
+        }
+    } catch (e) {
+        console.warn('No se pudo cargar progreso de entrevista persistido:', e);
+    }
+}
+
+// Obtener respuestas guardadas por pregunta para un campo
+function getFieldQuestionAnswers(field) {
+    const progress = interviewProgress[field.id];
+    if (progress && Array.isArray(progress.answers)) {
+        return progress.answers;
+    }
+    return [];
+}
+
+// Calcular si un campo está completo en base a respuestas de entrevista
+function isFieldCompletedByAnswers(field) {
+    const totalQuestions = Array.isArray(field.suggestedQuestions) ? field.suggestedQuestions.length : 0;
+    if (totalQuestions === 0) return false;
+    const answers = getFieldQuestionAnswers(field);
+    const answeredCount = answers.filter(a => a && a.trim() !== '').length;
+    return answeredCount >= totalQuestions;
+}
+
+// Guardar respuesta para una pregunta específica
+function saveQuestionAnswer(field, questionIndex) {
+    const textarea = document.getElementById(`question-answer-${field.id}-${questionIndex}`);
+    if (!textarea) return;
+    const answerText = textarea.value;
+    const existing = interviewProgress[field.id] || {};
+    const answers = Array.isArray(existing.answers) ? existing.answers : [];
+    answers[questionIndex] = answerText;
+    interviewProgress[field.id] = {
+        ...existing,
+        answers: answers,
+        lastUpdated: new Date().toISOString()
+    };
+    // Feedback visual simple
+    const btn = document.querySelector(`[data-save-answer="true"][data-field-id="${field.id}"][data-index="${questionIndex}"]`);
+    if (btn) {
+        btn.classList.add('saved');
+        setTimeout(() => btn.classList.remove('saved'), 800);
+    }
+
+    // Actualizar estado de completitud del campo en función de respuestas
+    const totalQuestions = Array.isArray(field.suggestedQuestions) ? field.suggestedQuestions.length : 0;
+    const answeredCount = answers.filter(a => a && a.trim() !== '').length;
+    if (totalQuestions > 0 && answeredCount >= totalQuestions) {
+        field.isComplete = true;
+        field.status = 'complete';
+    } else {
+        field.isComplete = false;
+        // mantener estado según respuesta original y score
+        field.status = determineFieldStatus(field.currentResponse, field.score);
+    }
+
+    // Refrescar UI de lista y progreso
+    loadFieldsList();
+    updateProgressDisplay();
+    // Actualizar el panel derecho para reflejar el nuevo estado
+    showFieldEditor(field);
+}
+
 // Inicialización del Paso D
 function initializeStepD() {
     console.log('Initializing Step D: Interview with Business Unit');
@@ -50,6 +121,7 @@ function initializeStepD() {
     // Cargar datos necesarios
     loadChallengeResponses().then(() => {
         loadAIReview().then(() => {
+            loadPersistedInterviewProgress();
             processFieldsForCompletion();
             setupEventListeners();
             updateProgressDisplay();
@@ -126,7 +198,27 @@ function processFieldsForCompletion() {
                 priority: determineFieldPriority((aiReview.ai_analysis && aiReview.ai_analysis.score) || 0, (aiReview.ai_analysis && aiReview.ai_analysis.feedback) || ''),
                 isComplete: false
             };
-            // debug removed
+            // Estado inicial: si ya es 'complete' por respuesta/score, contar como completo
+            fieldData.isComplete = (fieldData.status === 'complete');
+
+            // Si hay progreso persistido marcando como completo, respetarlo
+            if (interviewProgress[fieldData.id] && interviewProgress[fieldData.id].isComplete === true) {
+                fieldData.isComplete = true;
+                fieldData.status = 'complete';
+            } else {
+                // Ajustar estado inicial según respuestas guardadas
+                if (isFieldCompletedByAnswers(fieldData)) {
+                    fieldData.isComplete = true;
+                    fieldData.status = 'complete';
+                } else {
+                    const answers = getFieldQuestionAnswers(fieldData);
+                    const hasAnyAnswer = answers.some(a => a && a.trim() !== '');
+                    if (hasAnyAnswer && fieldData.status !== 'complete') {
+                        fieldData.status = 'incomplete';
+                        fieldData.isComplete = false;
+                    }
+                }
+            }
             
             fieldsToComplete.push(fieldData);
         }
@@ -328,65 +420,52 @@ function showFieldEditor(field) {
     // Preguntas sugeridas
     const suggestedQuestions = document.getElementById('suggested-questions');
     if (field.suggestedQuestions && field.suggestedQuestions.length > 0) {
-        const questionsList = field.suggestedQuestions.map(q => `<li class="mb-1">• ${q}</li>`).join('');
-        suggestedQuestions.innerHTML = `<ul class="list-disc list-inside space-y-1">${questionsList}</ul>`;
+        const storedAnswers = getFieldQuestionAnswers(field);
+        const questionsList = field.suggestedQuestions.map((q, index) => `
+            <div class="mb-4 p-3 bg-applus-gray-50 rounded-lg border border-applus-gray-200">
+                <div class="text-sm font-medium text-applus-gray-700 mb-2">${index + 1}. ${q}</div>
+                <textarea 
+                    id="question-answer-${field.id}-${index}"
+                    class="w-full p-3 border border-applus-gray-300 rounded-md font-inherit text-sm leading-relaxed resize-y min-h-[80px] focus:outline-none focus:border-applus-orange focus:ring-2 focus:ring-applus-orange focus:ring-opacity-20"
+                    placeholder="Anota aquí la respuesta del entrevistado..."
+                >${storedAnswers[index] ? storedAnswers[index] : ''}</textarea>
+                <div class="flex gap-2 mt-2">
+                    <button class="btn-applus-secondary text-xs" data-save-answer="true" data-field-id="${field.id}" data-index="${index}">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
+                </div>
+            </div>
+        `).join('');
+        suggestedQuestions.innerHTML = `
+            <div>
+                ${questionsList}
+            </div>
+        `;
+        // Asignar listeners de guardado por pregunta
+        suggestedQuestions.querySelectorAll('[data-save-answer="true"]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const idx = parseInt(this.dataset.index, 10);
+                saveQuestionAnswer(field, idx);
+            });
+        });
     } else {
         suggestedQuestions.innerHTML = '<p class="text-applus-gray-400 italic">No hay preguntas sugeridas</p>';
     }
     
-    // Editor de respuesta
-    const responseEditor = document.getElementById('field-response-editor');
-    responseEditor.value = field.currentResponse;
-    
-    // Configurar botones
-    setupFieldEditorButtons(field);
+    // Editor de respuesta eliminado (se mantiene progreso por preguntas)
 }
 
 // Configurar botones del editor
 function setupFieldEditorButtons(field) {
-    const saveBtn = document.getElementById('save-field-response-btn');
+    // Solo mantener marcado como completo
     const markCompleteBtn = document.getElementById('mark-complete-btn');
-    
-    if (saveBtn) {
-        saveBtn.onclick = () => saveFieldResponse(field);
-    }
-    
     if (markCompleteBtn) {
         markCompleteBtn.onclick = () => markFieldComplete(field);
     }
 }
 
 // Guardar respuesta del campo
-function saveFieldResponse(field) {
-    const responseEditor = document.getElementById('field-response-editor');
-    if (!responseEditor) return;
-    
-    const newResponse = responseEditor.value.trim();
-    
-    // Actualizar campo
-    field.currentResponse = newResponse;
-    field.status = determineFieldStatus(newResponse, field.score);
-    
-    // Actualizar en el Challenge Request original
-    const originalField = challengeResponses.fields.find(f => f.id === field.id);
-    if (originalField) {
-        originalField.response = newResponse;
-    }
-    
-    // Guardar progreso
-    interviewProgress[field.id] = {
-        response: newResponse,
-        timestamp: new Date().toISOString(),
-        status: field.status
-    };
-    
-    // Actualizar visualización
-    loadFieldsList();
-    showFieldEditor(field);
-    updateProgressDisplay();
-    
-    showNotification('Respuesta guardada correctamente', 'success');
-}
+// saveFieldResponse eliminado: ahora se guardan respuestas por pregunta
 
 // Marcar campo como completo
 function markFieldComplete(field) {
