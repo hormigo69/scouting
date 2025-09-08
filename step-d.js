@@ -126,13 +126,7 @@ function processFieldsForCompletion() {
                 priority: determineFieldPriority((aiReview.ai_analysis && aiReview.ai_analysis.score) || 0, (aiReview.ai_analysis && aiReview.ai_analysis.feedback) || ''),
                 isComplete: false
             };
-            console.log('[StepD][processFields] mapped', {
-                fieldId: field.id,
-                fieldName: field.name,
-                hasReview: !!aiReview,
-                analysisKeys: aiAnalysisObj ? Object.keys(aiAnalysisObj) : null,
-                formattedLen: fieldData.aiAnalysis ? fieldData.aiAnalysis.length : 0
-            });
+            // debug removed
             
             fieldsToComplete.push(fieldData);
         }
@@ -283,7 +277,7 @@ function showFieldEditor(field) {
     const analysisSummary = field.aiAnalysis && field.aiAnalysis.trim() !== ''
         ? field.aiAnalysis
         : (analysisObj ? formatAIAnalysis(analysisObj) : '');
-    console.log('Step D - analysis for field', field.id, { reviewForField, analysisObj, analysisSummary });
+    // debug removed
     const htmlWhenObj = analysisObj ? `
         <div class="mb-2">
             <strong>Puntuación:</strong> ${field.score}/10
@@ -329,7 +323,7 @@ function showFieldEditor(field) {
         </div>`;
     const finalHTML = htmlWhenObj || htmlFallback || `<pre class="whitespace-pre-wrap text-xs">${analysisObj ? JSON.stringify(analysisObj, null, 2) : ''}</pre>`;
     aiAnalysis.innerHTML = finalHTML;
-    console.log('[StepD][renderAnalysis] html length', finalHTML.length);
+    // debug removed
     
     // Preguntas sugeridas
     const suggestedQuestions = document.getElementById('suggested-questions');
