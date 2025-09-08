@@ -8,6 +8,41 @@ let fieldsToComplete = [];
 let currentField = null;
 let interviewProgress = {};
 
+// Formatear análisis de IA en una cadena legible
+function formatAIAnalysis(analysis) {
+    try {
+        if (!analysis || typeof analysis !== 'object') return '';
+        const summaryParts = [];
+        if (analysis.completeness) summaryParts.push(`Completitud: ${analysis.completeness}`);
+        if (analysis.clarity) summaryParts.push(`Claridad: ${analysis.clarity}`);
+        if (analysis.specificity) summaryParts.push(`Especificidad: ${analysis.specificity}`);
+
+        const summary = summaryParts.length > 0 ? summaryParts.join(' · ') : '';
+
+        const detailsParts = [];
+        if (Array.isArray(analysis.strengths) && analysis.strengths.length > 0) {
+            detailsParts.push(`Fortalezas: ${analysis.strengths.join('; ')}`);
+        }
+        if (Array.isArray(analysis.improvements) && analysis.improvements.length > 0) {
+            detailsParts.push(`Mejoras: ${analysis.improvements.join('; ')}`);
+        }
+        const details = detailsParts.join(' | ');
+
+        return [summary, details].filter(Boolean).join('. ');
+    } catch (e) {
+        console.warn('Error formatting AI analysis:', e);
+        return '';
+    }
+}
+
+// Obtener análisis formateado a partir de aiReviewData si el campo no lo tiene
+function getFormattedAIAnalysisForField(field) {
+    if (!aiReviewData || !aiReviewData.field_reviews) return '';
+    const review = aiReviewData.field_reviews.find(r => r.field_id === field.id || r.field_name === field.name);
+    if (!review || !review.ai_analysis) return '';
+    return formatAIAnalysis(review.ai_analysis);
+}
+
 // Inicialización del Paso D
 function initializeStepD() {
     console.log('Initializing Step D: Interview with Business Unit');
@@ -77,12 +112,13 @@ function processFieldsForCompletion() {
         );
         
         if (aiReview) {
+            const aiAnalysisObj = aiReview.ai_analysis || null;
             const fieldData = {
                 id: field.id,
                 name: field.name,
                 description: field.description,
                 currentResponse: field.response || '',
-                aiAnalysis: aiReview.analysis || '',
+                aiAnalysis: aiAnalysisObj ? formatAIAnalysis(aiAnalysisObj) : '',
                 suggestedQuestions: aiReview.interview_questions || [],
                 score: (aiReview.ai_analysis && aiReview.ai_analysis.score) || 0,
                 feedback: (aiReview.ai_analysis && aiReview.ai_analysis.feedback) || '',
@@ -90,6 +126,13 @@ function processFieldsForCompletion() {
                 priority: determineFieldPriority((aiReview.ai_analysis && aiReview.ai_analysis.score) || 0, (aiReview.ai_analysis && aiReview.ai_analysis.feedback) || ''),
                 isComplete: false
             };
+            console.log('[StepD][processFields] mapped', {
+                fieldId: field.id,
+                fieldName: field.name,
+                hasReview: !!aiReview,
+                analysisKeys: aiAnalysisObj ? Object.keys(aiAnalysisObj) : null,
+                formattedLen: fieldData.aiAnalysis ? fieldData.aiAnalysis.length : 0
+            });
             
             fieldsToComplete.push(fieldData);
         }
@@ -233,7 +276,48 @@ function showFieldEditor(field) {
     
     // Análisis de IA
     const aiAnalysis = document.getElementById('ai-analysis');
-    aiAnalysis.innerHTML = `
+    const reviewForField = aiReviewData && aiReviewData.field_reviews 
+        ? aiReviewData.field_reviews.find(r => r.field_id === field.id || r.field_name === field.name) 
+        : null;
+    const analysisObj = reviewForField && reviewForField.ai_analysis ? reviewForField.ai_analysis : null;
+    const analysisSummary = field.aiAnalysis && field.aiAnalysis.trim() !== ''
+        ? field.aiAnalysis
+        : (analysisObj ? formatAIAnalysis(analysisObj) : '');
+    console.log('Step D - analysis for field', field.id, { reviewForField, analysisObj, analysisSummary });
+    const htmlWhenObj = analysisObj ? `
+        <div class="mb-2">
+            <strong>Puntuación:</strong> ${field.score}/10
+        </div>
+        <div class="mb-2">
+            <strong>Feedback:</strong> ${field.feedback}
+        </div>
+        <div class="mb-2">
+            <strong>Análisis:</strong>
+            <div class="mt-2 text-sm text-applus-gray-600">
+                ${analysisObj.completeness || analysisObj.clarity || analysisObj.specificity ? `
+                <div class="mb-2 p-2 bg-applus-gray-50 rounded">
+                    ${analysisObj.completeness ? `<div>Completitud: ${analysisObj.completeness}</div>` : ''}
+                    ${analysisObj.clarity ? `<div>Claridad: ${analysisObj.clarity}</div>` : ''}
+                    ${analysisObj.specificity ? `<div>Especificidad: ${analysisObj.specificity}</div>` : ''}
+                </div>` : ''}
+                ${Array.isArray(analysisObj.strengths) && analysisObj.strengths.length ? `
+                <div class="mb-2">
+                    <div class="font-medium text-green-700 mb-1">Fortalezas</div>
+                    <ul class="list-disc list-inside space-y-1">
+                        ${analysisObj.strengths.map(s => `<li>${s}</li>`).join('')}
+                    </ul>
+                </div>` : ''}
+                ${Array.isArray(analysisObj.improvements) && analysisObj.improvements.length ? `
+                <div>
+                    <div class="font-medium text-orange-700 mb-1">Mejoras sugeridas</div>
+                    <ul class="list-disc list-inside space-y-1">
+                        ${analysisObj.improvements.map(i => `<li>${i}</li>`).join('')}
+                    </ul>
+                </div>` : ''}
+            </div>
+        </div>
+    ` : '';
+    const htmlFallback = `
         <div class="mb-2">
             <strong>Puntuación:</strong> ${field.score}/10
         </div>
@@ -241,9 +325,11 @@ function showFieldEditor(field) {
             <strong>Feedback:</strong> ${field.feedback}
         </div>
         <div>
-            <strong>Análisis:</strong> ${field.aiAnalysis}
-        </div>
-    `;
+            <strong>Análisis:</strong> ${analysisSummary || '<span class="text-applus-gray-400 italic">No hay análisis disponible</span>'}
+        </div>`;
+    const finalHTML = htmlWhenObj || htmlFallback || `<pre class="whitespace-pre-wrap text-xs">${analysisObj ? JSON.stringify(analysisObj, null, 2) : ''}</pre>`;
+    aiAnalysis.innerHTML = finalHTML;
+    console.log('[StepD][renderAnalysis] html length', finalHTML.length);
     
     // Preguntas sugeridas
     const suggestedQuestions = document.getElementById('suggested-questions');
