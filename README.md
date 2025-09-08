@@ -55,6 +55,8 @@ python3 start_server.py 3000
 ./start_server.sh 3000
 ```
 
+
+
 ### 2. **Abrir Directamente en Navegador**
 ```bash
 # Navegar a la carpeta code
