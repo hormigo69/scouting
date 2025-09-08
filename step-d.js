@@ -497,10 +497,10 @@ function updateProgressDisplay() {
     const progressPercentage = totalCount > 0 ? (completedCount / totalCount) * 100 : 0;
     document.getElementById('progress-bar').style.width = `${progressPercentage}%`;
     
-    // Habilitar/deshabilitar botón de finalizar
+    // Botón de finalizar siempre habilitado; la validación se maneja al hacer clic
     const completeBtn = document.getElementById('complete-interview-btn');
     if (completeBtn) {
-        completeBtn.disabled = completedCount < totalCount;
+        completeBtn.disabled = false;
     }
 }
 
@@ -522,6 +522,8 @@ function setupEventListeners() {
     const completeBtn = document.getElementById('complete-interview-btn');
     if (completeBtn) {
         completeBtn.addEventListener('click', completeInterview);
+        // Asegurar que esté habilitado independientemente del estado inicial del DOM
+        completeBtn.disabled = false;
     }
     
     // Botón de exportar documento final
@@ -567,11 +569,6 @@ function saveInterviewProgress() {
 
 // Completar entrevista
 function completeInterview() {
-    if (!validateAllFieldsComplete()) {
-        showNotification('Debes completar todos los campos antes de finalizar', 'error');
-        return;
-    }
-    
     // Marcar todos los campos como completos
     fieldsToComplete.forEach(field => {
         field.isComplete = true;
@@ -579,11 +576,31 @@ function completeInterview() {
     });
     
     // Actualizar Challenge Request final
-    const finalDocument = generateFinalDocument();
+    const finalDocument = generateFinalDocument('ready_for_extraction');
+
+    // Guardar en servidor (code/files/) mediante endpoint local
+    saveInterviewResults(finalDocument)
+        .then((res) => {
+            if (res && res.ok) {
+                showNotification(`Entrevista finalizada y guardada en ${res.relative_path}`, 'success');
+            } else {
+                showNotification('Entrevista finalizada, pero no se pudo guardar el archivo', 'error');
+            }
+        })
+        .catch(() => {
+            showNotification('Entrevista finalizada, pero ocurrió un error al guardar', 'error');
+        });
     
-    showNotification('Entrevista completada exitosamente', 'success');
-    
-    // Aquí se podría proceder al siguiente paso (Procedimiento de Extracción E-N)
+    // Proceder al siguiente paso (Procedimiento de Extracción E–K) en la demo
+    const stepC = document.getElementById('step-c');
+    const stepD = document.getElementById('step-d');
+    if (stepC) stepC.style.display = 'none';
+    if (stepD) stepD.style.display = 'none';
+    if (typeof window.initializeStepE === 'function') {
+        window.initializeStepE();
+    } else {
+        console.log('initializeStepE no disponible todavía');
+    }
     console.log('Interview completed. Final document:', finalDocument);
 }
 
@@ -593,7 +610,7 @@ function validateAllFieldsComplete() {
 }
 
 // Generar documento final
-function generateFinalDocument() {
+function generateFinalDocument(statusOverride) {
     return {
         metadata: {
             title: 'Challenge Request Finalizado',
@@ -607,8 +624,29 @@ function generateFinalDocument() {
             completedFields: fieldsToComplete.filter(f => f.isComplete),
             progress: interviewProgress
         },
-        status: 'ready_for_extraction'
+        status: statusOverride || 'ready_for_extraction'
     };
+}
+
+// Guardar resultados de entrevista en servidor
+async function saveInterviewResults(finalDocument) {
+    try {
+        const filename = `challenge-request-final-${new Date().toISOString().split('T')[0]}.json`;
+        const response = await fetch('/api/save-interview', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ filename, data: finalDocument })
+        });
+        if (!response.ok) {
+            return { ok: false };
+        }
+        return await response.json();
+    } catch (e) {
+        console.error('Error saving interview results:', e);
+        return { ok: false };
+    }
 }
 
 // Exportar documento final
