@@ -1955,3 +1955,21 @@ video {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+
+/* --- Access Lock (Password Modal + Blur) --- */
+body.locked {
+  overflow: hidden;
+}
+
+body.locked #app-root {
+  filter: blur(8px);
+  transition: filter 200ms ease;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Utility color for error message */
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity, 1));
+}
