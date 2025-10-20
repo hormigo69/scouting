@@ -424,10 +424,10 @@ function downloadAIReview() {
     }
     
     // Crear un objeto con la revisión completa
-    const downloadData = {
+        const downloadData = {
         ...aiReviewData,
         download_date: new Date().toISOString(),
-        download_source: 'Applus+ Ventures Challenge Request Tool'
+            download_source: 'Repsol Challenge Request Tool'
     };
     
     // Crear y descargar el archivo

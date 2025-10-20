@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "APPLUS+ VENTURES: CHALLENGE REQUEST",
-    "division": "Applus+_Division Name",
+    "title": "REPSOL: CHALLENGE REQUEST",
+    "division": "Repsol_Division Name",
     "date": "",
     "owners": ""
   },
@@ -59,7 +59,7 @@
     {
       "id": "number_of_startups",
       "name": "NUMBER OF STARTUPS",
-      "description": "Indicate the number of potential startups expected to review. The first deliverable will be a list of startups potentially qualified to solve the Challenge, based on public information (Long List). The team will review and select a few, to be contacted by Applus Ventures to request further information and confirm their qualification and interest in meeting Applus (Short List).",
+      "description": "Indicate the number of potential startups expected to review. The first deliverable will be a list of startups potentially qualified to solve the Challenge, based on public information (Long List). The team will review and select a few, to be contacted by Repsol to request further information and confirm their qualification and interest in meeting Repsol (Short List).",
       "type": "textarea",
       "required": true,
       "examples": [
@@ -98,12 +98,12 @@
     {
       "id": "value_proposition",
       "name": "VALUE PROPOSITION/POST-PILOT COLLABORATION",
-      "description": "What are the benefits that the startup may get if it accepts to collaborate with Applus, if the Pilot Project/Proof of Concept is successful. Please elaborate",
+      "description": "What are the benefits that the startup may get if it accepts to collaborate with Repsol, if the Pilot Project/Proof of Concept is successful. Please elaborate",
       "type": "textarea",
       "required": false,
       "examples": [
         "Commercial Collaboration in the short term",
-        "Access to Applus clients or markets",
+        "Access to Repsol clients or markets",
         "Long term Partnership",
         "Collaboration in a joint R&D project",
         "Financing"
@@ -112,7 +112,7 @@
     },
     {
       "id": "applus_team",
-      "name": "APPLUS TEAM",
+      "name": "REPSOL TEAM",
       "description": "Indicate the people involved, name and position",
       "type": "textarea",
       "required": true,
@@ -123,7 +123,7 @@
         "Evaluators (people involved in reviewing Long List and Short List)",
         "Pilot Project/Proof of Concept Team"
       ],
-      "response": "[Escribir aquí el equipo de Applus]"
+      "response": "[Escribir aquí el equipo de Repsol]"
     },
     {
       "id": "documentation",

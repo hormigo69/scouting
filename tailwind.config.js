@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Colores corporativos de Applus+
+        // Colores corporativos (mapeados desde esquema original)
         'applus-orange': '#FF8C00',
         'applus-orange-dark': '#e67e00',
         'applus-orange-light': '#FFA500',

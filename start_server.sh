@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script para iniciar el servidor HTTP local para Applus+ Ventures
+# Script para iniciar el servidor HTTP local para Repsol
 
 # Colores para output
 RED='\033[0;31m'
@@ -10,7 +10,7 @@ NC='\033[0m' # No Color
 
 # Función para mostrar ayuda
 show_help() {
-    echo -e "${BLUE}🎯 Applus+ Ventures - Servidor de Desarrollo${NC}"
+    echo -e "${BLUE}🎯 Repsol - Servidor de Desarrollo${NC}"
     echo "=================================================="
     echo ""
     echo "Uso: $0 [puerto]"
@@ -53,7 +53,7 @@ if [ ! -f "index.html" ]; then
 fi
 
 # Mostrar información del servidor
-echo -e "${BLUE}🚀 Servidor Applus+ Ventures iniciado${NC}"
+echo -e "${BLUE}🚀 Servidor Repsol iniciado${NC}"
 echo -e "${GREEN}📡 Puerto: $PORT${NC}"
 echo -e "${GREEN}🌐 URL: http://localhost:$PORT${NC}"
 echo -e "${GREEN}📁 Directorio: $(pwd)${NC}"

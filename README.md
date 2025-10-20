@@ -1,6 +1,6 @@
 # Frontend - Paso A: Personalización de Challenge Request
 
-Este frontend implementa el **Paso A** de la **Fase 1** del sistema de scouting de innovación de Applus+ Ventures.
+Este frontend implementa el **Paso A** de la **Fase 1** del sistema de scouting de innovación de Repsol.
 
 ## 🎯 Objetivo
 
@@ -192,4 +192,4 @@ Este frontend se integra con el flujo completo de la Fase 1:
 
 ---
 
-**Desarrollado para Applus+ Ventures - Sistema de Scouting de Innovación**
+**Desarrollado para Repsol - Sistema de Scouting de Innovación**

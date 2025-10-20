@@ -1,0 +1,37 @@
+/* Repsol brand overrides and mappings (keeps existing utility class names) */
+:root {
+  --repsol-orange: #FF8A00; /* primary orange */
+  --repsol-orange-2: #EA0673; /* gradient end (pinkish) */
+  --repsol-blueblack: #001B2D; /* blue-black */
+  --repsol-teal: #00A6C7; /* teal accent for blue gradient */
+  --repsol-ivory: #F7EDE6; /* ivory */
+  --repsol-orange-hover: #E07400; /* darker orange */
+}
+
+/* Map former Applus classes to Repsol palette */
+.text-applus-orange { color: var(--repsol-orange) !important; }
+.bg-applus-orange { background-color: var(--repsol-orange) !important; }
+.border-applus-orange { border-color: var(--repsol-orange) !important; }
+
+.btn-applus-primary,
+.btn-applus-success { background-color: var(--repsol-orange) !important; border-color: var(--repsol-orange) !important; }
+.btn-applus-primary:hover,
+.btn-applus-success:hover { background-color: var(--repsol-orange-hover) !important; border-color: var(--repsol-orange-hover) !important; }
+
+/* Gradients used in cards */
+.from-applus-orange { --tw-gradient-from: var(--repsol-orange) var(--tw-gradient-from-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255,138,0,0)); }
+.to-applus-orange-light { --tw-gradient-to: var(--repsol-orange-2) var(--tw-gradient-to-position); }
+
+/* Surfaces and dark blocks */
+.bg-applus-gray-50 { background-color: var(--repsol-ivory) !important; }
+.bg-applus-gray-600 { background-color: var(--repsol-blueblack) !important; }
+
+/* Accents */
+.text-applus-blue-500 { color: var(--repsol-teal) !important; }
+.bg-blue-500 { background-color: var(--repsol-teal) !important; }
+
+/* Focus tints */
+.focus\:ring-applus-orange:focus { --tw-ring-color: var(--repsol-orange) !important; }
+.focus\:border-applus-orange:focus { border-color: var(--repsol-orange) !important; }
+
+
