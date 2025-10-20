@@ -1,7 +1,7 @@
 {
   "name": "applus-challenge-request",
   "version": "1.0.0",
-  "description": "Applus+ Ventures Challenge Request Personalization Tool",
+  "description": "Repsol Challenge Request Personalization Tool",
   "main": "index.html",
   "scripts": {
     "dev": "tailwindcss -i ./src/input.css -o ./styles.css --watch",
@@ -12,7 +12,7 @@
     "tailwindcss": "^3.4.0",
     "@tailwindcss/forms": "^0.5.7"
   },
-  "keywords": ["applus", "challenge", "request", "tailwind", "frontend"],
-  "author": "Applus+ Ventures",
+  "keywords": ["repsol", "challenge", "request", "tailwind", "frontend"],
+  "author": "Repsol Innovación",
   "license": "MIT"
 }

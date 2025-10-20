@@ -65,7 +65,7 @@ function determineFieldType(field) {
 const templates = {
     standard: {
         name: 'Plantilla Estándar',
-        description: 'Plantilla base de Applus+ Ventures con todos los campos estándar del Challenge Request',
+        description: 'Plantilla base de Repsol con todos los campos estándar del Challenge Request',
         fields: [], // Will be populated dynamically from markdown
     },
     automotive: {
@@ -151,7 +151,7 @@ const templates = {
             },
             {
                 id: 'applus_team',
-                name: 'Applus Team',
+                name: 'Repsol Team',
                 type: 'textarea',
                 required: true,
                 description: 'Indicate the people involved, name and position',
@@ -242,7 +242,7 @@ const templates = {
             },
             {
                 id: 'applus_team',
-                name: 'Applus Team',
+                name: 'Repsol Team',
                 type: 'textarea',
                 required: true,
                 description: 'Indicate the people involved, name and position',

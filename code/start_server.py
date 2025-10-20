@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Script para iniciar el servidor HTTP local para la aplicación Applus+ Ventures
+Script para iniciar el servidor HTTP local para la aplicación Repsol Scouting
 Uso: python start_server.py [puerto]
 """
 
@@ -85,7 +85,7 @@ def start_server(port=8000):
     
     try:
         with socketserver.TCPServer(("", port), handler) as httpd:
-            print("🚀 Servidor Applus+ Ventures iniciado")
+            print("🚀 Servidor Repsol iniciado")
             print(f"📡 Puerto: {port}")
             print(f"🌐 URL: http://localhost:{port}")
             print(f"📁 Directorio: {script_dir}")
@@ -111,7 +111,7 @@ def start_server(port=8000):
 
 def main():
     """Función principal"""
-    print("🎯 Applus+ Ventures - Servidor de Desarrollo")
+    print("🎯 Repsol - Servidor de Desarrollo")
     print("=" * 50)
     
     # Verificar que estamos en el directorio correcto

@@ -1,8 +1,8 @@
-# Migración a Tailwind CSS - Applus+ Challenge Request
+# Migración a Tailwind CSS - Repsol Challenge Request
 
 ## Resumen de la Migración
 
-Se ha migrado exitosamente el frontend de Applus+ Challenge Request de CSS personalizado a **Tailwind CSS**, manteniendo la estética corporativa y mejorando significativamente la arquitectura del código.
+Se ha migrado exitosamente el frontend de Repsol Challenge Request de CSS personalizado a **Tailwind CSS**, manteniendo la estética corporativa y mejorando significativamente la arquitectura del código.
 
 ## Beneficios Obtenidos
 
@@ -12,7 +12,7 @@ Se ha migrado exitosamente el frontend de Applus+ Challenge Request de CSS perso
 - **Reducción**: 96% menos código CSS
 
 ### 🎨 Mantenimiento de Estética
-- ✅ Colores corporativos de Applus+ (#FF8C00) preservados
+- ✅ Colores corporativos adaptados a Repsol (naranja/gradiente) preservados
 - ✅ Diseño responsive mejorado
 - ✅ Animaciones y transiciones mantenidas
 - ✅ Componentes visuales idénticos

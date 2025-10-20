@@ -60,7 +60,7 @@
       "interview_questions": [
         "¿Tienen cifras específicas de los costes actuales de inspección con VLOS?",
         "¿Cuánto tiempo se ahorraría con BVLOS en cada tipo de inspección?",
-        "¿Qué otros departamentos de Applus+ podrían beneficiarse de esta tecnología?",
+        "¿Qué otros departamentos de Repsol podrían beneficiarse de esta tecnología?",
         "¿Han calculado el ROI esperado de la implementación BVLOS?"
       ]
     },
@@ -209,20 +209,20 @@
         "completeness": "moderate",
         "clarity": "good",
         "specificity": "moderate",
-        "feedback": "La propuesta de valor es clara pero genérica. Necesita más especificidad sobre qué puede ofrecer Applus+ y qué tipo de colaboración buscan.",
+        "feedback": "La propuesta de valor es clara pero genérica. Necesita más especificidad sobre qué puede ofrecer Repsol y qué tipo de colaboración buscan.",
         "strengths": [
           "Menciona diferentes tipos de colaboración",
           "Considera tanto corto como largo plazo"
         ],
         "improvements": [
-          "Especificar qué recursos puede aportar Applus+",
+          "Especificar qué recursos puede aportar Repsol",
           "Definir acceso a clientes/markets específicos",
           "Añadir propuesta de valor financiera",
           "Especificar términos de colaboración"
         ]
       },
       "interview_questions": [
-        "¿Qué recursos específicos puede aportar Applus+ a las startups?",
+        "¿Qué recursos específicos puede aportar Repsol a las startups?",
         "¿A qué mercados o clientes específicos pueden dar acceso?",
         "¿Están dispuestos a invertir financieramente en las startups?",
         "¿Qué términos de colaboración preferirían (licencia, joint venture, etc.)?"
@@ -300,7 +300,7 @@
     {
       "priority": "medium",
       "category": "value_proposition",
-      "recommendation": "Especificar la propuesta de valor concreta que Applus+ puede ofrecer a las startups",
+      "recommendation": "Especificar la propuesta de valor concreta que Repsol puede ofrecer a las startups",
       "impact": "Aumentará el atractivo para startups de calidad"
     },
     {
@@ -334,7 +334,7 @@
       "¿Qué caso de uso específico sería ideal para el piloto?",
       "¿Cuál sería el presupuesto disponible para el piloto?",
       "¿Qué estrategias tienen para superar los obstáculos regulatorios EASA?",
-      "¿Qué recursos específicos puede aportar Applus+ a las startups?"
+      "¿Qué recursos específicos puede aportar Repsol a las startups?"
     ]
   }
 }
