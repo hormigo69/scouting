@@ -361,6 +361,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     initializeModal();
     initializeActions();
     
+    // Password gate: lock until correct password is provided
+    initializePasswordGate();
+
     // Show loading complete message
     console.log('Application initialized successfully');
     console.log('Available templates:', Object.keys(templates));
@@ -907,6 +910,53 @@ document.addEventListener('DOMContentLoaded', function() {
         stepIndicator.textContent = 'Paso A: Personalización';
     }
 });
+
+// ---------------- Password Gate ----------------
+function initializePasswordGate() {
+    const PASSWORD = 'Scouting8656$$';
+    const modal = document.getElementById('passwordModal');
+    const input = document.getElementById('accessPassword');
+    const submitBtn = document.getElementById('passwordSubmitBtn');
+    const errorMsg = document.getElementById('passwordError');
+
+    if (!modal || !input || !submitBtn) {
+        return;
+    }
+
+    // If already validated in this session, skip
+    const unlocked = sessionStorage.getItem('scouting_unlocked');
+    if (unlocked === 'true') {
+        unlockApp(modal);
+        return;
+    }
+
+    document.body.classList.add('locked');
+    modal.style.display = 'flex';
+
+    const validate = () => {
+        const value = input.value || '';
+        if (value === PASSWORD) {
+            sessionStorage.setItem('scouting_unlocked', 'true');
+            unlockApp(modal);
+        } else {
+            if (errorMsg) errorMsg.style.display = 'block';
+            input.value = '';
+            input.focus();
+        }
+    };
+
+    submitBtn.addEventListener('click', validate);
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            validate();
+        }
+    });
+}
+
+function unlockApp(modal) {
+    document.body.classList.remove('locked');
+    if (modal) modal.style.display = 'none';
+}
 
 function initializeStepB() {
     // This function will be called when step-b.js is loaded

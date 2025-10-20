@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="styles-repsol.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body class="font-sans bg-applus-gray-50 min-h-screen text-applus-gray-600 leading-relaxed">
-    <div class="max-w-7xl mx-auto p-5">
+<body class="font-sans bg-applus-gray-50 min-h-screen text-applus-gray-600 leading-relaxed locked">
+    <div id="app-root" class="max-w-7xl mx-auto p-5">
         <!-- Header -->
         <header class="bg-gradient-to-br from-applus-orange to-applus-orange-light py-5 mb-8 shadow-applus text-white">
             <div class="flex justify-between items-center max-w-6xl mx-auto px-5">
@@ -596,6 +596,25 @@
             <div class="flex justify-end gap-3 p-5 border-t border-applus-gray-200">
                 <button class="btn-applus-secondary" id="cancelAddFieldBtn">Cancelar</button>
                 <button class="btn-applus-primary" id="confirmAddFieldBtn">Añadir Campo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Password Modal (bloquea acceso hasta introducir contraseña) -->
+    <div class="modal-overlay" id="passwordModal" style="display: flex;">
+        <div class="modal-content">
+            <div class="flex justify-between items-center p-5 border-b border-applus-gray-200">
+                <h3 class="text-applus-gray-700 text-lg font-semibold">Acceso protegido</h3>
+            </div>
+            <div class="p-5">
+                <div class="flex flex-col gap-2">
+                    <label for="accessPassword" class="font-medium text-applus-gray-700">Contraseña</label>
+                    <input type="password" id="accessPassword" class="form-input" placeholder="Introduce la contraseña">
+                    <div id="passwordError" class="text-sm text-red-500 mt-2" style="display: none;">Contraseña incorrecta</div>
+                </div>
+            </div>
+            <div class="flex justify-end gap-3 p-5 border-t border-applus-gray-200">
+                <button class="btn-applus-primary" id="passwordSubmitBtn">Entrar</button>
             </div>
         </div>
     </div>
