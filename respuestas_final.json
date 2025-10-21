@@ -1,0 +1,170 @@
+{
+  "ai_review_filled": {
+    "metadata": {
+      "source_title": "Revisión de IA - Challenge Request BVLOS",
+      "business_unit": "Applus+ Energy & Industry",
+      "owner": "Salvador Jiménez",
+      "filled_on": "2025-09-08",
+      "notes": "Respuestas preparadas por la Unidad de negocio para la entrevista de evaluación"
+    },
+    "fields": [
+      {
+        "field_id": "challenge_headline",
+        "interview_questions": [
+          "¿En qué regiones geográficas específicas planean implementar las soluciones BVLOS?",
+          "¿Cuál es el TRL mínimo que consideran aceptable para las soluciones?",
+          "¿Qué plazos tienen para el piloto y la implementación operacional?",
+          "¿Cómo medirían el éxito de la implementación BVLOS?",
+          "Testing Guardar preguntas ***************************"
+        ],
+        "answers": [
+          "Fase 1 (piloto): España (Castilla-La Mancha y Aragón, tramos rurales de líneas eléctricas y oleoductos) y Portugal (Alentejo). Fase 2 (despliegue inicial): España, Portugal y sur de Francia. Fase 3 (expansión y casos off-shore): norte de España (costa Cantábrica) y Golfo de Cádiz; posibilidad de pilotos espejo en México/Chile para acelerar aprendizaje operativo en marcos regulatorios más flexibles.",
+          "TRL ≥ 8 para plataforma y C2 (demostrado en entorno operativo), y TRL ≥ 7 para módulos de Detect-and-Avoid (DAA) y software de autonomía. Requerimos historial de operaciones BVLOS con autoridad aeronáutica (europea o equivalente) o, en su defecto, evidencia sólida de ensayos pre-operacionales y safety cases auditables.",
+          "Evaluación y Short List: 8–29 sep 2025. Diligencia técnica y demos: 6–24 oct 2025. Selección final y diseño piloto: 27 oct–15 nov 2025. Tramitación operacional y mitigaciones SORA: 17 nov 2025–31 ene 2026 (en paralelo con ingeniería de caso). Ventana de piloto en Iberia: feb–mar 2026 (meteorología y disponibilidad de cliente). Si ejecutamos un piloto espejo fuera de la UE, ventana alternativa: dic 2025.",
+          "KPIs primarios: (1) Productividad: km inspeccionados/día (objetivo ≥ 60–100 km/día vs. 8–12 km/día VLOS); (2) Coste por km: reducción ≥ 30%; (3) Seguridad: 0 incidentes y cumplimiento completo de mitigaciones SORA; (4) Calidad de datos: tasa de detección de defectos y re-vuelo ≤ 5%; (5) Lead time de informe: −40% vs. base VLOS. KPIs secundarios: disponibilidad técnica ≥ 95% y satisfacción del cliente ≥ 8/10.",
+          "No aplica (entrada de prueba en el documento original)."
+        ]
+      },
+      {
+        "field_id": "problem_definition",
+        "interview_questions": [
+          "¿Tienen cifras específicas de los costes actuales de inspección con VLOS?",
+          "¿Cuánto tiempo se ahorraría con BVLOS en cada tipo de inspección?",
+          "¿Qué otros departamentos de Applus+ podrían beneficiarse de esta tecnología?",
+          "¿Han calculado el ROI esperado de la implementación BVLOS?"
+        ],
+        "answers": [
+          "En lineales on-shore con multirrotor VLOS: productividad típica 8–12 km/día por equipo (2 técnicos). Coste operativo directo del equipo ~€1.400–€1.800/día, lo que sitúa el coste directo por km en ~€120–€180, sin incluir logística especial ni permisos locales.",
+          "Lineales (oleoductos/líneas eléctricas): x5–x8 de productividad (60–100 km/día). Off-shore: reducción de horas de embarcación ≥ 25% y ventana operativa más amplia al minimizar despegues/aterrizajes repetidos.",
+          "Laboratorios de Integridad (procesamiento avanzado de datos), HSE (mejora de seguridad operativa), Digital (plataformas de analítica), y Ventas Internacional (oferta diferenciada en licitaciones de energía e infra).",
+          "Estimación conservadora: inversión por sistema €200k–€400k, uso 120 días/año, ahorro neto anual por sistema €180k–€300k (suma de OPEX evitado y mayor throughput). Payback estimado: 12–24 meses según caso de uso."
+        ]
+      },
+      {
+        "field_id": "potential_solutions",
+        "interview_questions": [
+          "¿Qué tipo de payload específico necesitan para sus inspecciones?",
+          "¿Tienen un rango de presupuesto para la adquisición de drones BVLOS?",
+          "¿Qué criterios técnicos específicos son no negociables?",
+          "¿Han considerado startups más pequeñas además de los grandes players?"
+        ],
+        "answers": [
+          "Conjunto modular con: (1) RGB de alta resolución (≥ 42 MP, obturador global); (2) LiDAR aéreo ligero (≥ 200k pts/s) para modelado de vegetación/terreno; (3) Térmico MWIR/LWIR (640×512 o superior) para hot-spots; (4) Sensor de metano (TDLAS/OGI) para Oil & Gas; (5) Cámara UV para efecto corona en alta tensión. Integración con gimbal estabilizado, PPK/RTK y SDK abierto.",
+          "Por plataforma completa (aire + C2 + gimbal + dos cargas útiles): €250k–€600k según categoría (helicóptero no tripulado vs. fixed-wing VTOL). Para pilotos, preferimos modelo OPEX (alquiler/servicio) si acelera la autorización.",
+          "Autonomía útil ≥ 2 h (lineales) o ≥ 60 min en off-shore; alcance operacional ≥ 50 km con enlace C2 redundado; protocolos de enlace con fallback seguro; DAA táctico o mitigación equivalente aprobable; MTOW y performance acordes a carga; geocercas dinámicas; registro y telemetría para safety case; procedimiento de lost-link validado; manuales y mantenimiento documentados.",
+          "Sí. Además de fabricantes consolidados, consideramos startups de fixed-wing VTOL y proveedores especializados de DAA/C2 y analítica. Priorizaremos a las que acrediten operaciones o ensayos BVLOS y cuenten con soporte en la UE."
+        ]
+      },
+      {
+        "field_id": "discarded_solutions",
+        "interview_questions": [
+          "¿Qué tecnologías o tipos de drones han descartado y por qué?",
+          "¿Hay limitaciones técnicas específicas que excluyen ciertas soluciones?",
+          "¿Qué criterios de coste-beneficio aplican para descartar opciones?",
+          "¿Han evaluado soluciones híbridas o alternativas no tradicionales?"
+        ],
+        "answers": [
+          "Multirrotores de consumo o sin historial BVLOS (autonomía/alcance insuficientes), plataformas sin VTOL para despegues/aterrizajes restringidos, aeronaves experimentales sin documentación aeronáutica, y soluciones aerostáticas/tethered no adecuadas para lineales largos.",
+          "Ausencia de DAA o mitigación aceptable, C2 sin redundancia, cargas útiles no integrables, ausencia de registro de datos para safety case, o imposibilidad de cumplir procedimientos de emergencia definidos.",
+          "TCO desproporcionado (>€500k por plataforma sin ventajas claras), OPEX por hora >€1.000 sin mejora de productividad, o plazos de homologación que pongan en riesgo el piloto 2025-Q4/2026-Q1.",
+          "Sí; consideramos helicópteros no tripulados para cargas pesadas y fixed-wing VTOL para alcance. Descartamos híbridos sin soporte en la UE o sin ecosistema de payloads."
+        ]
+      },
+      {
+        "field_id": "number_of_startups",
+        "interview_questions": [
+          "¿Cómo priorizarían las 20 startups de la Long List?",
+          "¿Qué timeline tienen para completar la evaluación?",
+          "¿Qué criterios específicos usarían para pasar de Long List a Short List?"
+        ],
+        "answers": [
+          "Aplicaremos una matriz de scoring (0–5) ponderada: (1) Preparación regulatoria/track-record BVLOS (25%); (2) Encaje con casos de uso y tipo de plataforma (15%); (3) Autonomía/alcance útil (15%); (4) Payload y facilidad de integración (12%); (5) C2/DAA y safety (12%); (6) TCO/precio y modelo comercial (6%); (7) Madurez de soporte UE y tiempos de entrega (10%); (8) Solidez financiera y referencias (5%). Empate: capacidad de ejecutar piloto en nuestra ventana y presencia local.",
+          "Semana 1 (8–12 sep 2025): cierre de criterios y normalización de datos. Semana 2 (15–19 sep): scoring desk y pre-shortlist. Semana 3 (22–26 sep): comité de selección y priorización. Semana 4 (29 sep–3 oct): contacto, NDAs y envío de RFI técnico. Entregable: Short List validada el 3 oct 2025.",
+          "Filtros de corte: TRL ≥ 8; evidencia BVLOS (operaciones, ensayos o cartas de autoridad); autonomía y alcance mínimos por caso (≥ 2 h y ≥ 50 km lineales o justificación equivalente); disponibilidad de payloads críticos; DAA/mitigaciones; soporte UE y plazos < 12 semanas para piloto; TCO/condiciones económicas competitivas; y aceptación de PoC con acceso a datos para safety case."
+        ]
+      },
+      {
+        "field_id": "considerations",
+        "interview_questions": [
+          "¿Qué estrategias tienen para superar los obstáculos regulatorios EASA?",
+          "¿Han considerado pilotos en regiones con marcos regulatorios más flexibles?",
+          "¿Cómo planean gestionar las diferencias de expectativas del equipo?",
+          "¿Qué timeline tienen para resolver los obstáculos identificados?"
+        ],
+        "answers": [
+          "Estrategia SORA paso a paso con mitigaciones tácticas/estratégicas, selección de corredores rurales de baja densidad poblacional, coordinación temprana con AESA, uso de PDRA/escenarios aplicables cuando proceda, y colaboración con operador con LUC mientras tramitamos nuestras autorizaciones.",
+          "Sí. Plan B: piloto espejo en México o Chile (lineales rurales) para acelerar lecciones operativas y validar procedimientos, manteniendo en paralelo el expediente en la UE.",
+          "Gobernanza con RACI claro, comité quincenal de decisión, criterios de éxito acordados por escrito y canal único de comunicación con actas y versionado de requisitos.",
+          "Preparación documental: 6–8 semanas; interacción con autoridad y ajustes: 4–8 semanas adicionales según complejidad del corredor; total estimado: 10–16 semanas hasta autorización del piloto."
+        ]
+      },
+      {
+        "field_id": "pilot_project",
+        "interview_questions": [
+          "¿Qué caso de uso específico sería ideal para el piloto?",
+          "¿Cuál sería el presupuesto disponible para el piloto?",
+          "¿Qué métricas específicas medirían el éxito del piloto?",
+          "¿Quién del equipo estaría disponible para el piloto y cuándo?",
+          "¿Tienen clientes reales dispuestos a participar en el piloto?"
+        ],
+        "answers": [
+          "Inspección BVLOS de un tramo de 60–80 km de línea eléctrica rural (España/Portugal) con detección de vegetación y anomalías térmicas, más una jornada de prueba off-shore para validar operación sobre agua y flujos de datos.",
+          "Capex/Opex piloto: €150k–€200k (plataforma en modalidad servicio, logística, seguros, ingeniería SORA y procesamiento de datos).",
+          "Km/día, coste por km, % re-vuelo, disponibilidad técnica, tasa de detección de incidencias (precision/recall donde aplique), lead time de informe y satisfacción del cliente.",
+          "Owner (Salvador Jiménez): 30% del tiempo; Coordinator (Miguel Rodríguez Castro): 40%; Evaluadores (Sergio Merelo, Luis Alberto Jaén, Victoria Escuredo, Ramon María Rincón): 10–20% según hito; soporte HSE y Legal bajo demanda.",
+          "Sí, contamos con interés preliminar de una utility ibérica y un operador de oleoducto (en confirmación de ventana). Selección final sujeta a disponibilidad de corredor y permisos."
+        ]
+      },
+      {
+        "field_id": "value_proposition",
+        "interview_questions": [
+          "¿Qué recursos específicos puede aportar Applus+ a las startups?",
+          "¿A qué mercados o clientes específicos pueden dar acceso?",
+          "¿Están dispuestos a invertir financieramente en las startups?",
+          "¿Qué términos de colaboración preferirían (licencia, joint venture, etc.)?"
+        ],
+        "answers": [
+          "Acceso a casos reales y corredores de prueba, ingeniería de safety case y SORA, expertos sectoriales (eléctrico, Oil & Gas, off-shore) y plataforma de analítica e informes.",
+          "Cartera ibérica y europea en energía e infra (utilities eléctricas, gasoductos, eólicos on/off-shore) y presencia en LatAm para pilotos espejo.",
+          "Podemos cofinanciar pilotos y, caso a caso, explorar inversión minoritaria o preacuerdos comerciales vinculados a hitos técnicos.",
+          "Preferencia por acuerdo de licencia/comercialización con exclusividad limitada por vertical y geografía durante 12–24 meses, con opción de co-desarrollo; JV solo si se justifica por volumen."
+        ]
+      },
+      {
+        "field_id": "applus_team",
+        "interview_questions": [
+          "¿Quién del equipo estaría disponible para el piloto y con qué dedicación?",
+          "¿Qué responsabilidades específicas tendría cada miembro del equipo?",
+          "¿Hay otros stakeholders que deberían estar involucrados?",
+          "¿Cómo se coordinaría la comunicación entre el equipo?"
+        ],
+        "answers": [
+          "Owner 30%, Coordinator 40%, Evaluadores 10–20% por hitos; soporte HSE/Legal bajo demanda; un técnico de datos dedicado (50%) durante la ventana del piloto.",
+          "Owner: dirección y relación con cliente; Coordinator: plan de trabajo y coordinación técnica; Evaluadores: scoring y validación; HSE: gestión de riesgos; Legal: NDAs/contratos; Datos: pipeline y QA.",
+          "Sí, Operaciones regionales, Seguridad/Calidad y Comercial para escalado post-piloto.",
+          "Ritmo semanal de seguimiento, quincenal de comité de decisión, tablero único (plan, riesgos, KPIs) y repositorio de documentación versionada."
+        ]
+      },
+      {
+        "field_id": "documentation",
+        "interview_questions": [
+          "¿Tienen documentación técnica específica de sus servicios de inspección?",
+          "¿Pueden proporcionar casos de uso detallados con especificaciones?",
+          "¿Hay estudios de mercado o análisis de competencia disponibles?",
+          "¿Qué documentación adicional sería útil para las startups?"
+        ],
+        "answers": [
+          "Sí: SOPs de inspección lineal y off-shore, plantillas de informes y procedimientos de QA/QC de datos.",
+          "Sí: fichas de caso (línea eléctrica, oleoducto, eólica off-shore) con requisitos de payload, resolución, GSD y tiempos de ciclo.",
+          "Disponemos de notas internas de mercado y benchmarking técnico-económico que compartiremos bajo NDA.",
+          "Mapas de corredores propuestos, requisitos de ciberseguridad para C2 y datos, esquema de integración con nuestra plataforma y criterios de aceptación del piloto."
+        ]
+      }
+    ],
+    "resumen_operativo": {
+      "priorizacion_long_list": "Aplicaremos una matriz de scoring (0–5) ponderada: (1) Preparación regulatoria/track-record BVLOS (25%); (2) Encaje con casos de uso y tipo de plataforma (15%); (3) Autonomía/alcance útil (15%); (4) Payload y facilidad de integración (12%); (5) C2/DAA y safety (12%); (6) TCO/precio y modelo comercial (6%); (7) Madurez de soporte UE y tiempos de entrega (10%); (8) Solidez financiera y referencias (5%). Empate: capacidad de ejecutar piloto en nuestra ventana y presencia local.",
+      "timeline_evaluacion": "Semana 1 (8–12 sep 2025): cierre de criterios y normalización de datos. Semana 2 (15–19 sep): scoring desk y pre-shortlist. Semana 3 (22–26 sep): comité de selección y priorización. Semana 4 (29 sep–3 oct): contacto, NDAs y envío de RFI técnico. Entregable: Short List validada el 3 oct 2025.",
+      "criterios_short_list": "Filtros de corte: TRL ≥ 8; evidencia BVLOS (operaciones, ensayos o cartas de autoridad); autonomía y alcance mínimos por caso (≥ 2 h y ≥ 50 km lineales o justificación equivalente); disponibilidad de payloads críticos; DAA/mitigaciones; soporte UE y plazos < 12 semanas para piloto; TCO/condiciones económicas competitivas; y aceptación de PoC con acceso a datos para safety case."
+    }
+  }
+}
