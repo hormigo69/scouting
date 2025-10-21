@@ -4,12 +4,22 @@ let extractionData = null;
 
 async function loadExtractionData() {
     try {
-        const res = await fetch('files/extraction_E_to_K.json');
+        let target = 'files/extraction_E_to_K.json';
+        // Si la plantilla actual es Economía circular y existe un JSON específico, usarlo
+        try {
+            if (typeof currentTemplate === 'object' && currentTemplate && currentTemplate.name === 'Economía circular') {
+                const head = await fetch('files/extraction_E_to_K_economia_circular.json', { method: 'HEAD' });
+                if (head.ok) target = 'files/extraction_E_to_K_economia_circular.json';
+            }
+        } catch (e) {
+            console.warn('No extraction file específico para Economía circular. Usando el por defecto.');
+        }
+        const res = await fetch(target);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         extractionData = await res.json();
         return extractionData;
     } catch (e) {
-        console.error('Error cargando extraction_E_to_K.json', e);
+        console.error('Error cargando datos de extracción E→K', e);
         return null;
     }
 }

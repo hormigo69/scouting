@@ -7,7 +7,17 @@ let currentSelectedField = null;
 // Función para cargar la revisión de IA
 async function loadAIReview() {
     try {
-        const response = await fetch('files/ai-review-bvlos.json');
+        let target = 'files/ai-review-bvlos.json';
+        // Si la plantilla actual es Economía circular y existe un AI review específico, usarlo
+        try {
+            if (typeof currentTemplate === 'object' && currentTemplate && currentTemplate.name === 'Economía circular') {
+                const test = await fetch('files/ai-review-economia-circular.json', { method: 'HEAD' });
+                if (test.ok) target = 'files/ai-review-economia-circular.json';
+            }
+        } catch (e) {
+            console.warn('No specific economy-circular AI review found, using default BVLOS review');
+        }
+        const response = await fetch(target);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -53,10 +63,19 @@ async function loadAIReviewData() {
     
     // Cargar también los datos del challenge para mostrar las respuestas originales
     try {
-        const response = await fetch('files/Challenge request con ejemplo BVLOS.json');
+        let target = 'files/Challenge request con ejemplo BVLOS.json';
+        try {
+            if (typeof currentTemplate === 'object' && currentTemplate && currentTemplate.name === 'Economía circular') {
+                const test = await fetch('files/Challenge request economia circular.json', { method: 'HEAD' });
+                if (test.ok) target = 'files/Challenge request economia circular.json';
+            }
+        } catch (e) {
+            console.warn('No specific economy-circular challenge responses found for Step C, using default BVLOS');
+        }
+        const response = await fetch(target);
         if (response.ok) {
             challengeResponses = await response.json();
-            console.log('Challenge responses loaded for Step C:', challengeResponses);
+            console.log('Challenge responses loaded for Step C:', target, challengeResponses);
         }
     } catch (error) {
         console.error('Error loading challenge responses for Step C:', error);
@@ -206,18 +225,19 @@ function updateFieldInfo(fieldReview) {
     }
     
     if (userResponse) {
-        // Buscar la respuesta original en los datos del challenge
+        // Buscar la respuesta original en los datos del challenge y usar fallback a user_response del AI review
         const challengeData = challengeResponses;
+        let responseText = '';
         if (challengeData && challengeData.fields) {
             const originalField = challengeData.fields.find(field => field.id === fieldReview.field_id);
-            if (originalField && originalField.response) {
-                userResponse.textContent = originalField.response;
-            } else {
-                userResponse.textContent = 'No hay respuesta disponible';
+            if (originalField && typeof originalField.response === 'string' && originalField.response.trim()) {
+                responseText = originalField.response;
             }
-        } else {
-            userResponse.textContent = 'No hay respuesta disponible';
         }
+        if (!responseText && typeof fieldReview.user_response === 'string' && fieldReview.user_response.trim()) {
+            responseText = fieldReview.user_response;
+        }
+        userResponse.textContent = responseText || 'No hay respuesta disponible';
     }
 }
 

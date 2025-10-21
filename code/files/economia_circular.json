@@ -1,0 +1,223 @@
+{
+  "metadata": {
+    "title": "ECONOMÍA CIRCULAR: Transporte, almacenamiento y control de calidad del CO2 capturado",
+    "source": "All4Zero Hub",
+    "date": "",
+    "owners": ""
+  },
+  "fields": [
+    {
+      "id": "challenge_headline",
+      "name": "All4Zero Innovación tecnológica para impulsar una industria más sostenible",
+      "description": "Escribe un titular breve y descriptivo del reto/proyecto",
+      "type": "text",
+      "required": true,
+      "examples": [
+        "Materiales compatibles y medición avanzada para transporte, almacenamiento y control de calidad del CO2 capturado"
+      ],
+      "response": ""
+    },
+
+    {
+      "id": "technology_solution_description",
+      "name": "Tecnología y solución — Descripción",
+      "description": "Describe tu solución tecnológica: qué problema resuelve, cómo funciona y qué la hace única",
+      "type": "textarea",
+      "required": true,
+      "examples": [
+        "Descripción funcional y diferencial de la solución"
+      ],
+      "response": ""
+    },
+    {
+      "id": "main_technologies",
+      "name": "Tecnologías principales",
+      "description": "Enumera las tecnologías principales empleadas y destaca innovaciones recientes",
+      "type": "textarea",
+      "required": true,
+      "examples": [
+        "Materiales poliméricos/metalúrgicos compatibles con CO2, sensores en línea, cromatografía, espectroscopía, IA para control de calidad"
+      ],
+      "response": ""
+    },
+    {
+      "id": "testing_and_results",
+      "name": "Pruebas y resultados",
+      "description": "¿Dónde y con qué resultados habéis probado la solución? Incluye métricas",
+      "type": "textarea",
+      "required": true,
+      "examples": [
+        "Piloto en planta, banco de pruebas en laboratorio, resultados de precisión/estabilidad/fiabilidad"
+      ],
+      "response": ""
+    },
+    {
+      "id": "trl_stage",
+      "name": "Etapa de desarrollo (TRL)",
+      "description": "Selecciona el nivel de madurez tecnológica",
+      "type": "select",
+      "required": true,
+      "options": [
+        "TRL 1", "TRL 2", "TRL 3", "TRL 4", "TRL 5", "TRL 6", "TRL 7", "TRL 8", "TRL 9"
+      ],
+      "examples": [
+        "TRL 5-6 para piloto, TRL 7-8 para despliegue"
+      ],
+      "response": ""
+    },
+    {
+      "id": "technical_docs_link",
+      "name": "Documentación técnica (enlace)",
+      "description": "Incluye URL a documentación técnica relevante",
+      "type": "text",
+      "required": false,
+      "examples": [
+        "https://... (whitepaper, datasheet, paper, demo)"
+      ],
+      "response": ""
+    },
+    {
+      "id": "has_ip",
+      "name": "¿Tenéis patentes o PI?",
+      "description": "Indica si contáis con patentes o propiedad intelectual",
+      "type": "select",
+      "required": true,
+      "options": ["Sí", "No"],
+      "examples": [
+        "Si es Sí, especificar a continuación"
+      ],
+      "response": ""
+    },
+    {
+      "id": "has_collaborations",
+      "name": "¿Colaboraciones en el desarrollo técnico?",
+      "description": "Indica si habéis colaborado con otras entidades (universidades, centros tecnológicos, empresas)",
+      "type": "select",
+      "required": true,
+      "options": ["Sí", "No"],
+      "examples": [
+        "Si es Sí, especificar a continuación"
+      ],
+      "response": ""
+    },
+    {
+      "id": "ip_collab_details",
+      "name": "Detalles de PI/colaboraciones",
+      "description": "Si las respuestas anteriores son Sí, especifica patentes, códigos y partners",
+      "type": "textarea",
+      "required": false,
+      "examples": [
+        "Nº de patente, titularidad, TRL por socio, acuerdos vigentes"
+      ],
+      "response": ""
+    },
+
+    {
+      "id": "project_name",
+      "name": "Nombre del proyecto",
+      "description": "Nombre interno o comercial del proyecto",
+      "type": "text",
+      "required": true,
+      "examples": ["Proyecto CO2-QA"]
+    },
+    {
+      "id": "project_location",
+      "name": "Ubicación",
+      "description": "Ciudad/país principal del equipo o piloto",
+      "type": "text",
+      "required": false,
+      "examples": ["Bilbao, España"]
+    },
+    {
+      "id": "project_links",
+      "name": "Enlaces (web/video/presentación)",
+      "description": "Incluye URLs a web, vídeo o presentación",
+      "type": "text",
+      "required": false,
+      "examples": ["https://...", "https://.../deck.pdf"]
+    },
+    {
+      "id": "team_composition",
+      "name": "Equipo y dedicación",
+      "description": "¿Quiénes conforman el equipo y cuál es su dedicación?",
+      "type": "textarea",
+      "required": true,
+      "examples": [
+        "Perfil, rol, dedicación (%), experiencia relevante"
+      ]
+    },
+    {
+      "id": "company_structure_partners",
+      "name": "Estructura societaria y socios",
+      "description": "Describe la estructura societaria y los socios estratégicos",
+      "type": "textarea",
+      "required": false,
+      "examples": [
+        "Cap table, alianzas industriales, acuerdos comerciales"
+      ]
+    },
+
+    {
+      "id": "target_sector",
+      "name": "Sector objetivo",
+      "description": "¿En qué sector está específicamente desarrollada vuestra solución?",
+      "type": "text",
+      "required": true,
+      "examples": [
+        "Captura/Transporte CO2, Oil&Gas, Químico, Cemento, Generación eléctrica"
+      ]
+    },
+    {
+      "id": "poc_preference_scaling",
+      "name": "Preferencias para PoC y escalado",
+      "description": "Preferencia por ámbito/sector de la PoC y cómo podría escalar la solución",
+      "type": "textarea",
+      "required": true,
+      "examples": [
+        "PoC en terminal de CO2 licuado; escalado a red logística regional"
+      ]
+    },
+    {
+      "id": "poc_technical_functions",
+      "name": "Funcionalidades a testear en la PoC",
+      "description": "Qué funcionalidades técnicas queréis testear/demostrar",
+      "type": "textarea",
+      "required": true,
+      "examples": [
+        "Compatibilidad de materiales, estabilidad en almacenamiento, precisión de medición, control de impurezas"
+      ]
+    },
+    {
+      "id": "incubation_programs",
+      "name": "¿Incubación/Aceleración/Inversión?",
+      "description": "¿Habéis participado en programas de incubación, aceleración o recibido inversión/apoyo financiero?",
+      "type": "select",
+      "required": true,
+      "options": ["Sí", "No"],
+      "examples": [
+        "Si es Sí, especificar a continuación"
+      ]
+    },
+    {
+      "id": "incubation_details",
+      "name": "Detalles de validación/financiación",
+      "description": "Si la respuesta anterior es Sí, especifica programa, entidad e importes",
+      "type": "textarea",
+      "required": false,
+      "examples": [
+        "Aceleradora X 2024, subvención Y, VC Z (seed)"
+      ]
+    },
+
+    {
+      "id": "referral_source",
+      "name": "¿Cómo nos has conocido?",
+      "description": "Indica el canal por el que conociste la convocatoria",
+      "type": "text",
+      "required": false,
+      "examples": ["All4Zero Hub, LinkedIn, Repsol Open Innovation, referencia"]
+    }
+  ]
+}
+
+
