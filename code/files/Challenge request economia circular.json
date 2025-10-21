@@ -1,0 +1,132 @@
+{
+  "metadata": {
+    "title": "REPSOL: CHALLENGE REQUEST",
+    "division": "Repsol Open Innovation",
+    "date": "2025-10-21",
+    "owners": "Unidad de Innovación – Economía Circular"
+  },
+  "fields": [
+    {
+      "id": "challenge_headline",
+      "name": "All4Zero Innovación tecnológica para impulsar una industria más sostenible",
+      "description": "Titular breve y descriptivo del reto/proyecto",
+      "response": "Materiales compatibles y sistemas de medición avanzada para optimizar el transporte, almacenamiento y control de calidad del CO2 capturado"
+    },
+    {
+      "id": "technology_solution_description",
+      "name": "Tecnología y solución — Descripción",
+      "description": "Qué problema resuelve, cómo funciona y qué la hace única",
+      "response": "Solución integral que combina materiales y recubrimientos compatibles con CO2 húmedo y supercrítico con instrumentación de medición en línea (Raman/TDLAS/GC) para verificar pureza e impurezas en tiempo real y prevenir corrosión y fallos operativos."
+    },
+    {
+      "id": "main_technologies",
+      "name": "Tecnologías principales",
+      "description": "Tecnologías empleadas e innovaciones recientes",
+      "response": "Aleaciones Ni y aceros inoxidables de alta aleación; recubrimientos PFA/PTFE y cerámicos; sensores ópticos (Raman/NIR/TDLAS) y GC para trazas; acondicionamiento de muestra; analítica e IA para trending y alarmas."
+    },
+    {
+      "id": "testing_and_results",
+      "name": "Pruebas y resultados",
+      "description": "Dónde y con qué resultados se ha probado",
+      "response": "Piloto de lazo cerrado con CO2 gaseoso y líquido: error <±2% en pureza, detección de H2O a ppm, estabilidad 1.000 h sin degradación del recubrimiento; validación de cupones de corrosión con pérdida de masa <0,1 mm/año."
+    },
+    {
+      "id": "trl_stage",
+      "name": "Etapa de desarrollo (TRL)",
+      "description": "Nivel de madurez tecnológica",
+      "response": "TRL 6 (piloto industrial)"
+    },
+    {
+      "id": "technical_docs_link",
+      "name": "Documentación técnica (enlace)",
+      "description": "URLs a documentación técnica",
+      "response": "https://example.com/whitepaper-co2-qa.pdf"
+    },
+    {
+      "id": "has_ip",
+      "name": "¿Tenéis patentes o PI?",
+      "description": "Existencia de patentes o PI",
+      "response": "Sí"
+    },
+    {
+      "id": "has_collaborations",
+      "name": "¿Colaboraciones en el desarrollo técnico?",
+      "description": "Colaboraciones con universidades/centros/empresas",
+      "response": "Sí"
+    },
+    {
+      "id": "ip_collab_details",
+      "name": "Detalles de PI / colaboraciones",
+      "description": "Patentes y partners",
+      "response": "Patente ES-XXXX-2024 sobre recubrimientos anticorrosión para CO2 húmedo; colaboración con Univ. X (banco de pruebas) y Centro Tecnológico Y (calibración analítica)."
+    },
+    {
+      "id": "project_name",
+      "name": "Nombre del proyecto",
+      "description": "Nombre del proyecto",
+      "response": "CO2-QA Materials & Analytics"
+    },
+    {
+      "id": "project_location",
+      "name": "Ubicación",
+      "description": "Ciudad/país principal",
+      "response": "Bilbao, España"
+    },
+    {
+      "id": "project_links",
+      "name": "Enlaces (web/video/presentación)",
+      "description": "URLs relevantes",
+      "response": "https://example.com/demo-video\nhttps://example.com/pitch-deck.pdf"
+    },
+    {
+      "id": "team_composition",
+      "name": "Equipo y dedicación",
+      "description": "Equipo y dedicación",
+      "response": "Equipo de 6 personas: 1 Líder de proyecto (100%), 2 especialistas en materiales (80%), 2 analistas de proceso (70%), 1 ingeniero de datos (50%)."
+    },
+    {
+      "id": "company_structure_partners",
+      "name": "Estructura societaria y socios",
+      "description": "Estructura y socios",
+      "response": "Sociedad limitada; cap table: 2 fundadores 70%, seed fund 25%, ESOP 5%; acuerdos con proveedor de tubería y OEM de instrumentación."
+    },
+    {
+      "id": "target_sector",
+      "name": "Sector objetivo",
+      "description": "Sector en el que está desarrollada la solución",
+      "response": "Transporte y almacenamiento de CO2; refino; químico; generación baja en carbono."
+    },
+    {
+      "id": "poc_preference_scaling",
+      "name": "Preferencias para PoC y escalado",
+      "description": "Preferencia por ámbito/sector de la PoC y escalado",
+      "response": "PoC en terminal de CO2 licuado con línea de bypass analítica; escalado a red logística regional y posterior despliegue en activos industriales."
+    },
+    {
+      "id": "poc_technical_functions",
+      "name": "Funcionalidades a testear en la PoC",
+      "description": "Funcionalidades técnicas a demostrar",
+      "response": "Compatibilidad de materiales bajo CO2 húmedo; precisión y estabilidad de sensores in-line; detección de impurezas críticas; integración con SCADA y alarmas."
+    },
+    {
+      "id": "incubation_programs",
+      "name": "¿Incubación / Aceleración / Inversión?",
+      "description": "Participación y apoyo financiero",
+      "response": "Sí"
+    },
+    {
+      "id": "incubation_details",
+      "name": "Detalles de validación/financiación",
+      "description": "Detalle de programas e importes",
+      "response": "Aceleradora IndustrialTech 2024; subvención regional 100k€; inversión seed 500k€."
+    },
+    {
+      "id": "referral_source",
+      "name": "¿Cómo nos has conocido?",
+      "description": "Canal por el que conociste la convocatoria",
+      "response": "All4Zero Hub y LinkedIn Repsol Open Innovation"
+    }
+  ]
+}
+
+

@@ -2,7 +2,7 @@
 async function parseJsonTemplate() {
     try {
         console.log('Attempting to fetch JSON file...');
-        const response = await fetch('files/A+%20Template_CHALLENGE%20REQUEST%203.json');
+        const response = await fetch('files/A+ Template_CHALLENGE REQUEST 3.json');
         
         if (!response.ok) {
             console.error('Failed to fetch JSON file:', response.status, response.statusText);
@@ -294,7 +294,7 @@ const templates = {
                 required: true,
                 description: 'Scale of energy application',
                 options: ['Residential', 'Commercial', 'Industrial', 'Utility scale', 'Grid level'],
-                examples: 'Utility scale y Grid level son los más relevantes para Applus+'
+                examples: 'Utility scale y Grid level son los más relevantes para Repsol'
             },
             {
                 id: 'renewable_focus',
@@ -332,7 +332,7 @@ const templates = {
             },
             {
                 id: 'applus_team',
-                name: 'Applus Team',
+                name: 'Repsol Team',
                 type: 'textarea',
                 required: true,
                 description: 'Indicate the people involved, name and position',
@@ -349,9 +349,6 @@ let currentField = null;
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', async function() {
-    // Ensure all steps are hidden initially
-    hideAllSteps();
-    
     // Load standard template from markdown
     await loadStandardTemplate();
     
@@ -361,31 +358,11 @@ document.addEventListener('DOMContentLoaded', async function() {
     initializeModal();
     initializeActions();
     
-    // Password gate: lock until correct password is provided
-    initializePasswordGate();
-
     // Show loading complete message
     console.log('Application initialized successfully');
     console.log('Available templates:', Object.keys(templates));
     console.log('Standard template fields count:', templates.standard.fields.length);
 });
-
-// Function to hide all steps initially
-function hideAllSteps() {
-    const steps = ['step-a', 'step-b', 'step-c', 'step-d'];
-    steps.forEach(stepId => {
-        const stepElement = document.getElementById(stepId);
-        if (stepElement) {
-            stepElement.style.display = 'none';
-        }
-    });
-    
-    // Show only step A initially
-    const stepA = document.getElementById('step-a');
-    if (stepA) {
-        stepA.style.display = 'block';
-    }
-}
 
 // Load standard template from JSON file
 async function loadStandardTemplate() {
@@ -867,100 +844,14 @@ function saveTemplate() {
 }
 
 function continueToNextStep() {
-    // Hide current step content
-    const templateSelection = document.querySelector('.template-selection');
-    const customizationPanel = document.getElementById('customizationPanel');
-    const actionsSection = document.querySelector('.flex.justify-between.items-center.mt-10.pt-8.border-t-2.border-applus-gray-200');
-    const stepB = document.getElementById('step-b');
+    // In a real application, this would navigate to the next step
     
-    if (templateSelection) templateSelection.style.display = 'none';
-    if (customizationPanel) customizationPanel.style.display = 'none';
-    if (actionsSection) actionsSection.style.display = 'none';
-    
-    // Show step B
-    if (stepB) stepB.style.display = 'block';
-    
-    // Update step indicators
-    updateStepIndicators('B');
-    
-    // Update header phase indicator
-    updateHeaderPhase('B');
-    
-    // Initialize step B functionality
-    initializeStepB();
-    
-    console.log('Navigated to Step B');
-}
-
-// Keeping for backward compatibility - now handled directly in each step file
-function updateStepIndicators(activeStep) {
-    // This function is kept for backward compatibility
-    // Each step file now updates the indicator directly
-}
-
-function updateHeaderPhase(step) {
-    // This function is now handled by updateStepIndicators
-    // Keeping for backward compatibility
-}
-
-// Initialize step indicator on page load
-document.addEventListener('DOMContentLoaded', function() {
-    const stepIndicator = document.getElementById('current-step-indicator');
-    if (stepIndicator) {
-        stepIndicator.textContent = 'Paso A: Personalización';
-    }
-});
-
-// ---------------- Password Gate ----------------
-function initializePasswordGate() {
-    const PASSWORD = 'Scouting8656$$';
-    const modal = document.getElementById('passwordModal');
-    const input = document.getElementById('accessPassword');
-    const submitBtn = document.getElementById('passwordSubmitBtn');
-    const errorMsg = document.getElementById('passwordError');
-
-    if (!modal || !input || !submitBtn) {
-        return;
-    }
-
-    // If already validated in this session, skip
-    const unlocked = sessionStorage.getItem('scouting_unlocked');
-    if (unlocked === 'true') {
-        unlockApp(modal);
-        return;
-    }
-
-    document.body.classList.add('locked');
-    modal.style.display = 'flex';
-
-    const validate = () => {
-        const value = input.value || '';
-        if (value === PASSWORD) {
-            sessionStorage.setItem('scouting_unlocked', 'true');
-            unlockApp(modal);
-        } else {
-            if (errorMsg) errorMsg.style.display = 'block';
-            input.value = '';
-            input.focus();
-        }
+    // For demo purposes, show the generated form
+    const formData = {
+        template: currentTemplate.name,
+        fields: selectedFields,
+        timestamp: new Date().toISOString()
     };
-
-    submitBtn.addEventListener('click', validate);
-    input.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-            validate();
-        }
-    });
-}
-
-function unlockApp(modal) {
-    document.body.classList.remove('locked');
-    if (modal) modal.style.display = 'none';
-}
-
-function initializeStepB() {
-    // This function will be called when step-b.js is loaded
-    if (typeof initializeStepBContent === 'function') {
-        initializeStepBContent();
-    }
+    
+    console.log('Generated form data for next step:', formData);
 }

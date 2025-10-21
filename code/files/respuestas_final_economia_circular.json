@@ -1,0 +1,147 @@
+{
+  "ai_review_filled": {
+    "metadata": {
+      "source_title": "Revisión de IA - Challenge Request Economía Circular (CO2)",
+      "business_unit": "Repsol Innovación – Economía Circular",
+      "owner": "Equipo de Economía Circular",
+      "filled_on": "2025-10-21",
+      "notes": "Respuestas preparadas para la entrevista de evaluación del reto de materiales compatibles y medición avanzada de CO2."
+    },
+    "fields": [
+      {
+        "field_id": "challenge_headline",
+        "interview_questions": [
+          "¿En qué activos concretos se desea validar (pipeline, terminal CO2, almacenamiento intermedio)?",
+          "¿Qué niveles de pureza/impurezas objetivo consideran aceptables?",
+          "¿Cuál es el horizonte temporal para PoC y despliegue?"
+        ],
+        "answers": [
+          "Validación en terminal de CO2 licuado y tramo de tubería de transferencia (1–3 km) con bypass analítico; punto de muestreo adicional en almacenamiento intermedio.",
+          "Pureza ≥ 99,9% m/m; límites: H2O < 50 ppm, H2S < 10 ppm, O2 < 10 ppm, HC totales < 100 ppm; registrar CO, N2 y O2 para diagnóstico.",
+          "PoC: 6–9 meses desde kickoff (ingeniería 2–3, instalación 1–2, operación 3–4). Despliegue inicial en 12–18 meses según resultados y aprovisionamiento."
+        ]
+      },
+      {
+        "field_id": "technology_solution_description",
+        "interview_questions": [
+          "¿Cuál es el rango P/T y caudal soportado por los sensores y el acondicionamiento?",
+          "¿Cómo se realiza la toma de muestra representativa y el retorno al proceso?",
+          "¿Qué MTBF y plan de mantenimiento/recalibración proponen?"
+        ],
+        "answers": [
+          "Sensores ópticos operan 0–150 bar, −20 a 80 °C; acondicionamiento de muestra 0–80 bar con control térmico (15–35 °C) y válvulas de aislamiento; caudal de bypass 1–5 slpm configurable.",
+          "Sonda isocinética con filtro sinterizado, línea calefactada hasta manifold; split a celda óptica y a GC; retorno presurizado al colector mediante regulador y válvula antirretorno.",
+          "MTBF objetivo > 8.000 h en sensores; recalibración óptica trimestral y verificación semanal con patrón; mantenimiento preventivo de filtros cada 4–6 semanas."
+        ]
+      },
+      {
+        "field_id": "main_technologies",
+        "interview_questions": [
+          "¿Qué LOD/LOQ alcanzan para H2O, H2S, O2 y HC?",
+          "¿Qué materiales han sido ensayados bajo CO2 húmedo y con qué resultados?",
+          "¿Cumplen ATEX/PED en el hardware de campo?"
+        ],
+        "answers": [
+          "H2O: LOD 10 ppm (TDLAS); H2S: LOD 5 ppm (electroquímico/GC); O2: LOD 5 ppm (óptico paramagnético); HC: LOD 50 ppm (GC-FID). Incertidumbre combinada < ±2–3% del span.",
+          "316L y 904L con recubrimiento PFA: sin picaduras tras 1.000 h en CO2 húmedo; Inconel 625: corrosión < 0,05 mm/año; juntas PTFE/FKM con buen desempeño térmico.",
+          "Skids y cajas de campo certificados ATEX Zona 2; recipientes y líneas cumplen PED categoría aplicable; instrumentación con marcado CE y manuales de instalación."
+        ]
+      },
+      {
+        "field_id": "testing_and_results",
+        "interview_questions": [
+          "¿Qué protocolo de ensayo emplearon (duración, nº repeticiones, condiciones)?",
+          "¿Cómo se calibraron los equipos y con qué patrones?",
+          "¿Tienen datos de reproducibilidad inter-laboratorio?"
+        ],
+        "answers": [
+          "Protocolo de 1.000 h con ciclos 10–120 bar y 10–50 °C; 3 repeticiones por condición; seguimiento de pérdida de masa y potencial de corrosión.",
+          "Calibración con mezclas patrón certificadas y traza a ISO 17025; verificación diaria de cero y span; GC con curvas multicomponente.",
+          "Sí: reproducibilidad dentro de ±5% entre dos laboratorios (n=3 por punto) para H2O y H2S; estamos ampliando a O2 y HC."
+        ]
+      },
+      {
+        "field_id": "trl_stage",
+        "interview_questions": [
+          "¿Qué hitos y fechas estiman para pasar a TRL 7-8?",
+          "¿Qué certificaciones o aprobaciones requieren?"
+        ],
+        "answers": [
+          "Hitos: ingeniería de detalle (T0+8 semanas), FAT (T0+16), SAT e inicio PoC (T0+24), operación continua 12 semanas (T0+36) ⇒ TRL7; estandarización y manuales para TRL8 (T0+48).",
+          "Cumplimiento ATEX/PED en instalación; procedimientos HAZOP/LOPA; aceptación de cliente y plan de mantenimiento documentado."
+        ]
+      },
+      {
+        "field_id": "technical_docs_link",
+        "interview_questions": [
+          "¿Pueden compartir P&ID del sistema de toma de muestra y bypass?",
+          "¿Tienen hojas de datos con límites P/T y materiales?"
+        ],
+        "answers": [
+          "Sí, P&ID preliminar con puntos de aislamiento, reguladores, tramos calefactados y retorno al proceso; se entrega bajo NDA.",
+          "Sí, datasheets con límites P/T, compatibilidad de materiales (316L/904L/Inconel/PTFE/PFA) y requisitos de instalación."
+        ]
+      },
+      {
+        "field_id": "ip_collab_details",
+        "interview_questions": [
+          "¿Cuál es el estado y alcance territorial de la patente?",
+          "¿Cómo se reparten IP y resultados con los partners?"
+        ],
+        "answers": [
+          "Solicitud presentada (ES) para recubrimientos anti-corrosión bajo CO2 húmedo; extensión PCT planificada en 6–9 meses.",
+          "IP background retenida por cada parte; foreground compartida con licencia no exclusiva para Repsol en los activos donde se despliegue la solución."
+        ]
+      },
+      {
+        "field_id": "poc_technical_functions",
+        "interview_questions": [
+          "¿Qué KPIs concretos definen éxito (p. ej., error <±2%, disponibilidad >99%)?",
+          "¿Cómo simularán condiciones límite (hidratación, cambios bruscos P/T)?"
+        ],
+        "answers": [
+          "KPIs: error de medición ≤ ±2% del span, disponibilidad ≥ 99%, tiempo de respuesta < 30 s a step estándar, drift < 1%/mes; corrosión < 0,1 mm/año.",
+          "Bancos con inyección controlada de humedad/impurezas y rampas P/T; pruebas de choque térmico y variaciones rápidas de caudal."
+        ]
+      },
+      {
+        "field_id": "poc_preference_scaling",
+        "interview_questions": [
+          "¿Cuál es el coste estimado por unidad y por línea?",
+          "¿Qué plazos y recursos requiere el escalado a 10–20 unidades?"
+        ],
+        "answers": [
+          "Skid analítico completo: 120–180 k€; instrumentación mínima (óptica + acondicionamiento): 70–100 k€; instalación por línea: 20–40 k€ según obra.",
+          "Lead time 16–24 semanas por lote (fabricación y certificación); para 10–20 unidades, plan escalonado en 9–12 meses con contratación de 1–2 integradores adicionales."
+        ]
+      },
+      {
+        "field_id": "team_composition",
+        "interview_questions": [
+          "¿Qué proyectos similares ha ejecutado el equipo?",
+          "¿Cuál será la dedicación semanal por rol durante la PoC?"
+        ],
+        "answers": [
+          "Integración de analizadores on-line en refino y químicos (H2, CO, CO2, humedad); proyectos de corrosión bajo CO2 y aminas; despliegues PAT.",
+          "Líder de proyecto 40%, materiales 60%, analítica 60%, instrumentación 50%, datos 40%; soporte HSE/Legal bajo demanda."
+        ]
+      },
+      {
+        "field_id": "project_links",
+        "interview_questions": [
+          "¿Pueden compartir un repositorio con informes y datasets anonimizados?"
+        ],
+        "answers": [
+          "Sí, repositorio privado con informes de ensayo, datasets anonimizados y vídeos de pruebas de campo; acceso bajo NDA."
+        ]
+      }
+    ],
+    "resumen_operativo": {
+      "priorizacion_long_list": "Matriz de scoring (0–5): (1) Compatibilidad de materiales y certificaciones (25%); (2) Desempeño analítico y LOD/LOQ (20%); (3) Integrabilidad en bypass y seguridad ATEX/PED (15%); (4) Fiabilidad/MTBF y mantenimiento (15%); (5) Coste total (CAPEX/OPEX) (10%); (6) Roadmap de escalado y supply (10%); (7) Propiedad intelectual/colaboraciones (5%).",
+      "timeline_evaluacion": "Semana 1–2: cierre de especificaciones y RFI; Semana 3–4: scoring y shortlist; Semana 5–8: pruebas de laboratorio; Semana 9–12: integración piloto y SAT; inicio PoC mes 4–5.",
+      "criterios_short_list": "Cumplir límites de operación P/T, LOD/LOQ objetivo, certificaciones ATEX/PED, compatibilidad material demostrada, disponibilidad ≤ 24 semanas y coste dentro del rango objetivo."
+    }
+  }
+}
+
+

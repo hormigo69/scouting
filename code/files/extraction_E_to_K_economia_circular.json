@@ -1,0 +1,203 @@
+{
+  "metadata": {
+    "title": "Procedimiento de Extracción - Pasos E→K (Economía circular - CO2)",
+    "source_documents": [
+      "code/files/Challenge request economia circular.json",
+      "code/files/ai-review-economia-circular.json",
+      "code/files/respuestas_final_economia_circular.json"
+    ],
+    "generated_on": "2025-10-21",
+    "notes": "Contenido derivado del reto de materiales compatibles y medición avanzada para CO2 capturado"
+  },
+  "steps": {
+    "E": {
+      "title": "Paso E: Leer y etiquetar el formulario (CO2)",
+      "slots": {
+        "context_use": [
+          "Transporte y almacenamiento de CO2 capturado (líquido/supercrítico)",
+          "Control de calidad de CO2 en terminales, tuberías y almacenamiento intermedio",
+          "Medición continua de pureza e impurezas en línea (Raman/NIR/TDLAS/GC)",
+          "Compatibilidad de materiales y recubrimientos frente a CO2 húmedo/ácido",
+          "Integración de toma de muestra representativa y bypass analítico"
+        ],
+        "outcomes_kpis": {
+          "purity_accuracy": "error ≤ ±2% del span en pureza/impurezas",
+          "h2o_lod_ppm": "LOD H2O ≤ 10–50 ppm (según tecnología)",
+          "h2s_lod_ppm": "LOD H2S ≤ 5–10 ppm",
+          "availability": "≥ 99% disponibilidad del sistema",
+          "response_time": "< 30 s de tiempo de respuesta a step estándar",
+          "corrosion_rate": "< 0,1 mm/año en cupones/materiales",
+          "drift": "< 1%/mes de deriva",
+          "reproducibility": "±5% reproducibilidad inter‑laboratorio"
+        },
+        "constraints": [
+          "Cumplir ISO 27913 (transporte por tubería de CO2)",
+          "Cumplir EN 14181 (QAL1/2/3) para sistemas de medida",
+          "Cumplir ATEX (equipos en áreas clasificadas) y PED (recipientes a presión)",
+          "Diseño con P&ID, HAZOP/LOPA y procedimientos de seguridad",
+          "Muestreo representativo y acondicionamiento (control P/T, líneas calefactadas)",
+          "Trazabilidad metrológica (ISO 17025) y certificados de calibración"
+        ],
+        "geography": {
+          "pilot_phase": ["Terminal de CO2 licuado (Iberia)", "Tramo de tubería 1–3 km (Iberia)"],
+          "initial_deploy": ["Red logística regional de CO2", "Activos industriales (refino/químicos)"],
+          "mirror_pilot_plan_b": ["Terminal europea alternativa", "Sitio de pruebas en LatAm"]
+        },
+        "target_actors": [
+          "Fabricantes de materiales/recubrimientos compatibles con CO2",
+          "Proveedores de instrumentación analítica in‑line (Raman/NIR/TDLAS/GC)",
+          "Integradores de toma de muestra y skids de bypass",
+          "Laboratorios ISO 17025",
+          "Proveedores de software analítico/IA"
+        ],
+        "maturity_timing": {
+          "trl_platform_c2": ">= 6–7 (materiales/recubrimientos probados en piloto)",
+          "trl_daa_autonomy": ">= 6–7 (instrumentación y analítica on‑line)",
+          "pilot_window_iberia": "PoC en 6–9 meses (ingeniería + instalación + operación)",
+          "alt_window_latam": "Despliegue inicial en 12–18 meses según supply"
+        },
+        "market_signals": [
+          "Crecimiento de proyectos CCUS en UE",
+          "Requisitos de pureza/impurezas para usos y almacenamiento",
+          "Disponibilidad de sensores ópticos y GC de nueva generación",
+          "Plazos de supply > 16–24 semanas en componentes críticos"
+        ],
+        "attached_sources": [
+          "ISO 27913",
+          "EN 14181",
+          "Manual ATEX/PED del integrador",
+          "P&ID y datasheets de instrumentación"
+        ]
+      }
+    },
+    "F": {
+      "title": "Paso F: Desambiguar términos críticos (CO2)",
+      "terms": [
+        {"term": "ISO 27913", "definition": "Requisitos para transporte por tubería de CO2 capturado"},
+        {"term": "EN 14181 (QAL1/2/3)", "definition": "Aseguramiento de calidad de sistemas automáticos de medida"},
+        {"term": "ATEX", "definition": "Directivas para equipos en atmósferas explosivas"},
+        {"term": "PED", "definition": "Directiva de equipos a presión"},
+        {"term": "PAT", "definition": "Process Analytical Technology para control en proceso"},
+        {"term": "TDLAS", "definition": "Espectroscopía láser de diodo para gases traza (p. ej., H2O)"},
+        {"term": "Raman/NIR/FTIR", "definition": "Técnicas ópticas para análisis de composición"},
+        {"term": "GC", "definition": "Cromatografía de gases para impurezas/HC"},
+        {"term": "LOD/LOQ", "definition": "Límite de detección y de cuantificación"},
+        {"term": "P&ID", "definition": "Diagrama de tuberías e instrumentación"},
+        {"term": "HAZOP/LOPA", "definition": "Metodologías de análisis de riesgo"},
+        {"term": "CO2 supercrítico", "definition": "Estado por encima de punto crítico; impacto en materiales y muestreo"},
+        {"term": "Deriva (drift)", "definition": "Cambio gradual en señal/medida con el tiempo"},
+        {"term": "MTBF", "definition": "Tiempo medio entre fallos del sistema"}
+      ]
+    },
+    "G": {
+      "title": "Paso G: Definir resultado y límites (PICOC + HMW)",
+      "picoc": {
+        "population_context": "Cadenas CCUS en terminales y tuberías de CO2 (Iberia)",
+        "intervention": "Materiales/recubrimientos compatibles + medición on‑line con muestreo representativo y analítica",
+        "comparison": "Muestreo puntual y equipos no optimizados; ausencia de control continuo",
+        "outcome": "Pureza garantizada, límites de impurezas, corrosión controlada (<0,1 mm/año), disponibilidad ≥99%, error ≤±2%",
+        "context": "Cumplimiento ISO 27913, EN 14181, ATEX y PED; P&ID e HAZOP/LOPA aprobados"
+      },
+      "hmw": "¿Cómo podríamos validar en 6–9 meses una solución integrada de materiales compatibles y medición on‑line que garantice pureza ≥99,9% y límites de impurezas (H2O/H2S/O2/HC) con error ≤±2% y disponibilidad ≥99%, cumpliendo ISO 27913, EN 14181, ATEX y PED?"
+    },
+    "H": {
+      "title": "Paso H: Fijar madurez y tiempos (TRL/plazo)",
+      "trl": {
+        "platform_c2": ">= 6–7 (materiales/recubrimientos con evidencia piloto)",
+        "daa_autonomy": ">= 6–7 (instrumentación y analítica integradas)"
+      },
+      "timelines": {
+        "evaluation_shortlist": "4–6 semanas (RFI, scoring, shortlist)",
+        "authorization_sora": "6–8 semanas (ATEX/PED, HAZOP/LOPA, procedimientos)",
+        "pilot_window_iberia": "Q1–Q2 2026",
+        "alt_mirror_latam": "Q4 2025 (sitio alternativo)"
+      }
+    },
+    "I": {
+      "title": "Paso I: Priorización MoSCoW",
+      "moscow": {
+        "must": [
+          "ISO 27913, EN 14181, ATEX y PED",
+          "LOD/LOQ y exactitud alineados a objetivos (H2O/H2S/O2/HC)",
+          "Muestreo representativo con líneas calefactadas y retorno seguro",
+          "Evidencia de compatibilidad material (ensayos/cupones)",
+          "Disponibilidad ≥ 99% y mantenimiento definido",
+          "P&ID y manuales de instalación/mantenimiento"
+        ],
+        "should": [
+          "Repositorio de datos y reportes; trazabilidad 17025",
+          "Digital twin/IA para diagnóstico y predicción",
+          "Escalabilidad a 10–20 unidades en 9–12 meses",
+          "Coste dentro de rango objetivo (CAPEX/OPEX)"
+        ],
+        "could": [
+          "Análisis isotópico de CO2 para trazabilidad",
+          "Calibración remota/automática",
+          "Integración con plataforma de datos corporativa"
+        ],
+        "wont": [
+          "Soluciones solo de laboratorio sin ruta a operación continua",
+          "Equipos sin cumplimiento ATEX/PED o sin documentación",
+          "Medición offline sin muestreo representativo"
+        ]
+      }
+    },
+    "J": {
+      "title": "Paso J: Pregunta operativa (1 frase)",
+      "research_question": "Para transporte y almacenamiento de CO2 capturado en Iberia, ¿qué fabricantes de materiales/recubrimientos y proveedores de instrumentación analítica in‑line (Raman/NIR/TDLAS/GC) ofrecen soluciones con TRL ≥6–7 que garanticen pureza ≥99,9% (H2O < 50 ppm; H2S < 10 ppm), error ≤±2%, disponibilidad ≥99% y sean aptas para PoC en 6–9 meses cumpliendo ISO 27913, EN 14181, ATEX y PED?"
+    },
+    "K": {
+      "title": "Paso K: Ficha de búsqueda (APIs y web)",
+      "search_sheet": {
+        "context_use": "Control de calidad de CO2 en terminal/tubería con medición on‑line y materiales compatibles",
+        "outcomes_kpis": [
+          "error ≤ ±2%", "H2O LOD ≤ 10–50 ppm", "H2S LOD ≤ 5–10 ppm", "disponibilidad ≥ 99%", "respuesta < 30 s", "corrosión < 0,1 mm/año"
+        ],
+        "constraints_must": [
+          "ISO 27913", "EN 14181 (QAL1/2/3)", "ATEX", "PED", "P&ID + HAZOP/LOPA", "Muestreo representativo"
+        ],
+        "geography": {"priority": ["España", "Portugal"], "extend": ["Francia"], "mirror": ["LatAm"]},
+        "target_actors": [
+          "Proveedores de instrumentación analítica in‑line",
+          "Integradores de skids de muestreo/bypass",
+          "Fabricantes de materiales/recubrimientos",
+          "Laboratorios 17025"
+        ],
+        "maturity_timing": {"trl_platform_c2": ">=6–7", "trl_daa": ">=6–7", "pilot_window": "6–9 meses"},
+        "market_signals": ["Proyectos CCUS activos", "Certificaciones/estándares acreditados", "Presencia y soporte en UE"],
+        "taxonomy": {
+          "categories": ["Process Analytical Technology", "Industrial Analytics", "Spectroscopy", "Gas Chromatography", "Materials Science", "Corrosion", "Oil & Gas Equipment", "Chemical Process"],
+          "keywords": ["ISO 27913", "EN 14181", "ATEX", "PED", "CO2 purity", "TDLAS", "Raman", "FTIR", "GC", "supercritical CO2", "bypass sampling", "corrosion"]
+        },
+        "evidence_keywords": ["QAL1", "QAL2", "QAL3", "calibration certificate", "P&ID", "ISO 17025", "materials compatibility"],
+        "inclusion_criteria": [
+          "TRL ≥ 6–7 y referencias piloto",
+          "Cumplimiento ISO 27913/EN 14181/ATEX/PED",
+          "Especificaciones de LOD/LOQ y exactitud",
+          "Diseño de muestreo representativo y retorno seguro",
+          "Plan de mantenimiento y disponibilidad ≥ 99%"
+        ],
+        "exclusion_criteria": [
+          "Solo laboratorio o sin pilotos",
+          "Sin certificaciones/registros",
+          "Sin datos de LOD/LOQ o exactitud",
+          "Sin P&ID o manuales"
+        ],
+        "preferred_sources": ["Normativas ISO/EN", "Datasheets y manuales", "Casos de referencia", "Repositorios técnicos bajo NDA"],
+        "api_compilation": {
+          "crunchbase": {
+            "hint": "Categorías instrumentation/analytics/materials y ubicación UE; combinar keywords ISO 27913/EN 14181/TDLAS/Raman/GC",
+            "request_fields": ["website_url", "location_identifiers", "facet_ids", "short_description", "founder_identifiers", "funding_stage"]
+          },
+          "pitchbook": {
+            "hint": "Segmentos Analytical Instrumentation/Materials; región UE, deals recientes relacionados con CCUS",
+            "entities": ["companies", "deals"]
+          }
+        }
+      }
+    }
+  },
+  "render_order": ["E", "F", "G", "H", "I", "J", "K"]
+}
+
+

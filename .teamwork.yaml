@@ -1,0 +1,23 @@
+# Configuración de Teamwork para el Proyecto Applus
+project:
+  name: "Applus - Scouting de Innovación"
+  id: "" # ID del proyecto en Teamwork (pendiente de configuración)
+  description: "Proyecto de scouting de innovación asistido por IA"
+
+team:
+  members: [] # Lista de miembros del equipo
+  roles: [] # Roles asignados
+
+tasks:
+  default_assignee: "" # Asignado por defecto
+  categories:
+    - "Investigación"
+    - "Análisis"
+    - "Propuestas"
+    - "Revisión"
+    - "Implementación"
+
+integrations:
+  - "IA Assistant (Cursor)"
+  - "GitHub"
+  - "Documentación Markdown"

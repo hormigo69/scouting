@@ -1,25 +1,25 @@
 {
   "metadata": {
-    "title": "Revisión de IA - Challenge Request BVLOS",
+    "title": "Revisión de IA - Solicitud de Desafío BVLOS",
     "review_date": "2024-01-15",
-    "ai_model": "GPT-4 Innovation Scouting Assistant",
-    "review_status": "completed",
+    "ai_model": "Asistente de Scouting de Innovación GPT-4",
+    "review_status": "completado",
     "overall_score": 7.2,
     "recommendations_count": 12
   },
   "field_reviews": [
     {
       "field_id": "challenge_headline",
-      "field_name": "CHALLENGE HEADLINE",
+      "field_name": "TÍTULO DEL DESAFÍO",
       "ai_analysis": {
         "score": 6.5,
-        "completeness": "partial",
-        "clarity": "good",
-        "specificity": "moderate",
+        "completeness": "parcial",
+        "clarity": "buena",
+        "specificity": "moderada",
         "feedback": "El headline es claro pero le falta especificidad en términos de geografía, TRL mínimo y plazos. Es un buen punto de partida pero necesita más detalle para una búsqueda efectiva.",
         "strengths": [
           "Identifica claramente el tipo de solución (BVLOS UAS)",
-          "Especifica el uso (inspection services)",
+          "Especifica el uso (servicios de inspección)",
           "Es conciso y memorable"
         ],
         "improvements": [
@@ -38,12 +38,12 @@
     },
     {
       "field_id": "problem_definition",
-      "field_name": "PROBLEM",
+      "field_name": "PROBLEMA",
       "ai_analysis": {
         "score": 8.0,
-        "completeness": "excellent",
-        "clarity": "excellent",
-        "specificity": "good",
+        "completeness": "excelente",
+        "clarity": "excelente",
+        "specificity": "buena",
         "feedback": "Excelente definición del problema. Muy completa con background, limitaciones específicas y casos de uso claros. La justificación de negocio es sólida.",
         "strengths": [
           "Identifica claramente las limitaciones del VLOS",
@@ -66,12 +66,12 @@
     },
     {
       "field_id": "potential_solutions",
-      "field_name": "POTENTIAL SOLUTION/S",
+      "field_name": "SOLUCIÓN/S POTENCIAL/ES",
       "ai_analysis": {
         "score": 7.8,
-        "completeness": "good",
-        "clarity": "excellent",
-        "specificity": "good",
+        "completeness": "buena",
+        "clarity": "excelente",
+        "specificity": "buena",
         "feedback": "Muy buena descripción de las tecnologías BVLOS y tipos de drones. Incluye empresas conocidas y especificaciones técnicas. Bien estructurado.",
         "strengths": [
           "Categoriza bien los tipos de BVLOS UAS",
@@ -95,12 +95,12 @@
     },
     {
       "field_id": "discarded_solutions",
-      "field_name": "DISCARDED SOLUTIONS",
+      "field_name": "SOLUCIONES DESCARTADAS",
       "ai_analysis": {
         "score": 5.0,
-        "completeness": "partial",
-        "clarity": "moderate",
-        "specificity": "low",
+        "completeness": "parcial",
+        "clarity": "moderada",
+        "specificity": "baja",
         "feedback": "Esta sección es muy limitada. Solo menciona no contactar empresas ya conocidas, pero no explica por qué se descartan otras soluciones o tecnologías.",
         "strengths": [
           "Identifica empresas ya contactadas",
@@ -122,12 +122,12 @@
     },
     {
       "field_id": "number_of_startups",
-      "field_name": "NUMBER OF STARTUPS",
+      "field_name": "NÚMERO DE STARTUPS",
       "ai_analysis": {
         "score": 8.5,
-        "completeness": "excellent",
-        "clarity": "excellent",
-        "specificity": "excellent",
+        "completeness": "excelente",
+        "clarity": "excelente",
+        "specificity": "excelente",
         "feedback": "Perfecto. Números claros y realistas para Long List y Short List. Bien alineado con las expectativas del proceso de scouting.",
         "strengths": [
           "Números específicos y realistas",
@@ -147,7 +147,7 @@
     },
     {
       "field_id": "considerations",
-      "field_name": "CONSIDERATIONS",
+      "field_name": "CONSIDERACIONES",
       "ai_analysis": {
         "score": 9.0,
         "completeness": "excellent",
@@ -174,12 +174,12 @@
     },
     {
       "field_id": "pilot_project",
-      "field_name": "PILOT PROJECT/PROOF OF CONCEPT",
+      "field_name": "PROYECTO PILOTO/PRUEBA DE CONCEPTO",
       "ai_analysis": {
         "score": 4.5,
-        "completeness": "low",
-        "clarity": "moderate",
-        "specificity": "low",
+        "completeness": "baja",
+        "clarity": "moderada",
+        "specificity": "baja",
         "feedback": "Esta sección necesita mucho más detalle. Es muy vaga y no proporciona información suficiente para planificar un piloto efectivo.",
         "strengths": [
           "Mantiene flexibilidad en el enfoque",
@@ -203,12 +203,12 @@
     },
     {
       "field_id": "value_proposition",
-      "field_name": "VALUE PROPOSITION/POST-PILOT COLLABORATION",
+      "field_name": "PROPUESTA DE VALOR/COLABORACIÓN POST-PILOTO",
       "ai_analysis": {
         "score": 6.0,
-        "completeness": "moderate",
-        "clarity": "good",
-        "specificity": "moderate",
+        "completeness": "moderada",
+        "clarity": "buena",
+        "specificity": "moderada",
         "feedback": "La propuesta de valor es clara pero genérica. Necesita más especificidad sobre qué puede ofrecer Repsol y qué tipo de colaboración buscan.",
         "strengths": [
           "Menciona diferentes tipos de colaboración",
@@ -230,12 +230,12 @@
     },
     {
       "field_id": "applus_team",
-      "field_name": "APPLUS TEAM",
+      "field_name": "EQUIPO REPSOL",
       "ai_analysis": {
         "score": 7.5,
-        "completeness": "good",
-        "clarity": "excellent",
-        "specificity": "good",
+        "completeness": "buena",
+        "clarity": "excelente",
+        "specificity": "buena",
         "feedback": "Bien estructurado el equipo. Identifica roles clave pero falta definir el equipo del piloto y responsabilidades específicas.",
         "strengths": [
           "Identifica roles clave claramente",
@@ -258,12 +258,12 @@
     },
     {
       "field_id": "documentation",
-      "field_name": "DOCUMENTATION",
+      "field_name": "DOCUMENTACIÓN",
       "ai_analysis": {
         "score": 5.5,
-        "completeness": "low",
-        "clarity": "moderate",
-        "specificity": "low",
+        "completeness": "baja",
+        "clarity": "moderada",
+        "specificity": "baja",
         "feedback": "Muy limitada. Solo menciona regulación UAS y un enlace. Falta documentación técnica, casos de uso específicos, y otros recursos relevantes.",
         "strengths": [
           "Incluye regulación relevante",
@@ -286,32 +286,32 @@
   ],
   "overall_recommendations": [
     {
-      "priority": "high",
-      "category": "scope_definition",
-      "recommendation": "Definir más específicamente el scope geográfico, TRL mínimo y plazos del challenge",
+      "priority": "alta",
+      "category": "definicion_alcance",
+      "recommendation": "Definir más específicamente el alcance geográfico, TRL mínimo y plazos del desafío",
       "impact": "Mejorará la precisión de la búsqueda de startups"
     },
     {
-      "priority": "high",
-      "category": "pilot_planning",
-      "recommendation": "Desarrollar un plan detallado del piloto con scope, timeline, presupuesto y métricas específicas",
+      "priority": "alta",
+      "category": "planificacion_piloto",
+      "recommendation": "Desarrollar un plan detallado del piloto con alcance, cronograma, presupuesto y métricas específicas",
       "impact": "Facilitará la ejecución exitosa del piloto"
     },
     {
-      "priority": "medium",
-      "category": "value_proposition",
+      "priority": "media",
+      "category": "propuesta_valor",
       "recommendation": "Especificar la propuesta de valor concreta que Repsol puede ofrecer a las startups",
       "impact": "Aumentará el atractivo para startups de calidad"
     },
     {
-      "priority": "medium",
-      "category": "team_structure",
+      "priority": "media",
+      "category": "estructura_equipo",
       "recommendation": "Definir el equipo específico del piloto y sus responsabilidades",
       "impact": "Mejorará la coordinación y ejecución del proyecto"
     },
     {
-      "priority": "low",
-      "category": "documentation",
+      "priority": "baja",
+      "category": "documentacion",
       "recommendation": "Compilar documentación técnica adicional y casos de uso específicos",
       "impact": "Facilitará la evaluación y selección de startups"
     }
@@ -319,15 +319,15 @@
   "interview_questions_summary": {
     "total_questions": 35,
     "categories": {
-      "scope_definition": 4,
-      "business_case": 4,
-      "technical_requirements": 4,
-      "pilot_planning": 5,
-      "value_proposition": 4,
-      "team_coordination": 4,
-      "regulatory_compliance": 4,
-      "documentation": 4,
-      "timeline_budget": 2
+      "definicion_alcance": 4,
+      "caso_negocio": 4,
+      "requisitos_tecnicos": 4,
+      "planificacion_piloto": 5,
+      "propuesta_valor": 4,
+      "coordinacion_equipo": 4,
+      "cumplimiento_regulatorio": 4,
+      "documentacion": 4,
+      "cronograma_presupuesto": 2
     },
     "priority_questions": [
       "¿En qué regiones geográficas específicas planean implementar las soluciones BVLOS?",

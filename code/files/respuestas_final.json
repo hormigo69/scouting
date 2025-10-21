@@ -2,7 +2,7 @@
   "ai_review_filled": {
     "metadata": {
       "source_title": "Revisión de IA - Challenge Request BVLOS",
-      "business_unit": "Applus+ Energy & Industry",
+      "business_unit": "Repsol Energy & Industry",
       "owner": "Salvador Jiménez",
       "filled_on": "2025-09-08",
       "notes": "Respuestas preparadas por la Unidad de negocio para la entrevista de evaluación"
@@ -30,7 +30,7 @@
         "interview_questions": [
           "¿Tienen cifras específicas de los costes actuales de inspección con VLOS?",
           "¿Cuánto tiempo se ahorraría con BVLOS en cada tipo de inspección?",
-          "¿Qué otros departamentos de Applus+ podrían beneficiarse de esta tecnología?",
+          "¿Qué otros departamentos de Repsol podrían beneficiarse de esta tecnología?",
           "¿Han calculado el ROI esperado de la implementación BVLOS?"
         ],
         "answers": [
@@ -118,7 +118,7 @@
       {
         "field_id": "value_proposition",
         "interview_questions": [
-          "¿Qué recursos específicos puede aportar Applus+ a las startups?",
+          "¿Qué recursos específicos puede aportar Repsol a las startups?",
           "¿A qué mercados o clientes específicos pueden dar acceso?",
           "¿Están dispuestos a invertir financieramente en las startups?",
           "¿Qué términos de colaboración preferirían (licencia, joint venture, etc.)?"

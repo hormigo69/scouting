@@ -13,7 +13,7 @@ async function loadChallengeResponses() {
         try {
             // Intentar cargar respuestas específicas de Economía circular si la plantilla actual es esa
             if (typeof currentTemplate === 'object' && currentTemplate && currentTemplate.name === 'Economía circular') {
-                const test = await fetch('../Challenge request economia circular.json', { method: 'HEAD' });
+                const test = await fetch('Challenge request economia circular.json', { method: 'HEAD' });
                 if (test.ok) {
                     target = 'files/Challenge request economia circular.json';
                 }

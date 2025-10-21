@@ -1,90 +1,72 @@
+// Function to parse JSON template and extract fields
+async function parseJsonTemplate() {
+    try {
+        console.log('Attempting to fetch JSON file...');
+        const response = await fetch('files/A+ Template_CHALLENGE REQUEST 3.json');
+        
+        if (!response.ok) {
+            console.error('Failed to fetch JSON file:', response.status, response.statusText);
+            return [];
+        }
+        
+        const jsonData = await response.json();
+        console.log('JSON file loaded successfully');
+        console.log('Template metadata:', jsonData.metadata);
+        console.log('Number of fields:', jsonData.fields.length);
+        
+        // Convert JSON fields to the format expected by the UI
+        const fields = jsonData.fields.map(field => ({
+            id: field.id,
+            name: field.name,
+            type: field.type,
+            required: field.required,
+            description: field.description,
+            examples: field.examples.join('\n')
+        }));
+        
+        console.log('Converted fields:', fields);
+        return fields;
+    } catch (error) {
+        console.error('Error parsing JSON template:', error);
+        return [];
+    }
+}
+
+// Function to determine field type based on content
+function determineFieldType(field) {
+    const name = field.name.toLowerCase();
+    const id = field.id.toLowerCase();
+    
+    // Text fields (short inputs)
+    if (name.includes('headline') || name.includes('title')) {
+        return 'text';
+    }
+    
+    // Number fields
+    if (name.includes('number') || name.includes('startups') || name.includes('cantidad')) {
+        return 'number';
+    }
+    
+    // Date fields
+    if (name.includes('date') || name.includes('fecha')) {
+        return 'date';
+    }
+    
+    // Email fields
+    if (name.includes('email') || name.includes('correo')) {
+        return 'email';
+    }
+    
+    // Default to textarea for longer content
+    return 'textarea';
+}
+
 // Template definitions
 const templates = {
     standard: {
         name: 'Plantilla Estándar',
-        description: 'Plantilla base de Applus+ Ventures con todos los campos estándar del Challenge Request',
-        fields: [
-            {
-                id: 'challenge_headline',
-                name: 'Challenge Headline',
-                type: 'text',
-                required: true,
-                description: 'Use a short sentence, easy to remember, descriptive of the problem to solve',
-                examples: 'Ejemplo: "Reducir emisiones de partículas de freno en vehículos comerciales para cumplir Euro 7"'
-            },
-            {
-                id: 'problem',
-                name: 'Problem',
-                type: 'textarea',
-                required: true,
-                description: 'Explain briefly relevant background information, detailing the problem we are trying to solve and why',
-                examples: 'Incluir: Background, Problem, Expected impact and benefits, Other business units that could benefit'
-            },
-            {
-                id: 'potential_solutions',
-                name: 'Potential Solutions',
-                type: 'textarea',
-                required: true,
-                description: 'On your best knowledge, describe possible solutions and/or technologies that you estimate could solve the problem. Include names of known companies and startups that may have a solutions and/or you have been in contact in the past',
-                examples: 'Incluir: Possible solutions/technologies, Company names (if known), Functional description, Technical specificities'
-            },
-            {
-                id: 'discarded_solutions',
-                name: 'Discarded Solutions',
-                type: 'textarea',
-                required: false,
-                description: 'Indicate which solutions you think are not viable and why. Indicate the name of companies owing the solution if possible',
-                examples: 'Incluir: Non-viable solutions, Company name (if known), Why they are not viable'
-            },
-            {
-                id: 'number_startups',
-                name: 'Number of Startups',
-                type: 'number',
-                required: true,
-                description: 'Indicate the number of potential startups expected to review. The first deliverable will be a list of startups potentially qualified to solve the Challenge, based on public information (Long List). The team will review and select a few, to be contacted by Applus Ventures to request further information and confirm their qualification and interest in meeting Applus (Short List)',
-                examples: 'Ejemplo: Long List: 20 startups, Short List: 3-5 startups'
-            },
-            {
-                id: 'considerations',
-                name: 'Considerations',
-                type: 'textarea',
-                required: false,
-                description: 'Are there time, cost, resources or technology constraints to consider for this project? What is the level of urgency or deadlines? What are the main barriers or stoppers to consider? (availability of the team, engagement of the end users, etc.)',
-                examples: 'Incluir: Time constraints, Cost limitations, Resource availability, Technology constraints, Urgency level, Main barriers'
-            },
-            {
-                id: 'pilot_project',
-                name: 'Pilot Project/Proof of Concept',
-                type: 'textarea',
-                required: false,
-                description: 'The Pilot Project or Proof of Concept is a project of limited scope and timing to qualify the selected startup and its solution. Please confirm the interest in such project and detail preliminary particulars, if known',
-                examples: 'Incluir: Scope/Use Case, Technical particulars, People Involved, Potential Start date, Estimate duration, Budget'
-            },
-            {
-                id: 'value_proposition',
-                name: 'Value Proposition/Post-Pilot Collaboration',
-                type: 'textarea',
-                required: false,
-                description: 'What are the benefits that the startup may get if it accepts to collaborate with Applus, if the Pilot Project/Proof of Concept is successful. Please elaborate',
-                examples: 'Incluir: Commercial Collaboration, Access to Applus clients, Long term Partnership, Joint R&D project, Financing'
-            },
-            {
-                id: 'applus_team',
-                name: 'Applus Team',
-                type: 'textarea',
-                required: true,
-                description: 'Indicate the people involved, name and position',
-                examples: 'Incluir: Sponsor, Owner (main contact), Coordinator, Evaluators, Pilot Project Team'
-            },
-            {
-                id: 'documentation',
-                name: 'Documentation',
-                type: 'textarea',
-                required: false,
-                description: 'Please list and send enclosed any relevant documentation you estimate useful',
-                examples: 'Incluir: Technical specifications, Market studies, Regulatory documents, Previous research, Case studies'
-            }
-        ]
+        description: 'Plantilla base de Repsol con todos los campos estándar del Challenge Request',
+        fields: [], // Will be populated dynamically from markdown
     },
     automotive: {
         name: 'Automoción',
@@ -169,7 +151,7 @@ const templates = {
             },
             {
                 id: 'applus_team',
-                name: 'Applus Team',
+                name: 'Repsol Team',
                 type: 'textarea',
                 required: true,
                 description: 'Indicate the people involved, name and position',
@@ -260,7 +242,7 @@ const templates = {
             },
             {
                 id: 'applus_team',
-                name: 'Applus Team',
+                name: 'Repsol Team',
                 type: 'textarea',
                 required: true,
                 description: 'Indicate the people involved, name and position',
@@ -312,7 +294,7 @@ const templates = {
                 required: true,
                 description: 'Scale of energy application',
                 options: ['Residential', 'Commercial', 'Industrial', 'Utility scale', 'Grid level'],
-                examples: 'Utility scale y Grid level son los más relevantes para Applus+'
+                examples: 'Utility scale y Grid level son los más relevantes para Repsol'
             },
             {
                 id: 'renewable_focus',
@@ -350,7 +332,7 @@ const templates = {
             },
             {
                 id: 'applus_team',
-                name: 'Applus Team',
+                name: 'Repsol Team',
                 type: 'textarea',
                 required: true,
                 description: 'Indicate the people involved, name and position',
@@ -366,12 +348,36 @@ let selectedFields = [];
 let currentField = null;
 
 // Initialize the application
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
+    // Load standard template from markdown
+    await loadStandardTemplate();
+    
+    // Initialize everything after template is loaded
     initializeTemplateSelection();
     initializeCustomizationPanel();
     initializeModal();
     initializeActions();
+    
+    // Show loading complete message
+    console.log('Application initialized successfully');
+    console.log('Available templates:', Object.keys(templates));
+    console.log('Standard template fields count:', templates.standard.fields.length);
 });
+
+// Load standard template from JSON file
+async function loadStandardTemplate() {
+    try {
+        console.log('Loading standard template from JSON...');
+        const fields = await parseJsonTemplate();
+        templates.standard.fields = fields;
+        console.log('Standard template loaded from JSON:', fields);
+        console.log('Template object after loading:', templates.standard);
+    } catch (error) {
+        console.error('Error loading standard template:', error);
+        // Fallback to empty fields if JSON loading fails
+        templates.standard.fields = [];
+    }
+}
 
 // Template Selection
 function initializeTemplateSelection() {
@@ -394,6 +400,9 @@ function initializeTemplateSelection() {
             
             // Populate fields
             populateFields();
+            
+            // Update validation
+            updateValidation();
             
             // Enable continue button
             document.getElementById('continueBtn').disabled = false;
@@ -440,10 +449,27 @@ function initializeCustomizationPanel() {
 }
 
 function populateFields() {
-    if (!currentTemplate) return;
+    if (!currentTemplate) {
+        console.log('No current template selected');
+        return;
+    }
+    
+    console.log('Populating fields for template:', currentTemplate.name);
+    console.log('Template fields:', currentTemplate.fields);
     
     const fieldList = document.getElementById('fieldList');
+    if (!fieldList) {
+        console.log('Field list element not found');
+        return;
+    }
+    
     fieldList.innerHTML = '';
+    
+    if (!currentTemplate.fields || currentTemplate.fields.length === 0) {
+        console.log('No fields to populate');
+        fieldList.innerHTML = '<p>No hay campos disponibles para este template.</p>';
+        return;
+    }
     
     currentTemplate.fields.forEach(field => {
         const fieldElement = createFieldElement(field);
@@ -451,6 +477,7 @@ function populateFields() {
     });
     
     selectedFields = [...currentTemplate.fields];
+    console.log('Fields populated successfully:', selectedFields.length);
 }
 
 function createFieldElement(field) {
@@ -590,6 +617,9 @@ function saveFieldConfiguration() {
     // Refresh field list
     populateFields();
     
+    // Update validation
+    updateValidation();
+    
     // Re-select the field
     selectField(currentField.id);
     
@@ -605,6 +635,7 @@ function deleteField(fieldId) {
     if (confirm('¿Estás seguro de que quieres eliminar este campo?')) {
         selectedFields = selectedFields.filter(f => f.id !== fieldId);
         populateFields();
+        updateValidation();
         document.getElementById('fieldConfig').innerHTML = '<p class="placeholder">Selecciona un campo para configurarlo</p>';
         currentField = null;
         document.getElementById('saveTemplateBtn').disabled = false;
@@ -667,6 +698,7 @@ function addNewField() {
     
     selectedFields.push(newField);
     populateFields();
+    updateValidation();
     closeModal();
     document.getElementById('saveTemplateBtn').disabled = false;
 }
@@ -809,13 +841,10 @@ function saveTemplate() {
     link.download = `template_${currentTemplate.name.toLowerCase().replace(/\s+/g, '_')}.json`;
     link.click();
     URL.revokeObjectURL(url);
-    
-    alert('Plantilla guardada exitosamente');
 }
 
 function continueToNextStep() {
     // In a real application, this would navigate to the next step
-    alert('Continuando al Paso B: Respuesta por Parte de la Unidad de Negocio');
     
     // For demo purposes, show the generated form
     const formData = {

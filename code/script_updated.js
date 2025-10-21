@@ -1,72 +1,90 @@
-// Function to parse JSON template and extract fields
-async function parseJsonTemplate() {
-    try {
-        console.log('Attempting to fetch JSON file...');
-        const response = await fetch('files/A+ Template_CHALLENGE REQUEST 3.json');
-        
-        if (!response.ok) {
-            console.error('Failed to fetch JSON file:', response.status, response.statusText);
-            return [];
-        }
-        
-        const jsonData = await response.json();
-        console.log('JSON file loaded successfully');
-        console.log('Template metadata:', jsonData.metadata);
-        console.log('Number of fields:', jsonData.fields.length);
-        
-        // Convert JSON fields to the format expected by the UI
-        const fields = jsonData.fields.map(field => ({
-            id: field.id,
-            name: field.name,
-            type: field.type,
-            required: field.required,
-            description: field.description,
-            examples: field.examples.join('\n')
-        }));
-        
-        console.log('Converted fields:', fields);
-        return fields;
-    } catch (error) {
-        console.error('Error parsing JSON template:', error);
-        return [];
-    }
-}
-
-// Function to determine field type based on content
-function determineFieldType(field) {
-    const name = field.name.toLowerCase();
-    const id = field.id.toLowerCase();
-    
-    // Text fields (short inputs)
-    if (name.includes('headline') || name.includes('title')) {
-        return 'text';
-    }
-    
-    // Number fields
-    if (name.includes('number') || name.includes('startups') || name.includes('cantidad')) {
-        return 'number';
-    }
-    
-    // Date fields
-    if (name.includes('date') || name.includes('fecha')) {
-        return 'date';
-    }
-    
-    // Email fields
-    if (name.includes('email') || name.includes('correo')) {
-        return 'email';
-    }
-    
-    // Default to textarea for longer content
-    return 'textarea';
-}
-
 // Template definitions
 const templates = {
     standard: {
         name: 'Plantilla Estándar',
         description: 'Plantilla base de Repsol con todos los campos estándar del Challenge Request',
-        fields: [], // Will be populated dynamically from markdown
+        fields: [
+            {
+                id: 'challenge_headline',
+                name: 'Challenge Headline',
+                type: 'text',
+                required: true,
+                description: 'Use a short sentence, easy to remember, descriptive of the problem to solve',
+                examples: 'Ejemplo: "Reducir emisiones de partículas de freno en vehículos comerciales para cumplir Euro 7"'
+            },
+            {
+                id: 'problem',
+                name: 'Problem',
+                type: 'textarea',
+                required: true,
+                description: 'Explain briefly relevant background information, detailing the problem we are trying to solve and why',
+                examples: 'Incluir: Background, Problem, Expected impact and benefits, Other business units that could benefit'
+            },
+            {
+                id: 'potential_solutions',
+                name: 'Potential Solutions',
+                type: 'textarea',
+                required: true,
+                description: 'On your best knowledge, describe possible solutions and/or technologies that you estimate could solve the problem. Include names of known companies and startups that may have a solutions and/or you have been in contact in the past',
+                examples: 'Incluir: Possible solutions/technologies, Company names (if known), Functional description, Technical specificities'
+            },
+            {
+                id: 'discarded_solutions',
+                name: 'Discarded Solutions',
+                type: 'textarea',
+                required: false,
+                description: 'Indicate which solutions you think are not viable and why. Indicate the name of companies owing the solution if possible',
+                examples: 'Incluir: Non-viable solutions, Company name (if known), Why they are not viable'
+            },
+            {
+                id: 'number_startups',
+                name: 'Number of Startups',
+                type: 'number',
+                required: true,
+                description: 'Indicate the number of potential startups expected to review. The first deliverable will be a list of startups potentially qualified to solve the Challenge, based on public information (Long List). The team will review and select a few to request further information and confirm their qualification and interest in meeting the team (Short List)',
+                examples: 'Ejemplo: Long List: 20 startups, Short List: 3-5 startups'
+            },
+            {
+                id: 'considerations',
+                name: 'Considerations',
+                type: 'textarea',
+                required: false,
+                description: 'Are there time, cost, resources or technology constraints to consider for this project? What is the level of urgency or deadlines? What are the main barriers or stoppers to consider? (availability of the team, engagement of the end users, etc.)',
+                examples: 'Incluir: Time constraints, Cost limitations, Resource availability, Technology constraints, Urgency level, Main barriers'
+            },
+            {
+                id: 'pilot_project',
+                name: 'Pilot Project/Proof of Concept',
+                type: 'textarea',
+                required: false,
+                description: 'The Pilot Project or Proof of Concept is a project of limited scope and timing to qualify the selected startup and its solution. Please confirm the interest in such project and detail preliminary particulars, if known',
+                examples: 'Incluir: Scope/Use Case, Technical particulars, People Involved, Potential Start date, Estimate duration, Budget'
+            },
+            {
+                id: 'value_proposition',
+                name: 'Value Proposition/Post-Pilot Collaboration',
+                type: 'textarea',
+                required: false,
+                description: 'What are the benefits that the startup may get if it accepts to collaborate with Repsol, if the Pilot Project/Proof of Concept is successful. Please elaborate',
+                examples: 'Incluir: Commercial Collaboration, Access to Repsol clients, Long term Partnership, Joint R&D project, Financing'
+            },
+            {
+                id: 'applus_team',
+                name: 'Repsol Team',
+                type: 'textarea',
+                required: true,
+                description: 'Indicate the people involved, name and position',
+                examples: 'Incluir: Sponsor, Owner (main contact), Coordinator, Evaluators, Pilot Project Team'
+            },
+            {
+                id: 'documentation',
+                name: 'Documentation',
+                type: 'textarea',
+                required: false,
+                description: 'Please list and send enclosed any relevant documentation you estimate useful',
+                examples: 'Incluir: Technical specifications, Market studies, Regulatory documents, Previous research, Case studies'
+            }
+        ]
     },
     automotive: {
         name: 'Automoción',
@@ -294,7 +312,7 @@ const templates = {
                 required: true,
                 description: 'Scale of energy application',
                 options: ['Residential', 'Commercial', 'Industrial', 'Utility scale', 'Grid level'],
-                examples: 'Utility scale y Grid level son los más relevantes para Applus+'
+                examples: 'Utility scale y Grid level son los más relevantes para Repsol'
             },
             {
                 id: 'renewable_focus',
@@ -332,7 +350,7 @@ const templates = {
             },
             {
                 id: 'applus_team',
-                name: 'Applus Team',
+                name: 'Repsol Team',
                 type: 'textarea',
                 required: true,
                 description: 'Indicate the people involved, name and position',
@@ -348,36 +366,12 @@ let selectedFields = [];
 let currentField = null;
 
 // Initialize the application
-document.addEventListener('DOMContentLoaded', async function() {
-    // Load standard template from markdown
-    await loadStandardTemplate();
-    
-    // Initialize everything after template is loaded
+document.addEventListener('DOMContentLoaded', function() {
     initializeTemplateSelection();
     initializeCustomizationPanel();
     initializeModal();
     initializeActions();
-    
-    // Show loading complete message
-    console.log('Application initialized successfully');
-    console.log('Available templates:', Object.keys(templates));
-    console.log('Standard template fields count:', templates.standard.fields.length);
 });
-
-// Load standard template from JSON file
-async function loadStandardTemplate() {
-    try {
-        console.log('Loading standard template from JSON...');
-        const fields = await parseJsonTemplate();
-        templates.standard.fields = fields;
-        console.log('Standard template loaded from JSON:', fields);
-        console.log('Template object after loading:', templates.standard);
-    } catch (error) {
-        console.error('Error loading standard template:', error);
-        // Fallback to empty fields if JSON loading fails
-        templates.standard.fields = [];
-    }
-}
 
 // Template Selection
 function initializeTemplateSelection() {
@@ -400,9 +394,6 @@ function initializeTemplateSelection() {
             
             // Populate fields
             populateFields();
-            
-            // Update validation
-            updateValidation();
             
             // Enable continue button
             document.getElementById('continueBtn').disabled = false;
@@ -449,27 +440,10 @@ function initializeCustomizationPanel() {
 }
 
 function populateFields() {
-    if (!currentTemplate) {
-        console.log('No current template selected');
-        return;
-    }
-    
-    console.log('Populating fields for template:', currentTemplate.name);
-    console.log('Template fields:', currentTemplate.fields);
+    if (!currentTemplate) return;
     
     const fieldList = document.getElementById('fieldList');
-    if (!fieldList) {
-        console.log('Field list element not found');
-        return;
-    }
-    
     fieldList.innerHTML = '';
-    
-    if (!currentTemplate.fields || currentTemplate.fields.length === 0) {
-        console.log('No fields to populate');
-        fieldList.innerHTML = '<p class="text-applus-gray-400 text-center py-4">No hay campos disponibles para este template.</p>';
-        return;
-    }
     
     currentTemplate.fields.forEach(field => {
         const fieldElement = createFieldElement(field);
@@ -477,32 +451,31 @@ function populateFields() {
     });
     
     selectedFields = [...currentTemplate.fields];
-    console.log('Fields populated successfully:', selectedFields.length);
 }
 
 function createFieldElement(field) {
     const fieldDiv = document.createElement('div');
-    fieldDiv.className = 'list-item';
+    fieldDiv.className = 'field-item';
     fieldDiv.dataset.fieldId = field.id;
     
     fieldDiv.innerHTML = `
-        <div class="flex-1">
-            <div class="font-semibold mb-1 text-applus-gray-600">${field.name}</div>
-            <div class="text-sm text-applus-gray-400">${getFieldTypeLabel(field.type)} ${field.required ? '(Obligatorio)' : '(Opcional)'}</div>
+        <div class="field-info">
+            <div class="field-name">${field.name}</div>
+            <div class="field-type">${getFieldTypeLabel(field.type)} ${field.required ? '(Obligatorio)' : '(Opcional)'}</div>
             ${field.examples ? `<div class="field-examples">💡 ${field.examples}</div>` : ''}
         </div>
-        <div class="flex gap-1">
-            <button class="p-1 border-none cursor-pointer rounded transition-all duration-300 hover:bg-applus-gray-200" onclick="editField('${field.id}')" title="Editar">
-                <i class="fas fa-edit text-applus-gray-400"></i>
+        <div class="field-actions">
+            <button class="field-action-btn" onclick="editField('${field.id}')" title="Editar">
+                <i class="fas fa-edit"></i>
             </button>
-            <button class="p-1 border-none cursor-pointer rounded transition-all duration-300 hover:bg-applus-gray-200" onclick="deleteField('${field.id}')" title="Eliminar">
-                <i class="fas fa-trash text-applus-gray-400"></i>
+            <button class="field-action-btn" onclick="deleteField('${field.id}')" title="Eliminar">
+                <i class="fas fa-trash"></i>
             </button>
         </div>
     `;
     
     fieldDiv.addEventListener('click', function(e) {
-        if (!e.target.closest('button')) {
+        if (!e.target.closest('.field-action-btn')) {
             selectField(field.id);
         }
     });
@@ -524,13 +497,13 @@ function getFieldTypeLabel(type) {
 
 function selectField(fieldId) {
     // Remove previous selection
-    document.querySelectorAll('.list-item').forEach(item => {
-        item.classList.remove('active');
+    document.querySelectorAll('.field-item').forEach(item => {
+        item.classList.remove('selected');
     });
     
     // Add selection to clicked field
     const fieldElement = document.querySelector(`[data-field-id="${fieldId}"]`);
-    fieldElement.classList.add('active');
+    fieldElement.classList.add('selected');
     
     // Set current field and show configuration
     currentField = selectedFields.find(f => f.id === fieldId);
@@ -541,19 +514,19 @@ function showFieldConfiguration() {
     const configDiv = document.getElementById('fieldConfig');
     
     if (!currentField) {
-        configDiv.innerHTML = '<p class="text-applus-gray-400 italic text-center py-10">Selecciona un campo para configurarlo</p>';
+        configDiv.innerHTML = '<p class="placeholder">Selecciona un campo para configurarlo</p>';
         return;
     }
     
     configDiv.innerHTML = `
-        <form class="space-y-4" id="fieldConfigForm">
-            <div class="flex flex-col gap-2">
-                <label for="configName" class="font-medium text-applus-gray-700">Nombre del Campo</label>
-                <input type="text" id="configName" value="${currentField.name}" required class="form-input">
+        <form class="config-form" id="fieldConfigForm">
+            <div class="form-group">
+                <label for="configName">Nombre del Campo</label>
+                <input type="text" id="configName" value="${currentField.name}" required>
             </div>
-            <div class="flex flex-col gap-2">
-                <label for="configType" class="font-medium text-applus-gray-700">Tipo de Campo</label>
-                <select id="configType" required class="form-select">
+            <div class="form-group">
+                <label for="configType">Tipo de Campo</label>
+                <select id="configType" required>
                     <option value="text" ${currentField.type === 'text' ? 'selected' : ''}>Texto</option>
                     <option value="textarea" ${currentField.type === 'textarea' ? 'selected' : ''}>Área de Texto</option>
                     <option value="select" ${currentField.type === 'select' ? 'selected' : ''}>Lista Desplegable</option>
@@ -562,26 +535,27 @@ function showFieldConfiguration() {
                     <option value="date" ${currentField.type === 'date' ? 'selected' : ''}>Fecha</option>
                 </select>
             </div>
-            <div class="flex flex-col gap-2">
-                <label for="configDescription" class="font-medium text-applus-gray-700">Descripción</label>
-                <textarea id="configDescription" rows="3" class="form-textarea">${currentField.description || ''}</textarea>
+            <div class="form-group">
+                <label for="configDescription">Descripción</label>
+                <textarea id="configDescription" rows="3">${currentField.description || ''}</textarea>
             </div>
-            <div class="flex flex-col gap-2">
-                <label for="configExamples" class="font-medium text-applus-gray-700">Ejemplos/Pistas</label>
-                <textarea id="configExamples" rows="2" class="form-textarea">${currentField.examples || ''}</textarea>
+            <div class="form-group">
+                <label for="configExamples">Ejemplos/Pistas</label>
+                <textarea id="configExamples" rows="2">${currentField.examples || ''}</textarea>
             </div>
-            <div class="flex items-center gap-2">
-                <input type="checkbox" id="configRequired" ${currentField.required ? 'checked' : ''} class="rounded border-applus-gray-300 text-applus-orange focus:ring-applus-orange">
-                <label for="configRequired" class="font-medium text-applus-gray-700">Campo obligatorio</label>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="configRequired" ${currentField.required ? 'checked' : ''}> Campo obligatorio
+                </label>
             </div>
             ${currentField.options ? `
-            <div class="flex flex-col gap-2">
-                <label for="configOptions" class="font-medium text-applus-gray-700">Opciones (una por línea)</label>
-                <textarea id="configOptions" rows="4" class="form-textarea">${currentField.options.join('\n')}</textarea>
+            <div class="form-group">
+                <label for="configOptions">Opciones (una por línea)</label>
+                <textarea id="configOptions" rows="4">${currentField.options.join('\n')}</textarea>
             </div>
             ` : ''}
-            <div class="flex flex-col gap-2">
-                <button type="button" class="btn-applus-primary" onclick="saveFieldConfiguration()">Guardar Cambios</button>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" onclick="saveFieldConfiguration()">Guardar Cambios</button>
             </div>
         </form>
     `;
@@ -616,9 +590,6 @@ function saveFieldConfiguration() {
     // Refresh field list
     populateFields();
     
-    // Update validation
-    updateValidation();
-    
     // Re-select the field
     selectField(currentField.id);
     
@@ -634,8 +605,7 @@ function deleteField(fieldId) {
     if (confirm('¿Estás seguro de que quieres eliminar este campo?')) {
         selectedFields = selectedFields.filter(f => f.id !== fieldId);
         populateFields();
-        updateValidation();
-        document.getElementById('fieldConfig').innerHTML = '<p class="text-applus-gray-400 italic text-center py-10">Selecciona un campo para configurarlo</p>';
+        document.getElementById('fieldConfig').innerHTML = '<p class="placeholder">Selecciona un campo para configurarlo</p>';
         currentField = null;
         document.getElementById('saveTemplateBtn').disabled = false;
     }
@@ -650,7 +620,7 @@ function initializeModal() {
     const confirmBtn = document.getElementById('confirmAddFieldBtn');
     
     addFieldBtn.addEventListener('click', () => {
-        modal.style.display = 'flex';
+        modal.classList.add('show');
     });
     
     closeModalBtn.addEventListener('click', closeModal);
@@ -668,7 +638,7 @@ function initializeModal() {
 
 function closeModal() {
     const modal = document.getElementById('addFieldModal');
-    modal.style.display = 'none';
+    modal.classList.remove('show');
     document.getElementById('addFieldForm').reset();
 }
 
@@ -697,7 +667,6 @@ function addNewField() {
     
     selectedFields.push(newField);
     populateFields();
-    updateValidation();
     closeModal();
     document.getElementById('saveTemplateBtn').disabled = false;
 }
@@ -706,12 +675,12 @@ function addNewField() {
 function updatePreview() {
     const previewDiv = document.getElementById('formPreview');
     
-    let previewHTML = '<form class="space-y-5">';
+    let previewHTML = '<form class="preview-form">';
     
     selectedFields.forEach(field => {
         previewHTML += `
-            <div class="flex flex-col gap-2">
-                <label for="preview_${field.id}" class="font-medium text-applus-gray-700">${field.name} ${field.required ? '*' : ''}</label>
+            <div class="preview-field">
+                <label for="preview_${field.id}">${field.name} ${field.required ? '*' : ''}</label>
                 ${field.examples ? `<div class="preview-examples">💡 ${field.examples}</div>` : ''}
                 ${generateFieldHTML(field)}
             </div>
@@ -728,11 +697,11 @@ function generateFieldHTML(field) {
     
     switch (field.type) {
         case 'text':
-            return `<input type="text" id="${fieldId}" placeholder="${field.description}" class="form-input">`;
+            return `<input type="text" id="${fieldId}" placeholder="${field.description}">`;
         case 'textarea':
-            return `<textarea id="${fieldId}" rows="3" placeholder="${field.description}" class="form-textarea"></textarea>`;
+            return `<textarea id="${fieldId}" rows="3" placeholder="${field.description}"></textarea>`;
         case 'select':
-            let selectHTML = `<select id="${fieldId}" class="form-select">`;
+            let selectHTML = `<select id="${fieldId}">`;
             if (field.options) {
                 field.options.forEach(option => {
                     selectHTML += `<option value="${option}">${option}</option>`;
@@ -741,25 +710,24 @@ function generateFieldHTML(field) {
             selectHTML += '</select>';
             return selectHTML;
         case 'checkbox':
-            let checkboxHTML = '<div class="space-y-2">';
+            let checkboxHTML = '';
             if (field.options) {
                 field.options.forEach((option, index) => {
                     checkboxHTML += `
-                        <label class="flex items-center gap-2">
-                            <input type="checkbox" name="${fieldId}" value="${option}" class="rounded border-applus-gray-300 text-applus-orange focus:ring-applus-orange">
-                            <span class="text-sm text-applus-gray-600">${option}</span>
+                        <label>
+                            <input type="checkbox" name="${fieldId}" value="${option}">
+                            ${option}
                         </label>
                     `;
                 });
             }
-            checkboxHTML += '</div>';
             return checkboxHTML;
         case 'number':
-            return `<input type="number" id="${fieldId}" placeholder="${field.description}" class="form-input">`;
+            return `<input type="number" id="${fieldId}" placeholder="${field.description}">`;
         case 'date':
-            return `<input type="date" id="${fieldId}" class="form-input">`;
+            return `<input type="date" id="${fieldId}">`;
         default:
-            return `<input type="text" id="${fieldId}" placeholder="${field.description}" class="form-input">`;
+            return `<input type="text" id="${fieldId}" placeholder="${field.description}">`;
     }
 }
 
@@ -841,10 +809,13 @@ function saveTemplate() {
     link.download = `template_${currentTemplate.name.toLowerCase().replace(/\s+/g, '_')}.json`;
     link.click();
     URL.revokeObjectURL(url);
+    
+    alert('Plantilla guardada exitosamente');
 }
 
 function continueToNextStep() {
     // In a real application, this would navigate to the next step
+    alert('Continuando al Paso B: Respuesta por Parte de la Unidad de Negocio');
     
     // For demo purposes, show the generated form
     const formData = {

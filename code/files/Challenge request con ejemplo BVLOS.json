@@ -1,0 +1,140 @@
+{
+  "metadata": {
+    "title": "REPSOL: SOLICITUD DE DESAFÍO",
+    "division": "Repsol Energy & Industry",
+    "date": "13/09/2023",
+    "owners": "Salvador Jiménez"
+  },
+  "fields": [
+    {
+      "id": "challenge_headline",
+      "name": "TÍTULO DEL DESAFÍO",
+      "description": "Utilice una frase corta, fácil de recordar, descriptiva del problema a resolver",
+      "type": "text",
+      "required": true,
+      "examples": [
+        "Para [mercado/país/región y caso de uso], ¿qué [startups/scaleups/OEM/integradores] ofrecen [tecnología/solución] que [logra resultado/KPI medible] cumpliendo con [regulación/estándar/restricción], con [TRL mínimo], adecuado para piloto en [meses] y operacional en [geografía]?"
+      ],
+      "response": "Soluciones BVLOS UAS (Sistema de Aeronaves No Tripuladas) para usos de servicios de inspección"
+    },
+    {
+      "id": "problem_definition",
+      "name": "PROBLEMA",
+      "description": "Explique brevemente la información de fondo relevante, detallando el problema que estamos tratando de resolver y por qué",
+      "type": "textarea",
+      "required": true,
+      "examples": [
+        "Antecedentes",
+        "Problema",
+        "Impacto esperado y beneficios de resolver el problema (ahorro de costes, eficiencia, nuevas fuentes de ingresos, experiencia del cliente, etc.). Incluya caso de negocio o cifras indicativas de estos beneficios si están disponibles",
+        "¿Se beneficiarían otras unidades de negocio de la solución de este problema? ¿Estarían otras unidades de negocio interesadas en la solución para otros propósitos?"
+      ],
+      "response": "Antecedentes / Problema\n\nTodos los UAS utilizados en nuestro portafolio de servicios de inspección pertenecen a la categoría VLOS (Visual Line Of Sight). Esta tecnología tiene una serie de limitaciones, entre las cuales se destacan las siguientes:\n\nRango Limitado: Los drones que operan dentro de la línea de visión del operador tienen un rango limitado, lo que significa que solo pueden cubrir distancias relativamente cortas, lo que puede ser problemático para inspecciones en áreas grandes o de difícil acceso.\n\nEficiencia Reducida: pueden requerirse múltiples despegues y aterrizajes para cubrir un área completa, lo que puede resultar en eficiencia reducida y mayor consumo de tiempo.\n\nDificultad en Terreno Desafiante: En ubicaciones donde el terreno es accidentado o de difícil acceso, mantener la línea de visión directa con el drone puede ser difícil o incluso peligroso para los operadores.\n\nImpacto esperado y beneficios de resolver el problema (ahorro de costes, eficiencia, nuevas fuentes de ingresos, experiencia del cliente, etc.). Incluya caso de negocio o cifras indicativas de estos beneficios si están disponibles\n\nA nivel tecnológico, algunos UAS BVLOS (Beyond Visual Line of Sight) ya están comercializados con una autonomía de 5-6 h y un rango de +100km, por lo que implementar esta tecnología en nuestro portafolio de servicios nos proporcionaría una gran ventaja competitiva.\n\nEsta tecnología podría aplicarse en los siguientes dominios, reduciendo los tiempos de inspección y la fuerza laboral, lo que por tanto facilita una reducción en los precios de los servicios ofrecidos (lista no exhaustiva):\n\nInspección Aérea de Líneas Eléctricas\nInspección de Oleoductos y Gasoductos\nInspección de Turbinas Eólicas Marinas\nMantenimiento / Vigilancia de Infraestructuras Lineales\nMonitoreo Ambiental / Monitoreo de Emisiones de Gas\nLevantamiento Topográfico y Mapeo GIS\nMonitoreo de Progreso/Calidad de Sitios de Trabajo\n\n¿Se beneficiarían otras unidades de negocio de la solución de este problema? ¿Estarían otras unidades de negocio interesadas en la solución para otros propósitos? \nNS/NC"
+    },
+    {
+      "id": "potential_solutions",
+      "name": "SOLUCIÓN/S POTENCIAL/ES",
+      "description": "Con su mejor conocimiento, describa las posibles soluciones y/o tecnologías que estima que podrían resolver el problema. Incluya nombres de empresas conocidas y startups que puedan tener soluciones y/o con las que haya estado en contacto en el pasado",
+      "type": "textarea",
+      "required": true,
+      "examples": [
+        "Posibles soluciones/tecnologías. Nombres de empresas (si se conocen)",
+        "Descripción funcional de la solución potencial",
+        "Especificaciones técnicas (si se conocen)"
+      ],
+      "response": "Posibles soluciones/tecnologías. Nombres de empresas (si se conocen)\n\nEl mercado de sistemas de aeronaves no tripuladas (UAS) BVLOS (Beyond Visual Line of Sight) está creciendo y experimentando avances tecnológicos y regulatorios significativos. Sin embargo, no está completamente consolidado y continúa evolucionando rápidamente.\n\nSe están desarrollando tecnologías avanzadas para permitir operaciones BVLOS seguras y efectivas. Esto incluye sistemas de detección y evitación de colisiones, comunicaciones avanzadas, optimización de sistemas de navegación autónoma y mejoras en la autonomía de las aeronaves.\nEl mercado está experimentando una competencia creciente con la entrada de numerosos fabricantes de drones y empresas de tecnología. Esto está impulsando la innovación y la reducción de costes.\n\nActualmente, hemos contactado con Swissdrones, UMS Skeldar, Schiebel, UAVOS y ANAVIA, que son los principales actores como comercializadores de UAS de largo alcance dentro de la subcategoría de Helicópteros No Tripulados. Los próximos pasos incluyen la firma de NDAs para la presentación de casos de uso.\n\nDescripción funcional de la solución potencial\n\nLos UAS BVLOS pueden variar en diseño, tamaño y capacidad, y se utilizan en una amplia gama de aplicaciones. Aquí están algunos de los tipos de UAS BVLOS que están disponibles:\n\nHelicópteros no tripulados BVLOS: aeronaves no tripuladas que operan con los mismos principios de vuelo que los helicópteros tripulados, utilizando rotores giratorios para generar sustentación y empuje. Estos son los UAVS con las mayores capacidades en términos de rango de vuelo, MTOW, carga útil soportada, velocidad de crucero, etc. Como cualquier helicóptero tienen capacidades VTOL (despegue y aterrizaje vertical) y de vuelo estacionario.\n\nDrones multi-rotor BVLOS: Estos son los drones más comunes y versátiles que utilizan rotores para propulsión. Aunque generalmente asociados con vuelos de corto alcance, algunos modelos están diseñados para operaciones BVLOS más allá de la línea de visión. Se utilizan en aplicaciones como entrega de paquetes, agricultura de precisión e inspección de infraestructuras.\n\nDrones de ala fija BVLOS: estos drones tienen una configuración similar a los aviones tradicionales, con alas fijas que les permiten volar largas distancias. Son ideales para misiones de largo alcance y se utilizan en aplicaciones como vigilancia fronteriza, inspección de oleoductos y mapeo aéreo. Este tipo de drone generalmente no tiene capacidades VTOL y de vuelo estacionario.\n\nHíbridos BVLOS (VTOL): Estos drones combinan características de drones de ala fija y multi-rotor para un rendimiento versátil. Pueden despegar y aterrizar verticalmente como un multi-rotor y luego cambiar al vuelo de ala fija para mayor eficiencia en vuelos de largo alcance. Esto los hace ideales para aplicaciones que requieren una combinación de maniobrabilidad cercana y rango extendido.\n\nEspecificaciones técnicas (si se conocen)\n\nAunque hay una gran diversidad en términos de especificaciones técnicas y rendimiento de los drones BVLOS, no queremos limitar la búsqueda estableciendo especificaciones para ver qué hay disponible que pueda ser útil para una amplia gama de servicios en los que pueden ser aplicables.\n\nTal vez no en la categoría de especificaciones técnicas pero hay algunos requisitos sobre los que deberíamos preguntar, respecto a las autorizaciones para \"operaciones específicas\" (la mayoría de nuestros casos de uso caerán en esta categoría) según la regulación de la UE (ver punto 5 a continuación)."
+    },
+    {
+      "id": "discarded_solutions",
+      "name": "SOLUCIONES DESCARTADAS",
+      "description": "Indique qué soluciones considera que no son viables y por qué. Indique el nombre de las empresas que poseen la solución si es posible.",
+      "type": "textarea",
+      "required": false,
+      "examples": [
+        "Soluciones no viables. Nombre de la empresa (si se conoce)",
+        "¿Por qué?"
+      ],
+      "response": "No deberíamos contactar con las empresas ya contactadas antes de este Desafío: Swissdrones, UMS Skeldar, Schiebel, UAVOS y ANAVIA. Tal vez, más adelante, cuando hagamos la Lista Corta, podamos considerar si tiene sentido añadir alguna de estas."
+    },
+    {
+      "id": "number_of_startups",
+      "name": "NÚMERO DE STARTUPS",
+      "description": "Indique el número de startups potenciales esperadas para revisar. El primer entregable será una lista de startups potencialmente cualificadas para resolver el Desafío, basada en información pública (Lista Larga). El equipo revisará y seleccionará algunas, para ser contactadas por Repsol para solicitar información adicional y confirmar su cualificación e interés en reunirse con Repsol (Lista Corta).",
+      "type": "textarea",
+      "required": true,
+      "examples": [
+        "Número esperado de startups en la Lista Larga: 20",
+        "Número esperado de Startups en la Lista Corta: 3 a 5"
+      ],
+      "response": "Número esperado de startups en la Lista Larga: 20\n\nNúmero esperado de Startups en la Lista Corta: 3 a 5"
+    },
+    {
+      "id": "considerations",
+      "name": "CONSIDERACIONES",
+      "description": "¿Hay restricciones de tiempo, coste, recursos o tecnología a considerar para este proyecto? ¿Cuál es el nivel de urgencia o plazos? ¿Cuáles son las principales barreras o obstáculos a considerar? (disponibilidad del equipo, compromiso de los usuarios finales, etc.)?",
+      "type": "textarea",
+      "required": false,
+      "examples": [
+        "[…]"
+      ],
+      "response": "El factor que más restringe este proyecto es la legislación sobre operaciones UAS BVLOS, especialmente a nivel europeo.\n\nLas operaciones UAS en Europa deben pasar una evaluación de riesgo marcada por la regulación 2019/947. Según esta regulación, las operaciones incluidas en la mayoría de nuestros servicios de inspección se categorizan bajo la etiqueta de \"operaciones específicas\", para las cuales la evaluación de riesgo está marcada por la metodología SORA. Debido a la casuística de los casos de uso y los requisitos dimensionales y de peso de los UAS BVLOS previstos (al menos Helicópteros No Tripulados), la metodología categoriza los casos de uso de inspección como riesgo medio, lo que obliga a la implementación de una serie de medidas de mitigación y seguridad que los fabricantes aún no parecen alcanzar.\n\nEstados Unidos y Asia tienen marcos legales más flexibles en lo que respecta a las operaciones UAS BVLOS.\n\nDado que este desafío es transversal a líneas de negocio y mercado final, deberíamos involucrar a varias personas con expectativas y base de conocimiento diversas para participar en todo el proceso. Por lo tanto, podríamos tener más dificultades de lo habitual para llegar a un consenso sobre las mejores startups/casos de uso (ver punto 5 a continuación). Una vez que hayamos seleccionado el caso de uso y la startup para ejecutar el proyecto piloto, algunas de estas personas abandonarán el proyecto y otras continuarán."
+    },
+    {
+      "id": "pilot_project",
+      "name": "PROYECTO PILOTO/PRUEBA DE CONCEPTO",
+      "description": "El Proyecto Piloto o Prueba de Concepto es un proyecto de alcance y tiempo limitados para cualificar la startup seleccionada y su solución. Por favor confirme el interés en tal proyecto y detalle los particulares preliminares, si se conocen. Si el objetivo de este desafío es obtener solo una lista de startups, indíquelo, junto con el número de Startups esperadas.",
+      "type": "textarea",
+      "required": false,
+      "examples": [
+        "Alcance/Caso de Uso (funcionalidades específicas, conjuntos de datos, en una geografía determinada, departamento, etc.):",
+        "Particulares técnicos u otros relevantes a considerar:",
+        "Personas Involucradas (nombre y posición):",
+        "Fecha de Inicio Potencial:",
+        "Duración Estimada:",
+        "Presupuesto (en caso de que estimemos que la startup incurrirá en costes, indique si está dispuesto a pagar por el Proyecto Piloto/Prueba de Concepto):"
+      ],
+      "response": "Seleccionaremos las startups con el caso de uso donde la startup pueda ser útil. Una vez hecho esto, podremos definir mejor el Proyecto Piloto o Prueba de Concepto a realizar.\n\nTodo dependerá de si tenemos proyectos/clientes reales para llevar a cabo las pruebas.\n\nEn el peor de los casos, obtendremos una lista de startups viables para continuar explorando y contactando en el futuro cuando tengamos una oportunidad o necesidad específica."
+    },
+    {
+      "id": "value_proposition",
+      "name": "PROPUESTA DE VALOR/COLABORACIÓN POST-PILOTO",
+      "description": "¿Cuáles son los beneficios que la startup puede obtener si acepta colaborar con Repsol, si el Proyecto Piloto/Prueba de Concepto es exitoso? Por favor elabore",
+      "type": "textarea",
+      "required": false,
+      "examples": [
+        "Colaboración Comercial a corto plazo",
+        "Acceso a clientes o mercados de Repsol",
+        "Asociación a largo plazo",
+        "Colaboración en un proyecto conjunto de I+D",
+        "Financiación"
+      ],
+      "response": "Si la startup tiene un producto viable para algunos de nuestros servicios, consideraremos ya sea una colaboración comercial a corto plazo o una asociación a largo plazo. Si el caso de uso finalmente seleccionado requiere algún tipo de desarrollo, podríamos pensar en una colaboración en un Proyecto conjunto de I+D."
+    },
+    {
+      "id": "applus_team",
+      "name": "EQUIPO REPSOL",
+      "description": "Indique las personas involucradas, nombre y posición",
+      "type": "textarea",
+      "required": true,
+      "examples": [
+        "Patrocinador",
+        "Propietario (persona de contacto principal)",
+        "Coordinador (apoyo al Propietario, si aplica)",
+        "Evaluadores (personas involucradas en revisar Lista Larga y Lista Corta)",
+        "Equipo del Proyecto Piloto/Prueba de Concepto"
+      ],
+      "response": "Patrocinador: Javier López\nPropietario (persona de contacto principal): Salvador Jiménez\nCoordinador (apoyo al Propietario, si aplica): Miguel Rodríguez Castro\nEvaluadores (personas involucradas en revisar Lista Larga y Lista Corta): Sergio Merelo, Luis Alberto Jaén, Victoria Escuredo, Ramon María Rincón,\nEquipo del Proyecto Piloto/Prueba de Concepto: por definir"
+    },
+    {
+      "id": "documentation",
+      "name": "DOCUMENTACIÓN",
+      "description": "Por favor liste y envíe adjunta cualquier documentación relevante que estime útil",
+      "type": "textarea",
+      "required": false,
+      "examples": [
+        "[…]"
+      ],
+      "response": "Adjunto: Regulación UAS Europa\nhttps://www.unmannedsystemstechnology.com/expo/unmanned-aerial-vehicles/ […]"
+    }
+  ]
+}

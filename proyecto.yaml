@@ -1,0 +1,42 @@
+# Configuración del Proyecto Applus - Scouting de Innovación
+proyecto:
+  nombre: "Applus - Scouting de Innovación"
+  descripcion: "Proyecto de scouting de innovación asistido por IA para Applus"
+  fecha_inicio: "2024-12-19"
+  estado: "configuracion_inicial"
+  version: "1.0.0"
+
+configuracion_ia:
+  asistente: "Cursor"
+  enfoque: "adversarial y crítico"
+  idioma: "español"
+  formato_salida: "markdown"
+
+estructura_carpetas:
+  docs:
+    - transcripciones
+    - docs_tecnicos
+  plantillas: []
+  examples: []
+  reglas: []
+  outputs: []
+  memoria: []
+
+integraciones:
+  teamwork:
+    archivo: ".teamwork.yaml"
+    estado: "pendiente_configuracion"
+  github:
+    estado: "no_configurado"
+
+archivos_clave:
+  - "Proceso_Asistido_IA.md"
+  - "Scouting innovacion.md"
+  - "Sistema_IA_Scouting.md"
+  - "Información general Applus.md"
+
+proximos_pasos:
+  - "Revisar documentación existente"
+  - "Definir áreas de innovación prioritarias"
+  - "Configurar integración con Teamwork"
+  - "Iniciar proceso de scouting"

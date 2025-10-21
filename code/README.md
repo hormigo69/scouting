@@ -91,7 +91,7 @@ Campos estándar basados en la plantilla original:
 - Considerations
 - Pilot Project
 - Value Proposition
-- Applus Team
+- Repsol Team
 
 ### **Automoción**
 Campos especializados para retos de automoción:

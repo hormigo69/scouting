@@ -1,0 +1,314 @@
+{
+  "metadata": {
+    "title": "Revisión de IA - Challenge Request Economía Circular (CO2)",
+    "review_date": "2025-10-21",
+    "ai_model": "GPT-5 Innovation Scouting Assistant",
+    "review_status": "completed",
+    "overall_score": 7.8,
+    "recommendations_count": 10
+  },
+  "field_reviews": [
+    {
+      "field_id": "challenge_headline",
+      "field_name": "All4Zero Innovación tecnológica para impulsar una industria más sostenible",
+      "user_response": "Materiales compatibles y sistemas de medición avanzada para optimizar el transporte, almacenamiento y control de calidad del CO2 capturado",
+      "ai_analysis": {
+        "score": 7.5,
+        "completeness": "good",
+        "clarity": "excellent",
+        "specificity": "moderate",
+        "feedback": "Titular claro y alineado con el reto. Ganaría precisión añadiendo alcance (transporte/almacenamiento), rango de condiciones (P/T) y objetivo de calidad/pureza.",
+        "strengths": [
+          "Contextualiza materiales y medición",
+          "Enfocado a CO2 capturado",
+          "Memorable y directo"
+        ],
+        "improvements": [
+          "Añadir geografía o activo (terminal, pipeline, planta)",
+          "Indicar objetivo de pureza e impurezas críticas",
+          "Incluir horizonte temporal para PoC"
+        ]
+      },
+      "interview_questions": [
+        "¿En qué activos concretos se desea validar (pipeline, terminal CO2, almacenamiento intermedio)?",
+        "¿Qué niveles de pureza/impurezas objetivo consideran aceptables?",
+        "¿Cuál es el horizonte temporal para PoC y despliegue?"
+      ]
+    },
+    {
+      "field_id": "technology_solution_description",
+      "field_name": "Tecnología y solución — Descripción",
+      "user_response": "Solución integral que combina materiales y recubrimientos compatibles con CO2 húmedo y supercrítico con instrumentación de medición en línea (Raman/TDLAS/GC) para verificar pureza e impurezas en tiempo real y prevenir corrosión y fallos operativos.",
+      "ai_analysis": {
+        "score": 8.2,
+        "completeness": "excellent",
+        "clarity": "good",
+        "specificity": "good",
+        "feedback": "Descripción sólida que combina materiales compatibles y analítica en línea. Faltan límites operativos (P/T, caudal) y requisitos de integración (bypass, acondicionamiento).",
+        "strengths": [
+          "Visión integral (materiales + medición)",
+          "Orientación a operación continua",
+          "Enfoque en prevención de corrosión"
+        ],
+        "improvements": [
+          "Especificar rango de operación (bar, °C, caudal)",
+          "Detallar arquitectura de muestreo/bypass",
+          "Definir mantenimiento y recalibración"
+        ]
+      },
+      "interview_questions": [
+        "¿Cuál es el rango P/T y caudal soportado por los sensores y el acondicionamiento?",
+        "¿Cómo se realiza la toma de muestra representativa y el retorno al proceso?",
+        "¿Qué MTBF y plan de mantenimiento/recalibración proponen?"
+      ]
+    },
+    {
+      "field_id": "main_technologies",
+      "field_name": "Tecnologías principales",
+      "user_response": "Aleaciones Ni y aceros inoxidables de alta aleación; recubrimientos PFA/PTFE y cerámicos; sensores ópticos (Raman/NIR/TDLAS) y GC para trazas; acondicionamiento de muestra; analítica e IA para trending y alarmas.",
+      "ai_analysis": {
+        "score": 7.9,
+        "completeness": "good",
+        "clarity": "excellent",
+        "specificity": "good",
+        "feedback": "Listado completo. Añadir normas/estándares aplicables y validaciones de compatibilidad específicas con CO2 húmedo/ácido.",
+        "strengths": [
+          "Cobertura de tecnologías ópticas y cromatográficas",
+          "Incluye materiales y recubrimientos",
+          "Menciona IA para analítica"
+        ],
+        "improvements": [
+          "Referenciar ISO 27913, EN 14181, ATEX/PED",
+          "Aportar resultados de compatibilidad por material",
+          "Incluir límites de detección e incertidumbre"
+        ]
+      },
+      "interview_questions": [
+        "¿Qué LOD/LOQ alcanzan para H2O, H2S, O2 y HC?",
+        "¿Qué materiales han sido ensayados bajo CO2 húmedo y con qué resultados?",
+        "¿Cumplen ATEX/PED en el hardware de campo?"
+      ]
+    },
+    {
+      "field_id": "testing_and_results",
+      "field_name": "Pruebas y resultados",
+      "user_response": "Piloto de lazo cerrado con CO2 gaseoso y líquido: error <±2% en pureza, detección de H2O a ppm, estabilidad 1.000 h sin degradación del recubrimiento; validación de cupones de corrosión con pérdida de masa <0,1 mm/año.",
+      "ai_analysis": {
+        "score": 7.0,
+        "completeness": "moderate",
+        "clarity": "good",
+        "specificity": "moderate",
+        "feedback": "Presenta métricas útiles pero falta detalle de protocolo (duración, reproducibilidad, condiciones) y trazabilidad de calibraciones.",
+        "strengths": [
+          "Resultados cuantitativos de precisión/estabilidad",
+          "Ensayos prolongados",
+          "Validación de corrosión"
+        ],
+        "improvements": [
+          "Describir protocolo de ensayo y incertidumbre",
+          "Aportar certificados/calibraciones de referencia",
+          "Incluir análisis de reproducibilidad"
+        ]
+      },
+      "interview_questions": [
+        "¿Qué protocolo de ensayo emplearon (duración, nº repeticiones, condiciones)?",
+        "¿Cómo se calibraron los equipos y con qué patrones?",
+        "¿Tienen datos de reproducibilidad inter-laboratorio?"
+      ]
+    },
+    {
+      "field_id": "trl_stage",
+      "field_name": "Etapa de desarrollo (TRL)",
+      "user_response": "TRL 6 (piloto industrial)",
+      "ai_analysis": {
+        "score": 8.0,
+        "completeness": "excellent",
+        "clarity": "excellent",
+        "specificity": "good",
+        "feedback": "TRL adecuado para PoC. Aportar hitos para alcanzar TRL 7-8 y dependencias (certificaciones, fabricación, supply).",
+        "strengths": [
+          "Madurez acorde a piloto",
+          "Hoja de ruta plausible"
+        ],
+        "improvements": [
+          "Plan detallado a TRL 8 con fechas",
+          "Identificar cuellos de botella de supply chain"
+        ]
+      },
+      "interview_questions": [
+        "¿Qué hitos y fechas estiman para pasar a TRL 7-8?",
+        "¿Qué certificaciones o aprobaciones requieren?"
+      ]
+    },
+    {
+      "field_id": "technical_docs_link",
+      "field_name": "Documentación técnica (enlace)",
+      "user_response": "https://example.com/whitepaper-co2-qa.pdf",
+      "ai_analysis": {
+        "score": 5.5,
+        "completeness": "low",
+        "clarity": "good",
+        "specificity": "low",
+        "feedback": "Aporta enlaces, pero falta documentación técnica profunda (P&ID del bypass, manuales, hojas de datos con límites).",
+        "strengths": [
+          "Incluye referencias iniciales"
+        ],
+        "improvements": [
+          "Adjuntar P&ID de la línea de muestreo",
+          "Hojas de datos con límites de operación",
+          "Manuales de instalación y mantenimiento"
+        ]
+      },
+      "interview_questions": [
+        "¿Pueden compartir P&ID del sistema de toma de muestra y bypass?",
+        "¿Tienen hojas de datos con límites P/T y materiales?"
+      ]
+    },
+    {
+      "field_id": "ip_collab_details",
+      "field_name": "Detalles de PI/colaboraciones",
+      "user_response": "Patente ES-XXXX-2024 sobre recubrimientos anticorrosión para CO2 húmedo; colaboración con Univ. X (banco de pruebas) y Centro Tecnológico Y (calibración analítica).",
+      "ai_analysis": {
+        "score": 7.2,
+        "completeness": "good",
+        "clarity": "good",
+        "specificity": "moderate",
+        "feedback": "Información útil sobre patente y partners. Añadir estado legal de la patente, alcance territorial y acuerdos de transferencia.",
+        "strengths": [
+          "Patente específica",
+          "Colaboraciones relevantes"
+        ],
+        "improvements": [
+          "Estado (concedida/solicitada) y países",
+          "Régimen de propiedad y licencias",
+          "Compromisos y KPIs con partners"
+        ]
+      },
+      "interview_questions": [
+        "¿Cuál es el estado y alcance territorial de la patente?",
+        "¿Cómo se reparten IP y resultados con los partners?"
+      ]
+    },
+    {
+      "field_id": "poc_technical_functions",
+      "field_name": "Funcionalidades a testear en la PoC",
+      "user_response": "Compatibilidad de materiales bajo CO2 húmedo; precisión y estabilidad de sensores in-line; detección de impurezas críticas; integración con SCADA y alarmas.",
+      "ai_analysis": {
+        "score": 7.6,
+        "completeness": "good",
+        "clarity": "good",
+        "specificity": "good",
+        "feedback": "Selección adecuada de funcionalidades. Faltan métricas y criterios de aceptación cuantificados.",
+        "strengths": [
+          "Cobertura de compatibilidad y medición",
+          "Integración con SCADA"
+        ],
+        "improvements": [
+          "Definir KPIs (error máximo, disponibilidad, tiempo de respuesta)",
+          "Plan de pruebas con casos límite (hidratación, variaciones P/T)"
+        ]
+      },
+      "interview_questions": [
+        "¿Qué KPIs concretos definen éxito (p. ej., error <±2%, disponibilidad >99%)?",
+        "¿Cómo simularán condiciones límite (hidratación, cambios bruscos P/T)?"
+      ]
+    },
+    {
+      "field_id": "poc_preference_scaling",
+      "field_name": "Preferencias para PoC y escalado",
+      "user_response": "PoC en terminal de CO2 licuado con línea de bypass analítica; escalado a red logística regional y posterior despliegue en activos industriales.",
+      "ai_analysis": {
+        "score": 7.3,
+        "completeness": "moderate",
+        "clarity": "good",
+        "specificity": "moderate",
+        "feedback": "Propuesta razonable de emplazamiento. Añadir plan de escalado (nº unidades, CAPEX/OPEX) y roadmap de industrialización.",
+        "strengths": [
+          "Enfoque en terminal de CO2 licuado",
+          "Visión de despliegue progresivo"
+        ],
+        "improvements": [
+          "Estimación CAPEX/OPEX por unidad",
+          "Roadmap de fabricación e instalación",
+          "Plan de mantenimiento y repuestos"
+        ]
+      },
+      "interview_questions": [
+        "¿Cuál es el coste estimado por unidad y por línea?",
+        "¿Qué plazos y recursos requiere el escalado a 10–20 unidades?"
+      ]
+    },
+    {
+      "field_id": "team_composition",
+      "field_name": "Equipo y dedicación",
+      "user_response": "Equipo de 6 personas: 1 Líder de proyecto (100%), 2 especialistas en materiales (80%), 2 analistas de proceso (70%), 1 ingeniero de datos (50%).",
+      "ai_analysis": {
+        "score": 8.0,
+        "completeness": "good",
+        "clarity": "excellent",
+        "specificity": "good",
+        "feedback": "Equipo equilibrado. Añadir experiencias previas equivalentes y dedicación durante la PoC por rol.",
+        "strengths": [
+          "Cobertura de materiales, proceso y datos",
+          "Dedicación relevante"
+        ],
+        "improvements": [
+          "Casos previos de éxito del equipo",
+          "Plan de disponibilidad durante la PoC"
+        ]
+      },
+      "interview_questions": [
+        "¿Qué proyectos similares ha ejecutado el equipo?",
+        "¿Cuál será la dedicación semanal por rol durante la PoC?"
+      ]
+    },
+    {
+      "field_id": "project_links",
+      "field_name": "Enlaces (web/video/presentación)",
+      "user_response": "https://example.com/demo-video\nhttps://example.com/pitch-deck.pdf",
+      "ai_analysis": {
+        "score": 6.2,
+        "completeness": "moderate",
+        "clarity": "good",
+        "specificity": "low",
+        "feedback": "Enlaces útiles, pero falta repositorio de documentación técnica y resultados de ensayo publicables.",
+        "strengths": [
+          "Demostración y deck accesibles"
+        ],
+        "improvements": [
+          "Repositorio con reportes y datos",
+          "Vídeos de pruebas en condiciones reales"
+        ]
+      },
+      "interview_questions": [
+        "¿Pueden compartir un repositorio con informes y datasets anonimizados?"
+      ]
+    }
+  ],
+  "overall_recommendations": [
+    { "priority": "high", "category": "scope_definition", "recommendation": "Definir límites de operación (P/T/caudal) y calidad objetivo (pureza/impurezas).", "impact": "Facilita especificación y comparabilidad." },
+    { "priority": "high", "category": "pilot_planning", "recommendation": "Concretar KPIs y plan de pruebas con casos límite.", "impact": "Asegura validación robusta en PoC." },
+    { "priority": "medium", "category": "documentation", "recommendation": "Aportar P&ID del bypass y hojas de datos con límites.", "impact": "Acelera ingeniería e instalación." },
+    { "priority": "medium", "category": "industrialization", "recommendation": "Roadmap de escalado (fabricación, logística, mantenimiento).", "impact": "Reduce riesgo de despliegue." }
+  ],
+  "interview_questions_summary": {
+    "total_questions": 28,
+    "categories": {
+      "scope_definition": 4,
+      "technical_requirements": 8,
+      "pilot_planning": 6,
+      "industrialization": 4,
+      "ip_collaboration": 3,
+      "documentation": 3
+    },
+    "priority_questions": [
+      "¿Cuál es el rango P/T y caudal soportado por la solución?",
+      "¿Qué KPIs de éxito definen para la PoC?",
+      "¿Pueden compartir P&ID del bypass y límites de operación?",
+      "¿Qué hitos los llevan a TRL 7-8 y en qué fechas?",
+      "¿Cuál es el plan de escalado (costes, tiempos, mantenimiento)?"
+    ]
+  }
+}
+
+
