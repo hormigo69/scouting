@@ -2,7 +2,7 @@
 const templates = {
     standard: {
         name: 'Plantilla Estándar',
-        description: 'Plantilla base de Applus+ Ventures con todos los campos estándar del Challenge Request',
+        description: 'Plantilla base de Repsol con todos los campos estándar del Challenge Request',
         fields: [
             {
                 id: 'challenge_headline',
@@ -41,7 +41,7 @@ const templates = {
                 name: 'Number of Startups',
                 type: 'number',
                 required: true,
-                description: 'Indicate the number of potential startups expected to review. The first deliverable will be a list of startups potentially qualified to solve the Challenge, based on public information (Long List). The team will review and select a few, to be contacted by Applus Ventures to request further information and confirm their qualification and interest in meeting Applus (Short List)',
+                description: 'Indicate the number of potential startups expected to review. The first deliverable will be a list of startups potentially qualified to solve the Challenge, based on public information (Long List). The team will review and select a few to request further information and confirm their qualification and interest in meeting the team (Short List)',
                 examples: 'Ejemplo: Long List: 20 startups, Short List: 3-5 startups'
             },
             {
@@ -65,12 +65,12 @@ const templates = {
                 name: 'Value Proposition/Post-Pilot Collaboration',
                 type: 'textarea',
                 required: false,
-                description: 'What are the benefits that the startup may get if it accepts to collaborate with Applus, if the Pilot Project/Proof of Concept is successful. Please elaborate',
-                examples: 'Incluir: Commercial Collaboration, Access to Applus clients, Long term Partnership, Joint R&D project, Financing'
+                description: 'What are the benefits that the startup may get if it accepts to collaborate with Repsol, if the Pilot Project/Proof of Concept is successful. Please elaborate',
+                examples: 'Incluir: Commercial Collaboration, Access to Repsol clients, Long term Partnership, Joint R&D project, Financing'
             },
             {
                 id: 'applus_team',
-                name: 'Applus Team',
+                name: 'Repsol Team',
                 type: 'textarea',
                 required: true,
                 description: 'Indicate the people involved, name and position',
@@ -169,7 +169,7 @@ const templates = {
             },
             {
                 id: 'applus_team',
-                name: 'Applus Team',
+                name: 'Repsol Team',
                 type: 'textarea',
                 required: true,
                 description: 'Indicate the people involved, name and position',
@@ -260,7 +260,7 @@ const templates = {
             },
             {
                 id: 'applus_team',
-                name: 'Applus Team',
+                name: 'Repsol Team',
                 type: 'textarea',
                 required: true,
                 description: 'Indicate the people involved, name and position',
@@ -312,7 +312,7 @@ const templates = {
                 required: true,
                 description: 'Scale of energy application',
                 options: ['Residential', 'Commercial', 'Industrial', 'Utility scale', 'Grid level'],
-                examples: 'Utility scale y Grid level son los más relevantes para Applus+'
+                examples: 'Utility scale y Grid level son los más relevantes para Repsol'
             },
             {
                 id: 'renewable_focus',
@@ -350,7 +350,7 @@ const templates = {
             },
             {
                 id: 'applus_team',
-                name: 'Applus Team',
+                name: 'Repsol Team',
                 type: 'textarea',
                 required: true,
                 description: 'Indicate the people involved, name and position',

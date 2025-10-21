@@ -32,6 +32,40 @@ async function parseJsonTemplate() {
     }
 }
 
+// Generic JSON parser for template files
+async function parseJsonFile(filePath) {
+    try {
+        console.log(`Attempting to fetch JSON file: ${filePath}`);
+        const response = await fetch(filePath);
+        
+        if (!response.ok) {
+            console.error('Failed to fetch JSON file:', response.status, response.statusText);
+            return [];
+        }
+        
+        const jsonData = await response.json();
+        console.log('JSON file loaded successfully');
+        if (jsonData.metadata) console.log('Template metadata:', jsonData.metadata);
+        if (jsonData.fields) console.log('Number of fields:', jsonData.fields.length);
+        
+        // Convert JSON fields to the format expected by the UI
+        const fields = (jsonData.fields || []).map(field => ({
+            id: field.id,
+            name: field.name,
+            type: field.type,
+            required: field.required,
+            description: field.description,
+            examples: Array.isArray(field.examples) ? field.examples.join('\n') : field.examples,
+            options: field.options
+        }));
+        
+        return fields;
+    } catch (error) {
+        console.error('Error parsing JSON template:', error);
+        return [];
+    }
+}
+
 // Function to determine field type based on content
 function determineFieldType(field) {
     const name = field.name.toLowerCase();
@@ -69,8 +103,8 @@ const templates = {
         fields: [], // Will be populated dynamically from markdown
     },
     automotive: {
-        name: 'Automoción',
-        description: 'Especializada en retos de automoción con campos para Euro 7, normativas UE',
+        name: 'Economía circular',
+        description: 'Tecnologías para combustibles renovables, captura de CO2, hidrógeno renovable y materiales circulares',
         fields: [
             {
                 id: 'challenge_headline',
@@ -160,8 +194,8 @@ const templates = {
         ]
     },
     drones: {
-        name: 'Drones/UAS',
-        description: 'Para retos de drones con campos específicos para EASA, SORA, BVLOS',
+        name: 'Movilidad y generación renovable',
+        description: 'Descarbonización del transporte con nuevos combustibles y lubricantes, y gestión energética eficiente',
         fields: [
             {
                 id: 'challenge_headline',
@@ -251,8 +285,8 @@ const templates = {
         ]
     },
     energy: {
-        name: 'Energía',
-        description: 'Para retos energéticos con campos para eficiencia, renovables, smart grid',
+        name: 'Optimización de activos',
+        description: 'Uso de computación cuántica, modelización y robótica para eficiencia industrial',
         fields: [
             {
                 id: 'challenge_headline',
@@ -294,7 +328,7 @@ const templates = {
                 required: true,
                 description: 'Scale of energy application',
                 options: ['Residential', 'Commercial', 'Industrial', 'Utility scale', 'Grid level'],
-                examples: 'Utility scale y Grid level son los más relevantes para Applus+'
+                examples: 'Utility scale y Grid level son los más relevantes para Repsol'
             },
             {
                 id: 'renewable_focus',
@@ -332,7 +366,7 @@ const templates = {
             },
             {
                 id: 'applus_team',
-                name: 'Applus Team',
+                name: 'Repsol Team',
                 type: 'textarea',
                 required: true,
                 description: 'Indicate the people involved, name and position',
@@ -352,8 +386,10 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Ensure all steps are hidden initially
     hideAllSteps();
     
-    // Load standard template from markdown
+    // Load standard template from JSON
     await loadStandardTemplate();
+    // Load Economy Circular template from JSON (if available)
+    await loadEconomyCircularTemplate();
     
     // Initialize everything after template is loaded
     initializeTemplateSelection();
@@ -399,6 +435,22 @@ async function loadStandardTemplate() {
         console.error('Error loading standard template:', error);
         // Fallback to empty fields if JSON loading fails
         templates.standard.fields = [];
+    }
+}
+
+// Load Economy Circular template from JSON file
+async function loadEconomyCircularTemplate() {
+    try {
+        console.log('Loading Economy Circular template from JSON...');
+        const fields = await parseJsonFile('files/economia_circular.json');
+        if (Array.isArray(fields) && fields.length > 0) {
+            templates.automotive.fields = fields;
+            console.log('Economy Circular template loaded from JSON:', fields.length);
+        } else {
+            console.warn('Economy Circular JSON returned no fields; keeping existing static fields');
+        }
+    } catch (error) {
+        console.error('Error loading Economy Circular template:', error);
     }
 }
 
