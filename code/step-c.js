@@ -11,7 +11,7 @@ async function loadAIReview() {
         // Si la plantilla actual es Economía circular y existe un AI review específico, usarlo
         try {
             if (typeof currentTemplate === 'object' && currentTemplate && currentTemplate.name === 'Economía circular') {
-                const test = await fetch('files/ai-review-economia-circular.json', { method: 'HEAD' });
+                const test = await fetch('../ai-review-economia-circular.json', { method: 'HEAD' });
                 if (test.ok) target = 'files/ai-review-economia-circular.json';
             }
         } catch (e) {
@@ -66,7 +66,7 @@ async function loadAIReviewData() {
         let target = 'files/Challenge request con ejemplo BVLOS.json';
         try {
             if (typeof currentTemplate === 'object' && currentTemplate && currentTemplate.name === 'Economía circular') {
-                const test = await fetch('files/Challenge request economia circular.json', { method: 'HEAD' });
+                const test = await fetch('../Challenge request economia circular.json', { method: 'HEAD' });
                 if (test.ok) target = 'files/Challenge request economia circular.json';
             }
         } catch (e) {
@@ -539,11 +539,11 @@ async function loadStepDData() {
         console.log('Loading Step D data manually...');
         
         // Cargar respuestas del Challenge Request
-        const response1 = await fetch('files/Challenge%20request%20con%20ejemplo%20BVLOS.json');
+        const response1 = await fetch('../Challenge%20request%20economia%20circular.json');
         const challengeResponses = await response1.json();
         
         // Cargar datos de revisión de IA
-        const response2 = await fetch('files/ai-review-bvlos.json');
+        const response2 = await fetch('../ai-review-economia-circular.json');
         const aiReviewData = await response2.json();
         
         // Procesar campos para completar

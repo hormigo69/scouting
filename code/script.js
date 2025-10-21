@@ -2,7 +2,7 @@
 async function parseJsonTemplate() {
     try {
         console.log('Attempting to fetch JSON file...');
-        const response = await fetch('files/A+%20Template_CHALLENGE%20REQUEST%203.json');
+        const response = await fetch('../A+%20Template_CHALLENGE%20REQUEST%203.json');
         
         if (!response.ok) {
             console.error('Failed to fetch JSON file:', response.status, response.statusText);

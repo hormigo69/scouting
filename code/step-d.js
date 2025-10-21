@@ -140,7 +140,7 @@ function initializeStepD() {
 async function loadChallengeResponses() {
     try {
         console.log('Loading challenge responses for Step D...');
-        const response = await fetch('files/Challenge%20request%20con%20ejemplo%20BVLOS.json');
+        const response = await fetch('../Challenge%20request%20economia%20circular.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -156,7 +156,7 @@ async function loadChallengeResponses() {
 async function loadAIReview() {
     try {
         console.log('Loading AI review data for Step D...');
-        const response = await fetch('files/ai-review-bvlos.json');
+        const response = await fetch('../ai-review-economia-circular.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
