@@ -442,7 +442,7 @@ async function loadStandardTemplate() {
 async function loadEconomyCircularTemplate() {
     try {
         console.log('Loading Economy Circular template from JSON...');
-        const fields = await parseJsonFile('files/economia_circular.json');
+        const fields = await parseJsonFile('economia_circular.json');
         if (Array.isArray(fields) && fields.length > 0) {
             templates.automotive.fields = fields;
             console.log('Economy Circular template loaded from JSON:', fields.length);

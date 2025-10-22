@@ -9,17 +9,17 @@ async function loadChallengeResponses() {
     try {
         // Por defecto, cargamos el ejemplo BVLOS. Si existe un fichero de respuestas específico
         // para la plantilla seleccionada (por ejemplo, Economía circular), lo usamos.
-        let target = 'files/Challenge request con ejemplo BVLOS.json';
+        let target = 'respuestas_final_economia_circular.json';
         try {
             // Intentar cargar respuestas específicas de Economía circular si la plantilla actual es esa
             if (typeof currentTemplate === 'object' && currentTemplate && currentTemplate.name === 'Economía circular') {
                 const test = await fetch('Challenge request economia circular.json', { method: 'HEAD' });
                 if (test.ok) {
-                    target = 'files/Challenge request economia circular.json';
+                    target = 'Challenge request economia circular.json';
                 }
             }
         } catch (e) {
-            console.warn('No specific economy-circular responses found, using default BVLOS file');
+            console.warn('No specific economy-circular responses found, using default file');
         }
         const response = await fetch(target);
         if (!response.ok) {

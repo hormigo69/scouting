@@ -1,0 +1,140 @@
+{
+  "metadata": {
+    "title": "REPSOL: SOLICITUD DE DESAFÍO",
+    "division": "Repsol_Division Name",
+    "date": "",
+    "owners": ""
+  },
+  "fields": [
+    {
+      "id": "challenge_headline",
+      "name": "TÍTULO DEL DESAFÍO",
+      "description": "Utilice una frase corta, fácil de recordar, descriptiva del problema a resolver",
+      "type": "text",
+      "required": true,
+      "examples": [
+        "Para [mercado/país/región y caso de uso], ¿qué [startups/scaleups/OEM/integradores] ofrecen [tecnología/solución] que [logra resultado/KPI medible] cumpliendo con [regulación/estándar/restricción], con [TRL mínimo], adecuado para piloto en [meses] y operacional en [geografía]?"
+      ],
+      "response": "[Escribir aquí el título del desafío]"
+    },
+    {
+      "id": "problem_definition",
+      "name": "PROBLEMA",
+      "description": "Explique brevemente la información de fondo relevante, detallando el problema que estamos tratando de resolver y por qué",
+      "type": "textarea",
+      "required": true,
+      "examples": [
+        "Antecedentes",
+        "Problema",
+        "Impacto esperado y beneficios de resolver el problema (ahorro de costes, eficiencia, nuevas fuentes de ingresos, experiencia del cliente, etc.). Incluya caso de negocio o cifras indicativas de estos beneficios si están disponibles",
+        "¿Se beneficiarían otras unidades de negocio de la solución de este problema? ¿Estarían otras unidades de negocio interesadas en la solución para otros propósitos?"
+      ],
+      "response": "[Escribir aquí la definición del problema]"
+    },
+    {
+      "id": "potential_solutions",
+      "name": "SOLUCIÓN/S POTENCIAL/ES",
+      "description": "Con su mejor conocimiento, describa las posibles soluciones y/o tecnologías que estima que podrían resolver el problema. Incluya nombres de empresas conocidas y startups que puedan tener soluciones y/o con las que haya estado en contacto en el pasado",
+      "type": "textarea",
+      "required": true,
+      "examples": [
+        "Posibles soluciones/tecnologías. Nombres de empresas (si se conocen)",
+        "Descripción funcional de la solución potencial",
+        "Especificaciones técnicas (si se conocen)"
+      ],
+      "response": "[Escribir aquí las soluciones potenciales]"
+    },
+    {
+      "id": "discarded_solutions",
+      "name": "SOLUCIONES DESCARTADAS",
+      "description": "Indique qué soluciones considera que no son viables y por qué. Indique el nombre de las empresas que poseen la solución si es posible.",
+      "type": "textarea",
+      "required": false,
+      "examples": [
+        "Soluciones no viables. Nombre de la empresa (si se conoce)",
+        "¿Por qué?"
+      ],
+      "response": "[Escribir aquí las soluciones descartadas]"
+    },
+    {
+      "id": "number_of_startups",
+      "name": "NÚMERO DE STARTUPS",
+      "description": "Indique el número de startups potenciales esperadas para revisar. El primer entregable será una lista de startups potencialmente cualificadas para resolver el Desafío, basada en información pública (Lista Larga). El equipo revisará y seleccionará algunas, para ser contactadas por Repsol para solicitar información adicional y confirmar su cualificación e interés en reunirse con Repsol (Lista Corta).",
+      "type": "textarea",
+      "required": true,
+      "examples": [
+        "Número esperado de startups en la Lista Larga: 20",
+        "Número esperado de Startups en la Lista Corta: 3 a 5"
+      ],
+      "response": "[Escribir aquí el número de startups]"
+    },
+    {
+      "id": "considerations",
+      "name": "CONSIDERACIONES",
+      "description": "¿Hay restricciones de tiempo, coste, recursos o tecnología a considerar para este proyecto? ¿Cuál es el nivel de urgencia o plazos? ¿Cuáles son las principales barreras o obstáculos a considerar? (disponibilidad del equipo, compromiso de los usuarios finales, etc.)?",
+      "type": "textarea",
+      "required": false,
+      "examples": [
+        "[…]"
+      ],
+      "response": "[Escribir aquí las consideraciones]"
+    },
+    {
+      "id": "pilot_project",
+      "name": "PROYECTO PILOTO/PRUEBA DE CONCEPTO",
+      "description": "El Proyecto Piloto o Prueba de Concepto es un proyecto de alcance y tiempo limitados para cualificar la startup seleccionada y su solución. Por favor confirme el interés en tal proyecto y detalle los particulares preliminares, si se conocen. Si el objetivo de este desafío es obtener solo una lista de startups, indíquelo, junto con el número de Startups esperadas.",
+      "type": "textarea",
+      "required": false,
+      "examples": [
+        "Alcance/Caso de Uso (funcionalidades específicas, conjuntos de datos, en una geografía determinada, departamento, etc.):",
+        "Particulares técnicos u otros relevantes a considerar:",
+        "Personas Involucradas (nombre y posición):",
+        "Fecha de Inicio Potencial:",
+        "Duración Estimada:",
+        "Presupuesto (en caso de que estimemos que la startup incurrirá en costes, indique si está dispuesto a pagar por el Proyecto Piloto/Prueba de Concepto):"
+      ],
+      "response": "[Escribir aquí los detalles del proyecto piloto]"
+    },
+    {
+      "id": "value_proposition",
+      "name": "PROPUESTA DE VALOR/COLABORACIÓN POST-PILOTO",
+      "description": "¿Cuáles son los beneficios que la startup puede obtener si acepta colaborar con Repsol, si el Proyecto Piloto/Prueba de Concepto es exitoso? Por favor elabore",
+      "type": "textarea",
+      "required": false,
+      "examples": [
+        "Colaboración Comercial a corto plazo",
+        "Acceso a clientes o mercados de Repsol",
+        "Asociación a largo plazo",
+        "Colaboración en un proyecto conjunto de I+D",
+        "Financiación"
+      ],
+      "response": "[Escribir aquí la propuesta de valor]"
+    },
+    {
+      "id": "Repsol_team",
+      "name": "EQUIPO REPSOL",
+      "description": "Indique las personas involucradas, nombre y posición",
+      "type": "textarea",
+      "required": true,
+      "examples": [
+        "Patrocinador",
+        "Propietario (persona de contacto principal)",
+        "Coordinador (apoyo al Propietario, si aplica)",
+        "Evaluadores (personas involucradas en revisar Lista Larga y Lista Corta)",
+        "Equipo del Proyecto Piloto/Prueba de Concepto"
+      ],
+      "response": "[Escribir aquí el equipo de Repsol]"
+    },
+    {
+      "id": "documentation",
+      "name": "DOCUMENTACIÓN",
+      "description": "Por favor liste y envíe adjunta cualquier documentación relevante que estime útil",
+      "type": "textarea",
+      "required": false,
+      "examples": [
+        "[…]"
+      ],
+      "response": "[Listar aquí la documentación relevante]"
+    }
+  ]
+}

@@ -7,15 +7,15 @@ let currentSelectedField = null;
 // Función para cargar la revisión de IA
 async function loadAIReview() {
     try {
-        let target = 'files/ai-review-bvlos.json';
+        let target = 'ai-review-economia-circular.json';
         // Si la plantilla actual es Economía circular y existe un AI review específico, usarlo
         try {
             if (typeof currentTemplate === 'object' && currentTemplate && currentTemplate.name === 'Economía circular') {
                 const test = await fetch('ai-review-economia-circular.json', { method: 'HEAD' });
-                if (test.ok) target = 'files/ai-review-economia-circular.json';
+                if (test.ok) target = 'ai-review-economia-circular.json';
             }
         } catch (e) {
-            console.warn('No specific economy-circular AI review found, using default BVLOS review');
+            console.warn('No specific economy-circular AI review found, using default review');
         }
         const response = await fetch(target);
         if (!response.ok) {
@@ -63,14 +63,14 @@ async function loadAIReviewData() {
     
     // Cargar también los datos del challenge para mostrar las respuestas originales
     try {
-        let target = 'files/Challenge request con ejemplo BVLOS.json';
+        let target = 'respuestas_final_economia_circular.json';
         try {
             if (typeof currentTemplate === 'object' && currentTemplate && currentTemplate.name === 'Economía circular') {
                 const test = await fetch('Challenge request economia circular.json', { method: 'HEAD' });
-                if (test.ok) target = 'files/Challenge request economia circular.json';
+                if (test.ok) target = 'Challenge request economia circular.json';
             }
         } catch (e) {
-            console.warn('No specific economy-circular challenge responses found for Step C, using default BVLOS');
+            console.warn('No specific economy-circular challenge responses found for Step C, using default');
         }
         const response = await fetch(target);
         if (response.ok) {

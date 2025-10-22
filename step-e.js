@@ -4,12 +4,12 @@ let extractionData = null;
 
 async function loadExtractionData() {
     try {
-        let target = 'files/extraction_E_to_K.json';
+        let target = 'extraction_E_to_K_economia_circular.json';
         // Si la plantilla actual es Economía circular y existe un JSON específico, usarlo
         try {
             if (typeof currentTemplate === 'object' && currentTemplate && currentTemplate.name === 'Economía circular') {
                 const head = await fetch('extraction_E_to_K_economia_circular.json', { method: 'HEAD' });
-                if (head.ok) target = 'files/extraction_E_to_K_economia_circular.json';
+                if (head.ok) target = 'extraction_E_to_K_economia_circular.json';
             }
         } catch (e) {
             console.warn('No extraction file específico para Economía circular. Usando el por defecto.');
