@@ -532,7 +532,7 @@ async function loadStepDData() {
         console.log('Loading Step D data manually...');
         
         // Cargar respuestas del Challenge Request
-        const response1 = await fetch('Challenge%20request%20economia%20circular.json');
+        const response1 = await fetch('Challenge request economia circular.json');
         const challengeResponses = await response1.json();
         
         // Cargar datos de revisión de IA
