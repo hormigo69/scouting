@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Paso D</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 1200px; margin: 0 auto; }
+        h1 { color: #FF8C00; }
+        .section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+        .warning { color: orange; font-weight: bold; }
+        pre { background: #f5f5f5; padding: 10px; overflow-x: auto; max-height: 300px; }
+        button { padding: 10px 20px; margin: 5px; background: #FF8C00; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #E07B00; }
+        .cache-info { background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1>🔧 Diagnóstico Paso D</h1>
+    
+    <div class="cache-info">
+        <h3>⚠️ Instrucciones para limpiar caché:</h3>
+        <ol>
+            <li>Presiona <strong>Cmd + Shift + R</strong> (Mac) o <strong>Ctrl + Shift + R</strong> (Windows/Linux)</li>
+            <li>O abre DevTools (F12) → Network → Deshabilita caché</li>
+            <li>O click derecho en recargar → "Vaciar caché y recargar de forma forzada"</li>
+        </ol>
+        <button onclick="location.reload(true)">Recargar con caché vacía</button>
+    </div>
+    
+    <div class="section">
+        <h2>1. Verificar archivos JSON</h2>
+        <div id="json-status"></div>
+        <button onclick="testJSONFiles()">Probar carga de JSON</button>
+    </div>
+    
+    <div class="section">
+        <h2>2. Verificar archivos JavaScript</h2>
+        <div id="js-status"></div>
+        <button onclick="testJSFiles()">Probar carga de JS</button>
+    </div>
+    
+    <div class="section">
+        <h2>3. Simular inicialización del Paso D</h2>
+        <div id="step-d-status"></div>
+        <button onclick="simulateStepD()">Simular Paso D</button>
+    </div>
+    
+    <script>
+        let challengeResponses = null;
+        let aiReviewData = null;
+        let fieldsToComplete = [];
+        
+        async function testJSONFiles() {
+            const output = document.getElementById('json-status');
+            output.innerHTML = '<p>Probando carga de archivos JSON...</p>';
+            
+            try {
+                // Test Challenge Request
+                const resp1 = await fetch('Challenge request economia circular.json');
+                challengeResponses = await resp1.json();
+                output.innerHTML += `<p class="success">✓ Challenge Request cargado: ${challengeResponses.fields.length} campos</p>`;
+                output.innerHTML += `<pre>${JSON.stringify({
+                    fieldsCount: challengeResponses.fields.length,
+                    firstField: challengeResponses.fields[0].id,
+                    lastField: challengeResponses.fields[challengeResponses.fields.length - 1].id
+                }, null, 2)}</pre>`;
+                
+                // Test AI Review
+                const resp2 = await fetch('ai-review-economia-circular.json');
+                aiReviewData = await resp2.json();
+                output.innerHTML += `<p class="success">✓ AI Review cargado: ${aiReviewData.field_reviews.length} revisiones</p>`;
+                output.innerHTML += `<pre>${JSON.stringify({
+                    reviewsCount: aiReviewData.field_reviews.length,
+                    reviewedFieldIds: aiReviewData.field_reviews.map(r => r.field_id)
+                }, null, 2)}</pre>`;
+                
+            } catch (error) {
+                output.innerHTML += `<p class="error">✗ Error: ${error.message}</p>`;
+            }
+        }
+        
+        async function testJSFiles() {
+            const output = document.getElementById('js-status');
+            output.innerHTML = '<p>Verificando archivos JavaScript...</p>';
+            
+            try {
+                const resp = await fetch('step-d.js');
+                const text = await resp.text();
+                
+                const hasIfAiReview = text.includes('if (aiReview)');
+                const hasLoadChallengeResponses = text.includes('async function loadChallengeResponses');
+                const hasCorrectURL = text.includes("'Challenge request economia circular.json'");
+                const hasURLEncoding = text.includes('Challenge%20request');
+                
+                output.innerHTML += `<p class="${hasIfAiReview ? 'success' : 'warning'}">
+                    ${hasIfAiReview ? '✓' : '⚠'} Tiene filtro 'if (aiReview)': ${hasIfAiReview}
+                </p>`;
+                output.innerHTML += `<p class="${hasLoadChallengeResponses ? 'success' : 'error'}">
+                    ${hasLoadChallengeResponses ? '✓' : '✗'} Tiene función loadChallengeResponses: ${hasLoadChallengeResponses}
+                </p>`;
+                output.innerHTML += `<p class="${hasCorrectURL ? 'success' : 'error'}">
+                    ${hasCorrectURL ? '✓' : '✗'} Usa URL correcta (sin encoding): ${hasCorrectURL}
+                </p>`;
+                output.innerHTML += `<p class="${!hasURLEncoding ? 'success' : 'warning'}">
+                    ${!hasURLEncoding ? '✓' : '⚠'} NO tiene URL encoding (%20): ${!hasURLEncoding}
+                </p>`;
+                
+                // Buscar la línea exacta
+                const lines = text.split('\n');
+                const targetLine = lines.findIndex(l => l.includes('loadChallengeResponses') && l.includes('async'));
+                if (targetLine >= 0) {
+                    output.innerHTML += `<pre>Línea ${targetLine + 1}:\n${lines.slice(targetLine, targetLine + 10).join('\n')}</pre>`;
+                }
+                
+            } catch (error) {
+                output.innerHTML += `<p class="error">✗ Error: ${error.message}</p>`;
+            }
+        }
+        
+        async function simulateStepD() {
+            const output = document.getElementById('step-d-status');
+            output.innerHTML = '<p>Simulando inicialización del Paso D...</p>';
+            
+            if (!challengeResponses || !aiReviewData) {
+                output.innerHTML += '<p class="warning">⚠ Primero carga los archivos JSON</p>';
+                return;
+            }
+            
+            // Simular processFieldsForCompletion
+            fieldsToComplete = [];
+            challengeResponses.fields.forEach(field => {
+                const aiReview = aiReviewData.field_reviews.find(review => 
+                    review.field_id === field.id || review.field_name === field.name
+                );
+                
+                if (aiReview) {
+                    fieldsToComplete.push({
+                        id: field.id,
+                        name: field.name,
+                        hasReview: true
+                    });
+                }
+            });
+            
+            output.innerHTML += `<p class="success">✓ Procesamiento completado</p>`;
+            output.innerHTML += `<p><strong>Campos procesados:</strong> ${fieldsToComplete.length} de ${challengeResponses.fields.length}</p>`;
+            output.innerHTML += `<pre>${JSON.stringify(fieldsToComplete, null, 2)}</pre>`;
+            
+            output.innerHTML += `<h3>Campos sin revisión de IA:</h3>`;
+            const fieldsWithoutReview = challengeResponses.fields.filter(f => 
+                !aiReviewData.field_reviews.find(r => r.field_id === f.id)
+            );
+            output.innerHTML += `<pre>${JSON.stringify(fieldsWithoutReview.map(f => ({
+                id: f.id,
+                name: f.name
+            })), null, 2)}</pre>`;
+        }
+    </script>
+</body>
+</html>
+
