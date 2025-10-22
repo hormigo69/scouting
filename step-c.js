@@ -63,15 +63,8 @@ async function loadAIReviewData() {
     
     // Cargar también los datos del challenge para mostrar las respuestas originales
     try {
-        let target = 'respuestas_final_economia_circular.json';
-        try {
-            if (typeof currentTemplate === 'object' && currentTemplate && currentTemplate.name === 'Economía circular') {
-                const test = await fetch('Challenge request economia circular.json', { method: 'HEAD' });
-                if (test.ok) target = 'Challenge request economia circular.json';
-            }
-        } catch (e) {
-            console.warn('No specific economy-circular challenge responses found for Step C, using default');
-        }
+        // Usar directamente el archivo Challenge request que tiene la estructura correcta
+        let target = 'Challenge request economia circular.json';
         const response = await fetch(target);
         if (response.ok) {
             challengeResponses = await response.json();
